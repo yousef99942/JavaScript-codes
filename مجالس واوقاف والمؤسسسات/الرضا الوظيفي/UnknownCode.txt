@@ -1,0 +1,54 @@
+this code was in old UnusedCells.js file and I do not know what does it do yet.
+/*
+    resetFormFields() {
+    this.inputFormField.circle = '';            
+    this.inputFormField.degree = '';           
+    this.inputFormField.place = '';                 
+    this.inputFormField.work = '';               
+    this.inputFormField.year = '';              
+    this.inputFormField.gender = '';              
+    this.inputFormField.Educational = '';            
+    this.inputFormField.amannadep = '';            
+    this.inputFormField.jobnumber = '';    
+      
+    this.inputFormField.optionone = '';           
+    this.inputFormField.optionthree = '';        
+    this.inputFormField.optionfour = '';            
+    this.inputFormField.optionfive = '';     
+      
+    this.inputFormField.optionsix = '';                
+    this.inputFormField.optrionsiven = '';            
+    this.inputFormField.optioneigth = '';               
+    this.inputFormField.optionnigth = '';            
+    this.inputFormField.optionten = '';    
+      
+    this.inputFormField.optioneleven = ''; 
+       this.inputFormField.optiontwelve = '';            
+    this.inputFormField.appstba = '';               
+    this.inputFormField.appstbanaa = '';            
+    this.inputFormField.optionsixteen = '';     
+      
+    this.inputFormField.astbanathana = '';  
+      this.inputFormField.optionsevin = ''; 
+    this.inputFormField.optionegith = ''; 
+    this.inputFormField.benjining = ''; 
+    this.inputFormField.astbanaamal = ''; 
+      
+    this.inputFormField.selectonetwo = ''; 
+    this.inputFormField.selectthre = ''; 
+    this.inputFormField.selectfivesevin = ''; 
+    this.inputFormField.selectsevien = ''; 
+    this.inputFormField.selecting = ''; 
+      
+    this.inputFormField.instrasbana = ''; 
+    this.inputFormField.theerfaiv = ''; 
+    this.inputFormField.theryeight = ''; 
+    this.inputFormField.thertynin = ''; 
+    this.inputFormField.tatasmmmm = ''; 
+
+          this.inputFormField.thlist = ''; 
+    this.inputFormField.nots = ''; 
+
+    }
+location.assign("https://eservice.ur.gov.iq/applyService/21745");
+*/
