@@ -858,18 +858,6 @@
             document.getElementById("48098").style.display = "none";
             this.group_of_form[0].fields[5].properties[0].values = [];
         }
-
-        // let Result = Values.find((Finding) => this.inputFormField["circle"] === Finding.FSelected_Value);
-        // let Value_Index = Result.SSelected_Value.indexOf(event);
-        /*
-        if(Value_Index !== -1 && Result){
-            document.getElementById("48098").style.display = "block";
-            this.group_of_form[0].fields[5].properties[0].values = Result.Showed_Value[Value_Index];
-        }else{
-            document.getElementById("48098").style.display = "none";
-            this.group_of_form[0].fields[5].properties[0].values = [];
-        }
-            */
     },
 
     //التاكد من دخول الموظف الى الاستمارة واختياره لجهته
@@ -1416,7 +1404,6 @@
                 ]
             },
         ];
-
 
         const Main_Dept = this.inputFormField.circle === "وزارة الداخلية";
         const Result = Values.find((Finding) => Finding.FSelected_Value === this.inputFormField.amannadep); //المقارنة مع حقل اسم التشكيل

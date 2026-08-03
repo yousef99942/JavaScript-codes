@@ -54,4 +54,14 @@
       this.evalErr.push(`الحقل ${this.group_of_form[0].fields[7].label} مطلوب`);
     }
   }
+
+  if (this.inputFormField.SubDeptType) {
+    //التشكيل
+    if (
+      this.inputFormField["FinalDeptName"] == "" ||
+      this.inputFormField["FinalDeptName"] == null
+    ) {
+      this.evalErr.push(`الحقل ${this.group_of_form[0].fields[8].label} مطلوب`);
+    }
+  }
 }

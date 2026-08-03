@@ -26,5 +26,9 @@
     if (this.form_data.SubDeptType == null) {
       document.getElementById("93673").style.visibility = "collapse"; //نوع التشكيل الفرعي
     }
+
+    if (this.form_data.FinalDeptName == null) {
+      document.getElementById("93674").style.visibility = "collapse"; //التشكيل
+    }
   }
 }
