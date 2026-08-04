@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Vue 3</title>
+</head>
+<body>
+    <div id="app">
+        <h2>{{ message }}</h2>
+        <h2> My name is {{ Name }} and I am {{ Age }} years old.</h2>
+        <h2>Current Time: {{ Print("11:00 AM") }}</h2>
+        <!-- v-bind:href="Link" is used to bind the href attribute to the Link data property -->
+        <!-- We can also delete v-bind and just use :href -->
+        <!-- The same thing with img tag -->
+        <a v-bind:href="Link" target="_blank">Testing Link</a>
+        <img v-bind:src="Image" alt="Vue Logo" width="200">
+
+        <button @click="greet">Greet</button>
+        <button @click="changeName">Change Name</button>
+        <!-- v-on:click is used to bind the click event to the SecondPrint method -->
+        <!-- We can also delete v-on and just use @click -->
+        <!-- there is other types of click events -->
+        <!-- @dblclick, @mouseenter, @mouseleave, etc. -->
+        <button v-on:click="SecondPrint">Second Print</button>
+        <button @click="SecondPrint">Third Print</button>
+    </div>
+
+    <div id="SecondApp">
+        <h2>The number is: {{ MyNumber }}</h2>
+
+        <button @click="IncraseNumber">لزيادة قيمة الرقم</button>
+        <button @click="DecraseNumber">لخفض قيمة الرقم</button>
+    </div>
+
+    <!-- Modifier Examples -->
+    <!-- @click.prevent is used to prevent the default action of the click event -->
+    <!-- For example, if you have a link and you want to prevent it from navigating to a new page -->
+    <!-- @click.self is used to only trigger the event when the element itself is clicked -->
+    <!-- @click.stop is used to stop the event from propagating to parent elements -->
+    <!-- @click.once is used to only trigger the event once -->
+    <!-- @click.capture is used to trigger the event during the capture phase -->
+    <!-- @click.passive is used to indicate that the event listener will never call preventDefault() -->
+    <!-- @click.native is used to listen for native DOM events on a component -->
+    <!-- @click.sync is used to sync a prop with a data property -->
+    <!-- @click.enter is used to listen for the Enter key press -->
+    <!-- @click.space is used to listen for the Space key press -->
+
+    <!-- تحميل Vue 3 -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <!-- ملف الجافاسكربت الخاص بك -->
+    <script src="JS/vue.js"></script>
+
+</body>
+</html>
