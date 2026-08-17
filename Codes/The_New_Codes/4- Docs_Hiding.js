@@ -48,7 +48,7 @@
   if (Selected_Values.includes(this.form_data.ProgName)) {
     Docs_ID.forEach(
       (Hiding) =>
-        (ocument.getElementsByClassName(Hiding)[0].style.display = "block"),
+        (document.getElementsByClassName(Hiding)[0].style.display = "block"),
     );
   }
 

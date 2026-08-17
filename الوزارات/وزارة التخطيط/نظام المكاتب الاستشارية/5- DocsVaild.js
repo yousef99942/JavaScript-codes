@@ -1,45 +1,67 @@
 {
-  //بالطلب الطبيعي والجمعية
-  //الطلب الطبيعي والجمعية
-  var Docs1 = ["nonSyndicateAffidavit"], //تعهد  خطي بعدم الانتماء الى نقابة مختصة
-    Docs2 = [
-      ["ownershipOrRent"], //سند ملكية او عقد ايجار
-      ["founderResearch"], //بحوث ودراسات علمية وتطبيقية للمؤسس
-      ["noCriminalAffidavit"], //تعهد خطي مؤسس غير محكوم عليه
-      ["inspectionReport"], //تقرير الكشف
-    ],
-    //الطلب الطبيعي والجمعية
-    //الوكالة اجبارية في حالة تجديد الاجازة
-    Docs3 = ["taxId"], //وكالة خاصة بالوكيل
-    //مال النقابة
-    Docs4 = ["nonGovtEmployeeAffidavit"],
-    //مال الجمعية
-    Docs5 = ["syndicateNonMembership"], //تاييد من النقابة تدل على عدم انتماء
-    Docs6 = [
-      ["officeBylaws"], //النظام الداخلي للمكتب
-      ["ownershipOrRent"], //سند ملكية او عقد ايجار
-      ["graduationOrEndorsement"], //وثيقة تخرج او كتاب تأييد (مع الباركود) لمؤسس المكتب
-      ["personalDocuments"], //المستمسكات الشخصية
-      ["founderPhoto"], //صورة شخصية للمؤسس
-      ["cv"], //السيرة الذاتية
-      ["founderResearch"], //بحوث ودراسات علمية وتطبيقية للمؤسس
-      ["noCriminalAffidavit"], //تعهد خطي من المؤسس /غير محكوم عليه مسبقا
-      ["nonGovtEmployeeAffidavit"], //تعهد خطي ليس موظف في دائرة حكومية
-    ],
-    Docs7 = [
-      ["coloredLeaveDoc"], //صورة ملونة للاجازة الممنوحة (كلا الوجهين)
-      ["lvapproval"], //كتاب الموافقة على منح الاجازة
-    ],
-    //تجميد المكتب
-    Docs8 = [
-      ["personalDocuments"], //المستمسكات الشخصية
-      ["founderPhoto"], //صورة شخصية للمؤسس
-      ["coloredLeaveDoc"], //صورة ملونة للاجازة الممنوحة (كلا الوجهين)
-      ["OfficeCheck"], //تعهد بعدم وجود اي التزام لدى المكتب
-      ["OfficeClosing"], //طلب خطي لتجميد المكتب مع بيان اسباب التجميد
-    ];
-
-  var numbers = [0];
+  let Values = [
+    {
+      Selected_Values: ["شخص طبيعي ( لا ينتمي الى نقابة او جمعية )"],
+      Fields_Prog: [
+        ["nonSyndicateAffidavit"], //تعهد  خطي بعدم الانتماء الى نقابة مختصة
+        ["ownershipOrRent"], //سند ملكية او عقد ايجار
+        ["founderResearch"], //بحوث ودراسات علمية وتطبيقية للمؤسس
+        ["noCriminalAffidavit"], //تعهد خطي مؤسس غير محكوم عليه
+        ["inspectionReport"], //تقرير الكشف
+        ["syndicateNonMembership"], //تاييد من النقابة تدل على عدم انتماء
+      ],
+      Father_Field: this.form_data.requset,
+    },
+    {
+      Selected_Values: ["جمعية"],
+      Fields_Prog: [
+        ["ownershipOrRent"], //سند ملكية او عقد ايجار
+        ["founderResearch"], //بحوث ودراسات علمية وتطبيقية للمؤسس
+        ["noCriminalAffidavit"], //تعهد خطي مؤسس غير محكوم عليه
+        ["inspectionReport"], //تقرير الكشف
+      ],
+      Father_Field: this.form_data.requset,
+    },
+    {
+      Selected_Values: ["نقابة"],
+      Fields_Prog: [["nonGovtEmployeeAffidavit"]],
+      Father_Field: this.form_data.requset,
+    },
+    {
+      Selected_Values: ["تأسيس مكتب", "تجديد اجازة المكتب", "بدل تالف"],
+      Fields_Prog: [
+        ["officeBylaws"], //النظام الداخلي للمكتب
+        ["ownershipOrRent"], //سند ملكية او عقد ايجار
+        ["graduationOrEndorsement"], //وثيقة تخرج او كتاب تأييد (مع الباركود) لمؤسس المكتب
+        ["personalDocuments"], //المستمسكات الشخصية
+        ["founderPhoto"], //صورة شخصية للمؤسس
+        ["cv"], //السيرة الذاتية
+        ["founderResearch"], //بحوث ودراسات علمية وتطبيقية للمؤسس
+        ["noCriminalAffidavit"], //تعهد خطي من المؤسس /غير محكوم عليه مسبقا
+        ["nonGovtEmployeeAffidavit"], //تعهد خطي ليس موظف في دائرة حكومية
+      ],
+      Father_Field: this.form_data.Procedure,
+    },
+    {
+      Selected_Values: ["طلب شهادة جدارية"],
+      Fields_Prog: [
+        ["coloredLeaveDoc"], //صورة ملونة للاجازة الممنوحة (كلا الوجهين)
+        ["lvapproval"], //كتاب الموافقة على منح الاجازة
+      ],
+      Father_Field: this.form_data.Procedure,
+    },
+    {
+      Selected_Values: ["تجميد مكتب"],
+      Fields_Prog: [
+        ["personalDocuments"], //المستمسكات الشخصية
+        ["founderPhoto"], //صورة شخصية للمؤسس
+        ["coloredLeaveDoc"], //صورة ملونة للاجازة الممنوحة (كلا الوجهين)
+        ["OfficeCheck"], //تعهد بعدم وجود اي التزام لدى المكتب
+        ["OfficeClosing"], //طلب خطي لتجميد المكتب مع بيان اسباب التجميد
+      ],
+      Father_Field: this.form_data.Procedure,
+    },
+  ];
 
   // Function to handle document validation
   function validateDocuments(docsArray, PlaceNum) {
@@ -70,45 +92,12 @@
   }
 
   // Validate based on customer type or form type
-  if (this.form_data.requset == "شخص طبيعي ( لا ينتمي الى نقابة او جمعية )") {
-    if (this.form_data.Procedure == "تجديد اجازة المكتب") {
-      validateDocuments.call(this, Docs3, 0);
-    }
-
-    for (var i = 0; i < Docs2.length; i++) {
-      validateDocuments.call(this, Docs2[i], 0);
-    }
-
-    validateDocuments.call(this, Docs1, 0);
-    validateDocuments.call(this, Docs5, 0);
+  if (
+    this.form_data.requset == "شخص طبيعي ( لا ينتمي الى نقابة او جمعية )" &&
+    this.form_data.Procedure == "تجديد اجازة المكتب"
+  ) {
+    validateDocuments.call(this, Docs3, 0);
   }
 
-  if (this.form_data.requset == "جمعية") {
-    for (var i = 0; i < Docs2.length; i++) {
-      validateDocuments.call(this, Docs2[i], 0);
-    }
-  }
-
-  if (this.form_data.requset == "نقابة") {
-    validateDocuments.call(this, Docs4, 0);
-  }
-
-  var Selected_Values = ["تأسيس مكتب", "تجديد اجازة المكتب", "بدل تالف"];
-  if (Selected_Values.includes(this.form_data.Procedure)) {
-    for (var i = 0; i < Docs6.length; i++) {
-      validateDocuments.call(this, Docs6[i], 0);
-    }
-  }
-
-  if (this.form_data.Procedure == "طلب شهادة جدارية") {
-    for (var i = 0; i < Docs7.length; i++) {
-      validateDocuments.call(this, Docs7[i], 0);
-    }
-  }
-
-  if (this.form_data.Procedure == "تجميد مكتب") {
-    for (var i = 0; i < Docs8.length; i++) {
-      validateDocuments.call(this, Docs8[i], 0);
-    }
-  }
+  const Result = 
 }

@@ -6,7 +6,9 @@
       this.inputFormField["namez"] == null ||
       this.inputFormField["namez"] == ""
     ) {
-      this.evalErr.push(`الحقل ${this.group_of_form[0].fields[7].label} مطلوب`);
+      this.evalErr.push(
+        `الحقل ${this.group_of_form[0].fields[13].label} مطلوب`,
+      );
     }
 
     //كم مرة شاركت في البرامج
@@ -14,7 +16,9 @@
       this.inputFormField["namez"] == null ||
       this.inputFormField["namez"] == ""
     ) {
-      this.evalErr.push(`الحقل ${this.group_of_form[0].fields[8].label} مطلوب`);
+      this.evalErr.push(
+        `الحقل ${this.group_of_form[0].fields[14].label} مطلوب`,
+      );
     }
   }
 
@@ -26,7 +30,7 @@
       this.inputFormField["namem"] == ""
     ) {
       this.evalErr.push(
-        `الحقل ${this.group_of_form[0].fields[10].label} مطلوب`,
+        `الحقل ${this.group_of_form[0].fields[16].label} مطلوب`,
       );
     }
   }
@@ -39,7 +43,7 @@
       this.inputFormField["namerwqxc"] == ""
     ) {
       this.evalErr.push(
-        `الحقل ${this.group_of_form[0].fields[12].label} مطلوب`,
+        `الحقل ${this.group_of_form[0].fields[18].label} مطلوب`,
       );
     }
   }
@@ -52,7 +56,7 @@
       this.inputFormField["namw"] == ""
     ) {
       this.evalErr.push(
-        `الحقل ${this.group_of_form[0].fields[14].label} مطلوب`,
+        `الحقل ${this.group_of_form[0].fields[20].label} مطلوب`,
       );
     }
   }
@@ -65,7 +69,7 @@
       this.inputFormField["namewaos"] == ""
     ) {
       this.evalErr.push(
-        `الحقل ${this.group_of_form[0].fields[16].label} مطلوب`,
+        `الحقل ${this.group_of_form[0].fields[22].label} مطلوب`,
       );
     }
   }
@@ -78,7 +82,7 @@
       this.inputFormField["nameh"] == ""
     ) {
       this.evalErr.push(
-        `الحقل ${this.group_of_form[0].fields[18].label} مطلوب`,
+        `الحقل ${this.group_of_form[0].fields[24].label} مطلوب`,
       );
     }
   }

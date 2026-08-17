@@ -33,6 +33,7 @@ createApp({
   data() {
     return {
       MyNumber: 0,
+      name: "Yousif",
     };
   },
 
@@ -45,3 +46,64 @@ createApp({
     },
   },
 }).mount("#SecondApp");
+
+//Third Div
+createApp({
+  //هذي طريقة اولى لترتيب بيانات الحساب
+  // data() {
+  //   return {
+  //     Username: "",
+  //     Email: "",
+  //     Password: "",
+  //   };
+  // },
+  // methods: {
+  //   CreateAccount() {
+  //     const accountData = {
+  //       Username: this.Username,
+  //       Email: this.Email,
+  //       Password: this.Password,
+  //     };
+  //     console.log("Account Created:", accountData);
+  //   },
+  // },
+  //وهذي طريقة ثانية لترتيب بيانات الحساب
+  data() {
+    return {
+      AccountData: {
+        Username: "",
+        Email: "",
+        Password: "",
+      },
+    };
+  },
+
+  methods: {
+    CreateAccount() {
+      console.log("Account Created:", this.AccountData);
+    },
+  },
+}).mount("#ThirdApp");
+
+//Fourth Div
+createApp({
+  data() {
+    return {
+      NumberOne: 0,
+      NumberTwo: 0,
+    };
+  },
+
+  methods: {},
+
+  computed: {
+    ChangingFirst() {
+      console.log("First Function");
+      return this.NumberOne * 2;
+    },
+    ChangingSecond() {
+      console.log("Second Function");
+      return this.NumberTwo * 10;
+    },
+  },
+}).mount("#FourthApp");

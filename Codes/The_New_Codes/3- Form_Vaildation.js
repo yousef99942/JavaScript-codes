@@ -69,19 +69,21 @@
 
   //* في الشرط الخارجي نحتاج الاسم البرمجي للحقل الذي يحتوي على القيمة التي تجعل الحقل يظهر
   //* inputFormField ونضع الاسم البرمجي بعد النقطة التي بعد ايعاز
-  Values.forEach((Checking) => {
-    //* وهنا نتاكد اذا الحقول التي تختفي وتظهر فارغة ام لا
-    if (
-      this.inputFormField[Checking.Field_Prog] == null ||
-      this.inputFormField[Checking.Field_Prog] == ""
-    ) {
-      //! المقصود به هو تسلسل المجموعة التي تحتوي على الحقل بعد طرح 1 منه group_of_form
-      //! المقصود به تسلسل الحقل داخل مجموعته fields
-      this.evalErr.push(
-        `الحقل ${this.group_of_form[1].fields[Checking.Field_Location].label} مطلوب`,
-      );
-    }
-  });
+  if (this.inputFormField.ProgName == "القيمة التي تجعل الحقل يظهر") {
+    Values.forEach((Checking) => {
+      //* وهنا نتاكد اذا الحقول التي تختفي وتظهر فارغة ام لا
+      if (
+        this.inputFormField[Checking.Field_Prog] == null ||
+        this.inputFormField[Checking.Field_Prog] == ""
+      ) {
+        //! المقصود به هو تسلسل المجموعة التي تحتوي على الحقل بعد طرح 1 منه group_of_form
+        //! المقصود به تسلسل الحقل داخل مجموعته fields
+        this.evalErr.push(
+          `الحقل ${this.group_of_form[1].fields[Checking.Field_Location].label} مطلوب`,
+        );
+      }
+    });
+  }
 
   //--------------------------------------------------------------------------------------------------------//
   //!-------------------------------------------Third_Case--------------------------------------------------//
@@ -147,18 +149,18 @@
   if (Selected_Values.includes(this.inputFormField.ProgName)) {
     //* في الشرط الداخلي نحتاج الاسم البرمجي للحقل الذي يختفي ويظهر
     //* وهنا نتاكد اذا الحقول كانت فارغة ام لا
-    for (var i = 0; i < Fields_Prog.length; i++) {
+    Values.forEach((Checking) => {
       if (
-        this.inputFormField[Fields_Prog[i]] == null ||
-        this.inputFormField[Fields_Prog[i]] == ""
+        this.inputFormField[Checking.Field_Prog] == null ||
+        this.inputFormField[Checking.Field_Prog] == ""
       ) {
         //! المقصود به هو تسلسل المجموعة التي تحتوي على الحقل بعد طرح 1 منه group_of_form
         //! المقصود به تسلسل الحقل داخل مجموعته بعد طرح 1 منه fields
         this.evalErr.push(
-          `الحقل ${this.group_of_form[1].fields[Fields_Location[i]].label} مطلوب`,
+          `الحقل ${this.group_of_form[1].fields[Checking.Field_Location].label} مطلوب`,
         );
       }
-    }
+    });
   }
 
   //--------------------------------------------------------------------------------------------------------//

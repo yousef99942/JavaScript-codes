@@ -206,6 +206,14 @@
   }
 
   let Fields_Value = [
+    //معلومات عن المستثمر (الشخص الطبيعي)
+    {
+      Field_ID: "74443",
+      Field_Prog: "BrithDate",
+      Min_Date: "1940-01-01",
+      Max_Date: `${new Date().getFullYear() - 18}-12-31`,
+    }, //تأريخ الولادة
+    //
     {
       Field_ID: "74483",
       Field_Prog: "dateapl",

@@ -25,6 +25,17 @@
   //document.getElementsByName("Britday")[0].disabled = true; //قفل حقل تاريخ الميلاد
 
   //--------------------------------------------------------------------------------------------
+  //تغيير خصائص الليبل
+  //المعلومات الشخصية
+  //عند حدوث تغيير في الوضع الاجتماعي خلال السنة يبلغ المحاسب بذلك
+  document.getElementById("87370").style.cssText =
+    "color: #6e0202; font-size: 20px; font-weight: bold; padding-top: 15px; padding-bottom: 15px;";
+
+  //استمارة بيان قيام الزوجية وعدد الاولاد
+  document.getElementById("12345").style.cssText =
+    "color: #650505; font-size: 20px; font-weight: bold; padding-top: 15px; padding-bottom: 15px; text-align: center;";
+
+  //--------------------------------------------------------------------------------------------
   //حصر الحقول باللغة العربية فقط
   function Arabic_Only(Fields_ID) {
     for (var i = 0; i < Fields_ID.length; i++) {
@@ -169,15 +180,4 @@
   document
     .getElementsByName("datemari")[0]
     .setAttribute("max", `${new Date().getFullYear()}-12-31`);
-
-  //--------------------------------------------------------------------------------------------
-  //تغيير خصائص الليبل
-  //المعلومات الشخصية
-  //عند حدوث تغيير في الوضع الاجتماعي خلال السنة يبلغ المحاسب بذلك
-  document.getElementById("87370").style.cssText =
-    "color: #6e0202; font-size: 20px; font-weight: bold; padding-top: 15px; padding-bottom: 15px;";
-
-  //استمارة بيان قيام الزوجية وعدد الاولاد
-  document.getElementById("12345").style.cssText =
-    "color: #650505; font-size: 20px; font-weight: bold; padding-top: 15px; padding-bottom: 15px; text-align: center;";
 }

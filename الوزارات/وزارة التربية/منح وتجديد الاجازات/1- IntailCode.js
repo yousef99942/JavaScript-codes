@@ -2,7 +2,7 @@
   //مجموعة  معلومات المؤسسين (على ان يكون احد المؤسسين تربوي)
   document.getElementById("22950_group").style.display = "none";
 
-  //this.group_of_form[0].fields[4].properties[0].values = ["روضة", "معهد"];
+  this.group_of_form[0].fields[4].properties[0].values = ["روضة", "معهد"]; //نوع المؤسسة ( للمنح)
   //-------------------------------------------------------------------------
   //تحديد الحقول باللغة العربية فقط
   function Arabic_Only(Fields_ID) {

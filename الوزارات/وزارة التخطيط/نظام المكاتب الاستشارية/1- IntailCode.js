@@ -20,11 +20,12 @@
     "70384", //معلومات العامل العاشر
   ];
 
-  for (var i = 0; i < Labels_ID.length; i++) {
-    //لتغيير خصائص كل الليبل
-    document.getElementById(Labels_ID[i]).style.cssText =
-      "font-size: 20px; font-weight: bold; padding-top: 10px; padding-bottom: 10px;";
-  }
+  //لتغيير خصائص كل الليبلات
+  Labels_ID.forEach(
+    (Changing) =>
+      (document.getElementById(Changing).style.cssText =
+        "font-size: 20px; font-weight: bold; padding-top: 10px; padding-bottom: 10px;"),
+  );
 
   //اخفاء جزء من الليبلات
   var Hidden_Labels = [
@@ -43,9 +44,9 @@
     "70384", //معلومات العامل العاشر
   ];
 
-  for (var i = 0; i < Hidden_Labels.length; i++) {
-    document.getElementById(Hidden_Labels[i]).style.display = "none";
-  }
+  Hidden_Labels.forEach((Label_ID) => {
+    document.getElementById(Label_ID).style.display = "none";
+  });
 
   //-------------------------------------------------------------------------------------------------
   //لاخفاء المجاميع
@@ -57,9 +58,9 @@
     "34537_group",
   ];
 
-  for (var i = 0; i < Groups_ID.length; i++) {
-    document.getElementById(Groups_ID[i]).style.display = "none";
-  }
+  Groups_ID.forEach((Group_ID) => {
+    document.getElementById(Group_ID).style.display = "none";
+  });
 
   //-------------------------------------------------------------------------------------------------
   //لحصر بعض الحقول باللغة الانكليزية فقط

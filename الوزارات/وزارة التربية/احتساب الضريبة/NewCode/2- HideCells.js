@@ -1,4 +1,16 @@
 {
+    //المعلومات الشخصية
+    //هل المنتسب مستمر بالعمل داخل المديرية ؟
+    First_Hide(event){
+        this.inputFormField["Typeeee"] = null; //يرجى تحديد سبب عدم الاستمرار داخل المديرية
+        if(event === "كلا"){
+            document.getElementById("93243").style.display = "block"; //يرجى تحديد سبب عدم الاستمرار داخل المديرية
+        }else{
+            document.getElementById("93243").style.display = "none"; //يرجى تحديد سبب عدم الاستمرار داخل المديرية
+        }
+    },
+
+    //المحافظة
     First_Filter(event){
         this.inputFormField["district"] = null;
         let Values = [
@@ -62,8 +74,8 @@
             {
                 Selected_Value: "كركوك", 
                 Showed_Value: [
-                    "دبس", "العباسي", "الحويجة", "الملتقى", "التون كبري", "الرشاد", "الرياض", "الزاب", "داقوق", "كركوك", "ليلان", "قرة هنجير", "سركوان (القدس)", "شوان",
-                    "تازة", "يايجي",
+                    "دبس", "العباسي", "الحويجة", "الملتقى", "التون كبري", "الرشاد", "الرياض", "الزاب", "داقوق", "كركوك", "ليلان", "قرة هنجير", "سركوان (القدس)", "شوان", "تازة",
+                    "يايجي",
                 ]
             },
             {
@@ -102,109 +114,96 @@
             },
         ];
 
-        const Result = Values.find(([Finding]) => Finding.Selected_Value === event);
+        const Result = Values.find((Finding) => Finding.Selected_Value === event);
         if (Result) {
             this.group_of_form[0].fields[10].properties[0].values = Result.Showed_Value;
+        }else{
+            this.group_of_form[0].fields[10].properties[0].values = [];
         }
     },
 
     //استمارة بيان قيام الزوجية وعدد الاولاد
     //الحالة الاجتماعية
-    First_Hide(event){
-        let Fields_Prog = [
-            "FirstTable", //معلومات عن الاطفال
-            //الحالة الاجتماعية
-            "birthdayabsoiute", //تاريخ الطلاق
-            "birthdaydeath", //تاريخ وفاة الزوج ( الزوجة)
-            "birthdaymarried", //تاريخ الزواج
-            "namespouwife", //اسم الزوج ( الزوجة)
-            "cardspouwife", //رقم البطاقة الموحدة  للزوج ( الزوجة)
-            //استمارة بيان قيام الزوجية وعدد الاولاد
-            // "firname", //الاسم الاول
-            // "secname", //الاسم الثاني
-            // "thiname", //الاسم الثالث
-            // "founame", //الاسم الرابع
-            // "maritstut", //الحالة الزوجية
-            // "nation", //جنسية الزوج ( الزوجة )
-            // "datemari", //التاريخ اذا كنت متزوج او أرمل او مطلق
-            // "boysname", //اسماء الابناء
+    Second_Hide(event){
+        //الاسماء البرمجية
+        const Fields_Prog = [
+            "birthdaymarried", // تاريخ الزواج
+            "namespouwife",    // اسم الزوج ( الزوجة)
+            "birthdayabsoiute", // تاريخ الطلاق
+            "cardspouwife",    // رقم البطاقة الوطنية للزوج ( الزوجة)
+            "birthdaydeath",   // تاريخ وفاة الزوج ( الزوجة)
+            "salary",          // هل الزوجة ربة بيت وليس لها دخل ؟
+            "associate",       // هل الزوجة ( الزوج ) منتسبا ( موظفة / موظف)؟
+            "HusbandEarner",   // هل ( الزوج / الزوجة) كاسب ؟
+            "ReturmintType",   // هل (الزوج / الزوجة) متقاعد؟
+            "combinesalary",   // هل تطلب انت وزوجتك ( زوجك ) دمج المدخولات ( ضمن احتساب الضريبة ) ؟
+            "FirstTable"       // اسماء الابناء
         ],
+        //متزوج
         First_Option = [
-            "87252", //تاريخ الزواج
-            "87253", //اسم الزوج ( الزوجة)
-            "87255", //رقم البطاقة الموحدة  للزوج ( الزوجة)
-        ], //المتزوج
-        Second_Option = [
-            "87256", //تاريخ وفاة الزوج ( الزوجة)
-        ], //ارمل
-        Third_Option = [
-            "87254", //تاريخ الطلاق
-        ]; //مطلق
+            "87252", // تاريخ الزواج
+            "87253", // اسم الزوج ( الزوجة)
+            "87255"  // رقم البطاقة الوطنية للزوج ( الزوجة)
+        ];
 
-        //تفريغ الحقول
-        Fields_Prog.forEach((ClearData) => { this.inputFormField[ClearData] = null; });
-
-        let Values = [
+        const Values = [
             {
                 Selected_Value: "متزوج",
-                Showed_Fields: First_Option,
+                Showed_Fields: [...First_Option],
                 Hide_Fields: [
-                    ...Second_Option,
-                    ...Third_Option
+                    "87254", // تاريخ الطلاق
+                    "87256", // تاريخ وفاة الزوج ( الزوجة)
                 ],
             },
             {
                 Selected_Value: "أرمل",
-                Showed_Fields: Second_Option,
+                Showed_Fields: [
+                    "87256", // تاريخ وفاة الزوج ( الزوجة)
+                ],
                 Hide_Fields: [
                     ...First_Option,
-                    ...Third_Option,
+                    "87254" // تاريخ الطلاق
                 ],
             },
             {
                 Selected_Value: "مطلق",
-                Showed_Fields: Third_Option,
+                Showed_Fields: [
+                    "87254" // تاريخ الطلاق
+                ],
                 Hide_Fields: [
                     ...First_Option,
-                    ...Second_Option
+                    "87256", // تاريخ وفاة الزوج ( الزوجة)
                 ],
             },
         ];
 
-        let Result = Values.find((Finding) => event == Finding.Selected_Value);
+        //تفريغ الحقول
+        Fields_Prog.forEach((Clearing) => this.inputFormField[Clearing] = null);
+        const Result = Values.find((Finding) => this.inputFormField.maritstatus === Finding.Selected_Value);
         if(Result){
-            document.getElementById("89137").style.display = "block"; //معلومات عن الاطفال
-            //document.getElementById("35057_group").style.display = "block"; //استمارة بيان قيام الزوجية وعدد الاولاد
+            document.getElementById("89137").style.display = "block"; //اسماء الابناء
             Result.Showed_Fields.forEach((Hiding) => document.getElementById(Hiding).style.display = "block");
             Result.Hide_Fields.forEach((Hiding) => document.getElementById(Hiding).style.display = "none");
         }else{
-            document.getElementById("35057_group").style.display = "none"; //استمارة بيان قيام الزوجية وعدد الاولاد
-            document.getElementById("89137").style.display = "none"; //معلومات عن الاطفال
-            [...First_Option, ...Second_Option, ...Third_Option].forEach((Hiding) => document.getElementById(Hiding).style.display = "none");
+            [...First_Option, "87254", "87256"].forEach((Hiding) => document.getElementById(Hiding).style.display = "none");
+            document.getElementById("89137").style.display = "none"; //اسماء الابناء
         }
 
         this.inputFormField["salary"] = null; //هل الزوجة ربة بيت وليس لها دخل ؟
+        this.inputFormField["associate"] = null; // هل الزوجة ( الزوج ) منتسبا ( موظفة / موظف)؟
         this.inputFormField["combinesalary"] = null; //هل تطلب انت وزوجتك ( زوجك ) دمج المدخولات ( ضمن احتساب الضريبة ) ؟
-
-        if(event == "متزوج" && this.inputFormField.gender == "ذكر"){
-            document.getElementById("87258").style.display = "block"; //هل الزوجة ربة بيت وليس لها دخل ؟
-        }else if(event == "متزوج" && this.inputFormField.gender != "ذكر"){
-            document.getElementById("87258").style.display = "none"; //هل الزوجة ربة بيت وليس لها دخل ؟
+        if(this.inputFormField.maritstatus === "متزوج" && this.inputFormField.gender === "ذكر"){
+            document.getElementById("87260").style.display = "none"; //هل الزوجة ( الزوج ) منتسبا ( موظفة / موظف)؟
+            document.getElementById("87258").style.display = "block"; // هل الزوجة ربة بيت وليس لها دخل ؟
+            document.getElementById("87322").style.display = "none"; //هل تطلب انت وزوجتك ( زوجك ) دمج المدخولات ( ضمن احتساب الضريبة ) ؟
+        }else if(this.inputFormField.maritstatus === "متزوج" && this.inputFormField.gender === "انثى"){
+            document.getElementById("87260").style.display = "block"; //هل الزوجة ( الزوج ) منتسبا ( موظفة / موظف)؟
+            document.getElementById("87258").style.display = "none"; // هل الزوجة ربة بيت وليس لها دخل ؟
             document.getElementById("87322").style.display = "block"; //هل تطلب انت وزوجتك ( زوجك ) دمج المدخولات ( ضمن احتساب الضريبة ) ؟
         }else{
-            document.getElementById("87258").style.display = "none"; //هل الزوجة ربة بيت وليس لها دخل ؟
+            document.getElementById("87260").style.display = "none"; //هل الزوجة ( الزوج ) منتسبا ( موظفة / موظف)؟
+            document.getElementById("87258").style.display = "none"; // هل الزوجة ربة بيت وليس لها دخل ؟
             document.getElementById("87322").style.display = "none"; //هل تطلب انت وزوجتك ( زوجك ) دمج المدخولات ( ضمن احتساب الضريبة ) ؟
-        }
-    },
-
-    //المعلومات الشخصية
-    //هل المنتسب مستمر بالعمل داخل المديرية ؟
-    Second_Hide(event){
-        this.inputFormField["Typeeee"] = null; //يرجى تحديد سبب عدم الاستمرار داخل المديرية
-        if(event == "كلا"){
-            document.getElementById("93243").style.display = "block"; //يرجى تحديد سبب عدم الاستمرار داخل المديرية
-        }else{
-            document.getElementById("93243").style.display = "none"; //يرجى تحديد سبب عدم الاستمرار داخل المديرية
         }
     },
 
@@ -212,8 +211,7 @@
     Third_Hide(event){
         this.inputFormField["associate"] = null; //هل الزوجة ( الزوج ) منتسبا ( موظفة / موظف)؟
         this.inputFormField["combinesalary"] = null; //هل تطلب انت وزوجتك ( زوجك ) دمج المدخولات ( ضمن احتساب الضريبة ) ؟
-
-        if(event == "كلا"){
+        if(event === "كلا"){
             document.getElementById("87260").style.display = "block"; //هل الزوجة ( الزوج ) منتسبا ( موظفة / موظف)؟
             document.getElementById("87322").style.display = "block"; //هل تطلب انت وزوجتك ( زوجك ) دمج المدخولات ( ضمن احتساب الضريبة ) ؟
         }else{
@@ -226,19 +224,19 @@
     Fourth_Hide(event){
         this.inputFormField["HusbandEarner"] = null; //هل ( الزوج / الزوجة) كاسب ؟
         if(event == "كلا"){
-            document.getElementById("94045").style.display = "block";
+            document.getElementById("94045").style.display = "block"; //هل ( الزوج / الزوجة) كاسب ؟
         }else{
-            document.getElementById("94045").style.display = "none";
+            document.getElementById("94045").style.display = "none"; //هل ( الزوج / الزوجة) كاسب ؟
         }
     },
 
     //هل ( الزوج / الزوجة) كاسب ؟
     Fifth_Hide(event){
         this.inputFormField["ReturmintType"] = null; //هل (الزوج / الزوجة) متقاعد؟
-        if(event == "كلا"){
-            document.getElementById("94117").style.display = "block";
+        if(event === "كلا"){
+            document.getElementById("94128").style.display = "block"; //هل (الزوج / الزوجة) متقاعد؟
         }else{
-            document.getElementById("94117").style.display = "none";
+            document.getElementById("94128").style.display = "none"; //هل (الزوج / الزوجة) متقاعد؟
         }
-    }
+    },
 }

@@ -596,7 +596,7 @@
     if(Result && Checking){
       this.inputFormField.SecondProcessingPerson = Result.Second_Emp_Name; //موظف المعهد
     }else{
-      this.inputFormField.SecondProcessingPerson = ""; //موظف المعهد
+      this.inputFormField.SecondProcessingPerson = "لا يوجد"; //موظف المعهد
     }
   },
 }

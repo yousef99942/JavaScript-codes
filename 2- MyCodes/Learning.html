@@ -30,7 +30,38 @@
         <h2>The number is: {{ MyNumber }}</h2>
 
         <button @click="IncraseNumber">لزيادة قيمة الرقم</button>
-        <button @click="DecraseNumber">لخفض قيمة الرقم</button>
+        <button @click="DecraseNumber">لخفض قيمة الرقم</button> <br><br>
+
+        <!-- v-model is used to create two-way data bindings on form input, textarea, and select elements -->
+        <!-- يربط الحقل الي بالواجهة بالمتغيير بحيث اذا صار تغيير بواحد منهم ف الثاني هم راح يتعدل -->
+        <label for="TheName">{{name}}</label> <br>
+        <input type="text" v-model="name" name="TheName" placeholder="ادخل الاسم هنا" id="InputName"> <br><br>
+    </div>
+
+    <div id="ThirdApp">
+        <form @submit.prevent="CreateAccount">
+            <!-- AccountData اذا اني دستعمل الطريقة الاولى لترتيب البيانات ف بس امسح -->
+            <br><br>
+            <label for="Username">ادخل اسمك هنا</label> <br>
+            <input type="text" v-model="AccountData.Username" name="Username" placeholder="ادخل الاسم هنا" id="InputName"> <br><br>
+
+            <label for="Email">ادخل بريدك الالكتروني هنا</label> <br>
+            <input type="email" v-model="AccountData.Email" name="Email" placeholder="ادخل بريدك الالكتروني هنا" id="InputEmail"> <br><br>
+
+            <label for="Password">ادخل كلمة المرور هنا</label> <br>
+            <input type="password" v-model="AccountData.Password" name="Password" placeholder="ادخل كلمة المرور هنا" id="InputPassword"> <br><br>
+
+            <input type="submit" @click="CreateAccount" value="ارسال البيانات">
+        </form>
+    </div>
+
+    <div id="FourthApp">
+        <h2>First value * 2 is: {{ChangingFirst}}</h2>
+        <button @click = "NumberOne++">Changing First Value</button>
+        <h2>Second value * 10 is: {{ChangingSecond}}</h2>
+        <button @click = "NumberTwo++">Changing Second Value</button>
+
+        <!-- Using computed instead of methods to opreate just the function that I am using right now instead of opreate all the function when I opreate one of them-->
     </div>
 
     <!-- Modifier Examples -->

@@ -31,15 +31,16 @@
   );
 
   if (Result) {
-    for (let i = 0; i < Result.Fields_Prog.length; i++) {
+    Result.Fields_Prog.forEach((Checking) => {
+      let Field_Index = Result.Fields_Prog.indexOf(Checking);
       if (
-        this.inputFormField[Result.Fields_Prog] == null ||
-        this.inputFormField[Result.Fields_Prog] == ""
+        this.inputFormField[Checking] == null ||
+        this.inputFormField[Checking] == ""
       ) {
         this.evalErr.push(
-          `الحقل ${this.group_of_form[0].fields[Result.Fields_Location].label} مطلوب`,
+          `الحقل ${this.group_of_form[1].fields[Result.Fields_Location[Field_Index]].label} مطلوب`,
         );
       }
-    }
+    });
   }
 }

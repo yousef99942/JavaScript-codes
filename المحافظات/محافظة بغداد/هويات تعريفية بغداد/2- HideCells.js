@@ -62,7 +62,7 @@
         if(event == "نعم"){
             document.getElementById("53437").style.display = "block";
         }else{
-            document.getElementById("53437").style.display = "block";
+            document.getElementById("53437").style.display = "none";
         }
     }
 }
