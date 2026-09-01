@@ -6,79 +6,131 @@
   
   //Hide Functions
   //السلكتر مال منح اجازة لو تجديد اجازة
-  FirstHide(event){
-    let Fields_Prog = [
-      "instype", //نرجو التفضل بالموافقة على منح الاجازة
-      "type", //نرجو التفضل بالموافقة على تجديد اجازة
-      "firstrenewal", //هل التجديد هو لاول مرة ؟
-      "cernum", //رقم الاجازة الجدارية للتأسيس
-      "ecerdate", //تاريخ اجازة الجدارية
-      "estabnum", //رقم امر التأسيس
-      "cerdateofestab", //تاريخ امر التأسيس
-      "institcapa", //عدد الطلاب للعام الماضي
-      "datfrom", //يبدأ التجديد الجديد اعتبارًا من عام.
-      "renwedate", //ينتهي التجديد الجديد بحلول عام
-      "FoundationClosing", //هل اغلاق المدرسة اجازة لو كلي؟
-      "LateReasons", //اسباب التاخير
+  FirstHide(event) {
+    const Fields_Prog = [
+      "instype",
+      "type",
+      "firstrenewal",
+      "cernum",
+      "ecerdate",
+      "estabnum",
+      "cerdateofestab",
+      "institcapa",
+      "datfrom",
+      "renwedate",
+      "FoundationClosing",
+      "LateReasons",
       "year",
     ];
 
-    let IDs = ["47888", "50668", "47962", "47963", "47964", "47965", "47957", "68060", "68771", "75349", "75337", "47954", "47901"];
-    let Values = [
+    const IDs = [
+      "47888",
+      "50668",
+      "47962",
+      "47963",
+      "47964",
+      "47965",
+      "47957",
+      "68060",
+      "68771",
+      "75349",
+      "75337",
+      "47954",
+      "47901",
+    ];
+
+    const Values = [
       {
-        Selected_Value: "منح اجازة جديدة", 
+        Selected_Value: "منح اجازة جديدة",
         Showed_Fields: [
-          "47954", //نرجو التفضل بالموافقة على منح الاجازة
-          "47901"
+          "47954",
+          "47901",
         ],
         Hide_Fields: [
-          "47888", //نرجو التفضل بالموافقة على تجديد اجازة
-          "50668", //هل التجديد هو لاول مرة ؟
-          "47962", //رقم الاجازة الجدارية للتأسيس
-          "47963", //تاريخ اجازة الجدارية
-          "47964", //رقم امر التأسيس
-          "47965", //تاريخ امر التأسيس
-          "47957", //عدد الطلاب للعام الماضي
-          "68060", //يبدأ التجديد الجديد اعتبارًا من عام.
-          "68771", //ينتهي التجديد الجديد بحلول عام
-          "75349", //هل اغلاق المدرسة اجازة لو كلي؟
-          "75337", //اسباب التاخير
-        ]
+          "47888",
+          "50668",
+          "47962",
+          "47963",
+          "47964",
+          "47965",
+          "47957",
+          "68060",
+          "68771",
+          "75349",
+          "75337",
+        ],
+        Field_Index: 4,
+        Field_Values: [
+          "روضة",
+          "معهد",
+        ],
       },
       {
-        Selected_Value: "تجديد اجازة", 
+        Selected_Value: "تجديد اجازة",
         Showed_Fields: [
-          "47888", //نرجو التفضل بالموافقة على تجديد اجازة
-          "50668", //هل التجديد هو لاول مرة ؟
-          "47962", //رقم الاجازة الجدارية للتأسيس
-          "47963", //تاريخ اجازة الجدارية
-          "47964", //رقم امر التأسيس
-          "47965", //تاريخ امر التأسيس
-          "47957", //عدد الطلاب للعام الماضي
-          "68060", //يبدأ التجديد الجديد اعتبارًا من عام.
-          "68771", //ينتهي التجديد الجديد بحلول عام
-          "75349", //هل اغلاق المدرسة اجازة لو كلي؟
-          "75337", //اسباب التاخير
-          "47901"
+          "47888",
+          "50668",
+          "47962",
+          "47963",
+          "47964",
+          "47965",
+          "47957",
+          "68060",
+          "68771",
+          "75349",
+          "75337",
+          "47901",
         ],
         Hide_Fields: [
-          "47954", //نرجو التفضل بالموافقة على منح الاجازة
-        ]
+          "47954",
+        ],
+        Field_Index: 3,
+        Field_Values: [
+          "روضة",
+          "معهد",
+          "مدرسة اساسية",
+          "مدرسة ابتدائية",
+          "مدرسة متوسطة",
+          "مدرسة ثانوية",
+          "مدرسة اعدادية",
+        ],
       },
     ];
 
-    Fields_Prog.forEach((Clearing) => this.inputFormField[Clearing] = null);
-    let Result = Values.find((Finding) => event === Finding.Selected_Value);
+    Fields_Prog.forEach((Clearing) => {
+      this.inputFormField[Clearing] = null;
+    });
 
-    if(Result){
-      Result.Showed_Fields.forEach((Hiding) => document.getElementById(Hiding).style.display = "block");
-      Result.Hide_Fields.forEach((element) => document.getElementById(element).style.display = "none");
+    const Result = Values.find(
+      (Finding) => Finding.Selected_Value === event
+    );
 
-      if(Result.Selected_Value === "منح اجازة جديدة"){
-        this.group_of_form[0].fields[4].properties[0].values = ["روضة", "معهد"];
-      }
-    }else{
-      IDs.forEach((element) => document.getElementById(element).style.display = "none");
+    if (Result) {
+      Result.Showed_Fields.forEach((ID) => {
+        const Field = document.getElementById(ID);
+        if (Field) {
+          Field.style.display = "block";
+        }
+      });
+
+      Result.Hide_Fields.forEach((ID) => {
+        const Field = document.getElementById(ID);
+        if (Field) {
+          Field.style.display = "none";
+        }
+      });
+
+      this.group_of_form[0]
+        .fields[Result.Field_Index]
+        .properties[0]
+        .values = Result.Field_Values;
+    } else {
+      IDs.forEach((ID) => {
+        const Field = document.getElementById(ID);
+        if (Field) {
+          Field.style.display = "none";
+        }
+      });
     }
   },
 

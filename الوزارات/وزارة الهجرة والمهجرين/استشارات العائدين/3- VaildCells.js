@@ -5,7 +5,7 @@
       this.inputFormField["nameasa"] == ""
     ) {
       this.evalErr.push(
-        `الحقل ${this.group_of_form[0].fields[15].label} مطلوب`
+        `الحقل ${this.group_of_form[0].fields[15].label} مطلوب`,
       );
     }
   }
@@ -16,7 +16,7 @@
       this.inputFormField["nameseek"] == ""
     ) {
       this.evalErr.push(
-        `الحقل ${this.group_of_form[0].fields[18].label} مطلوب`
+        `الحقل ${this.group_of_form[0].fields[18].label} مطلوب`,
       );
     }
   }
@@ -27,7 +27,7 @@
       this.inputFormField["nameeea"] == ""
     ) {
       this.evalErr.push(
-        `الحقل ${this.group_of_form[0].fields[20].label} مطلوب`
+        `الحقل ${this.group_of_form[0].fields[20].label} مطلوب`,
       );
     }
   }
@@ -41,7 +41,7 @@
           this.inputFormField["namewww"] == ""
         ) {
           this.evalErr.push(
-            `الحقل ${this.group_of_form[0].fields[24].label} مطلوب`
+            `الحقل ${this.group_of_form[0].fields[24].label} مطلوب`,
           );
         }
       }

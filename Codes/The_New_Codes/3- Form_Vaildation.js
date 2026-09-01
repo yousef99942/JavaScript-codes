@@ -52,7 +52,7 @@
   //! خاص بالاسم البرمجي للحقل الذي سوف يتم التاكد هل المواطن قام بملئ الحقل ام لا Field_Prog
   //! خاص بتسلسل الحقل داخل المجموعه الخاصه به ولكن بعد طرح 1 من قيمة التسلسل Field_Location
   //! يتم تكرار الجزء المحصور داخل اقواس {} مع اقواسه مع كل اضافة جديدة لحقل من نوع تاريخ داخل المصفوفة
-  let Values = [
+  let First_Values = [
     {
       Field_Prog: "FirstProg", //الاسم البرمجي للحقل الاول
       Field_Location: 1, //تسلسل الحقل الاول
@@ -70,7 +70,7 @@
   //* في الشرط الخارجي نحتاج الاسم البرمجي للحقل الذي يحتوي على القيمة التي تجعل الحقل يظهر
   //* inputFormField ونضع الاسم البرمجي بعد النقطة التي بعد ايعاز
   if (this.inputFormField.ProgName == "القيمة التي تجعل الحقل يظهر") {
-    Values.forEach((Checking) => {
+    First_Values.forEach((Checking) => {
       //* وهنا نتاكد اذا الحقول التي تختفي وتظهر فارغة ام لا
       if (
         this.inputFormField[Checking.Field_Prog] == null ||
@@ -129,7 +129,7 @@
   //! خاص بالاسم البرمجي للحقل الذي سوف يتم التاكد هل المواطن قام بملئ الحقل ام لا Field_Prog
   //! خاص بتسلسل الحقل داخل المجموعه الخاصه به ولكن بعد طرح 1 من قيمة التسلسل Field_Location
   //! يتم تكرار الجزء المحصور داخل اقواس {} مع اقواسه مع كل اضافة جديدة لحقل من نوع تاريخ داخل المصفوفة
-  let Values = [
+  let Second_Values = [
     {
       Field_Prog: "FirstProg", //الاسم البرمجي للحقل الاول
       Field_Location: 1, //تسلسل الحقل الاول
@@ -149,7 +149,7 @@
   if (Selected_Values.includes(this.inputFormField.ProgName)) {
     //* في الشرط الداخلي نحتاج الاسم البرمجي للحقل الذي يختفي ويظهر
     //* وهنا نتاكد اذا الحقول كانت فارغة ام لا
-    Values.forEach((Checking) => {
+    Second_Values.forEach((Checking) => {
       if (
         this.inputFormField[Checking.Field_Prog] == null ||
         this.inputFormField[Checking.Field_Prog] == ""
@@ -198,7 +198,7 @@
   //! خاص بالاسم البرمجي للحقل الذي سوف يتم التاكد هل المواطن قام بملئ الحقل ام لا Field_Prog
   //! خاص بتسلسل الحقل داخل المجموعه الخاصه به ولكن بعد طرح 1 من قيمة التسلسل Field_Location
   //! يتم تكرار الجزء المحصور داخل اقواس {} مع اقواسه مع كل اضافة جديدة لحقل من نوع تاريخ داخل المصفوفة
-  let Values = [
+  let Third_Values = [
     {
       Field_Prog: "FirstProg", //الاسم البرمجي للحقل الاول
       Field_Location: 1, //تسلسل الحقل الاول
@@ -214,7 +214,7 @@
   ];
 
   if (Selected_Value.includes("قيمة الشرط")) {
-    Values.forEach((Checking) => {
+    Third_Values.forEach((Checking) => {
       //* inputFormField للتاكد من كون الحقل فارغ او لا ونضع الاسم البرمجي للحقل داخل ايعاز
       if (
         this.inputFormField[Checking.Field_Prog] == null ||
@@ -240,7 +240,7 @@
    ! يمثل تسلسل الحقول داخل مجموعتهم بعد طرح 1 من قيمة تسلسلهم Fields_Location
    ! ويتم تكرار الاسطر التي داخل اقواس {} مع ااقواسها مع كل مجموعة يتم اضافتها للمصفوفة
    */
-  let Values = [
+  let Fourth_Values = [
     {
       Group_Number: 1,
       Fields_Prog: ["First_Prog", "Second_Prog"],
@@ -254,7 +254,7 @@
   ];
 
   if (this.inputFormField.nameincom == "قيمة الشرط") {
-    Values.forEach((Checking) => {
+    Fourth_Values.forEach((Checking) => {
       for (var i = 0; i < Checking.Fields_Prog.length; i++) {
         if (
           this.inputFormField[Checking.Fields_Prog[i]] == null ||

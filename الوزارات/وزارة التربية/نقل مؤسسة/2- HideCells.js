@@ -105,9 +105,39 @@
         let Result = Values.find((Finding) => event == Finding.Selected_Value);
 
         if(Result){
-            this.group_of_form[0].fields[9].properties[0].values = Result.Showed_Value;
+            this.group_of_form[0].fields[8].properties[0].values = Result.Showed_Value;
         }else{
-            this.group_of_form[0].fields[9].properties[0].values = [];
+            this.group_of_form[0].fields[8].properties[0].values = [];
+        }
+    },
+
+    First_Hide(event){
+        this.inputFormField["dfk"] = null; //مديرية التربية التي يود النقل اليها
+        if(event == "كلا"){
+            document.getElementById("92158").style.display = "block";
+        }else{
+            document.getElementById("92158").style.display = "none";
+        }
+    },
+
+    Second_Filter(event){
+        let The_Values = [
+            "الرصافة/1", "الرصافة/2", "الرصافة/3", "الكرخ/1", "الكرخ/2", "الكرخ/3", "نينوى", "كركوك", "ديالى", "صلاح الدين", "الانبار", "بابل", "واسط", "كربلاء المقدسة",
+            "النجف الاشرف", "القادسية", "المثنى", "ذي قار", "ميسان", "البصرة"
+        ];
+
+        this.inputFormField["dfk"] = null;
+        if(this.inputFormField.jhy === "كلا" && event){
+            let Showed_Values = [];
+            The_Values.forEach((Checking) => {
+                if(event != Checking){
+                    Showed_Values.push(Checking);
+                }
+            });
+
+            this.group_of_form[0].fields[5].properties[0].values = Showed_Values;
+        }else{
+            this.group_of_form[0].fields[5].properties[0].values = The_Values;
         }
     }
 }

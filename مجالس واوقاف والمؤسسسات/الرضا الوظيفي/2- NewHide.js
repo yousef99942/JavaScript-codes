@@ -1,53 +1,202 @@
 {
-    //فلترة الجهات في حقل (اسم جهة العمل) على اساس حقل (نوع جهة العمل)
-    First_Filter(event){
-        let Values = [
-            {
-                Selected_Value: "وزارة",
-                Showed_Value: [
-                    //"وزارة الدفاع", "وزارة الخارجية", "وزارة الصحة", "وزارة البيئة",
-                    "وزارة التجارة", "وزارة الاتصالات",  "وزارة الصناعة والمعادن", "وزارة المالية", "وزارة النفط", "وزارة الاعمار والاسكان و البلديات والاشغال العامة", "وزارة النقل",
-                    "وزارة العدل", "وزارة الثقافة والسياحة والاثار", "وزارة التربية", "وزارة الموارد المائية", "وزارة الكهرباء", "وزارة التخطيط", "وزارة العمل والشؤون الاجتماعية",
-                    "وزارة الزراعة", "وزارة الشباب والرياضة", "وزارة الهجرة والمهجرين", "وزارة التعليم العالي والبحث العلمي", "وزارة الداخلية",
-                ],
-            }, //وزارة
-            {
-                Selected_Value: "محافظة",
-                Showed_Value: [
-                    //"محافظة البصرة", "محافظة ديالى", "محافظة النجف الاشرف", "محافظة واسـط", "محافظة المثـنى", "محافظة ذي قـار", "محافظة ميسـان", "محافظة الانبار",
-                    "محافظة بغداد", "محافظة كربلاء المقدسة", "محافظة نينوى", "محافظة بابـل", "محافظة كركـوك", "محافظة الديوانيـة", "محافظة صلاح الديـن",
-                ],
-            }, //محافظة
-            {
-                Selected_Value: "جهات غير مرتبطة بوزارة",
-                Showed_Value: [
-                    //"مكتب رئيس الوزراء", "رئاسة الجمهورية", "مجلس النواب", "جهاز المخابرات الوطني", "البنك المركزي العراقي", "المفوضية العليا المستقلة للانتخابات",
-                    //"جهاز الامن الوطني", "سلطة الطيران المدني", "المصرف العراقي التجاري", "جهاز مكافحة الإرهاب", "اللجنة الأولمبية الوطنية العراقية", "مستشارية الأمن القومي",
-                    //"مركز العمليات الوطني", "الهيأة العليا للتنسيق بين المحافظات", "هيئة الحشد الشعبي", "مجلس القضاء الأعلى", "ديوان الوقف الشيعي",
-                    //"العتبة الحسينية المقدسة", "العتبة العباسية المقدسة",
-                    "الامانة العامة لمجلس الوزراء", "المحكمة الإتحادية العليا", "المجمع العلمي العراقي", "بيت الحكمة", "المفوضية العليا لحقوق الانسان في العراق",
-                    "هيئة استثمار بغداد", "الهيئة العليا للحج والعمرة", "هيئة الاوراق المالية", "الهيئة الوطنية للرقابة النووية والاشعاعية والكيميائية والبايلوجية",
-                    "هيئة النزاهة", "هيئة دعاوى الملكية", "الهيئة الوطنية للمساءلة والعدالة", "الهيئة الوطنية للاستثمار", "هيئة الاعلام والاتصالات", "هيئة المنافذ الحدودية",
-                    "هيئة التصنيع الحربي", "هيئة الطاقة الذرية", "الهيئة العامة لمراقبة الواردات الاتحادية", "مجلس الدولة", "مجلس الخدمة الاتحادي", "مؤسسة الشهداء",
-                    "مجلس شؤون المنافسة ومنع الاحتكار", "ديوان الرقابة المالية الاتحادية", "ديوان الوقف السني", "ديوان اوقاف الديانات المسيحية والايزيدية والصابئة المندائية",
-                    "مؤسسة السجناء السياسيين", "امانة بغداد", "شبكة الإعلام العراقي",
-                ],
-            }, //جهات غير مرتبطة بوزارة
+    //التاكد من دخول الموظف الى الاستمارة واختياره لجهته
+    singleNotification(notifyText, position) {
+        this.$toast.error(notifyText, {
+            position: position,
+            timeout: 6000,
+            closeOnClick: false,
+            pauseOnFocusLoss: true,
+            pauseOnHover: true,
+            draggable: true,
+            draggablePercent: 0.6,
+            showCloseButtonOnHover: false,
+            hideProgressBar: false,
+            closeButton: "button",
+            icon: true,
+            rtl: true
+        });
+    },
+
+    ssingleNotification(notifyText, position) {
+        this.$toast.success(notifyText, {
+            position: position,
+            timeout: 6000,
+            closeOnClick: false,
+            pauseOnFocusLoss: true,
+            pauseOnHover: true,
+            draggable: true,
+            draggablePercent: 0.6,
+            showCloseButtonOnHover: false,
+            hideProgressBar: false,
+            closeButton: "button",
+            icon: true,
+            rtl: true
+        });
+    },
+
+    checkEmployee(event){
+        //قيم الباسوورد
+        const Values = [
+            //{ Dept_Type: "وزارة", Selected_Value: "وزارة الدفاع", Password: "UE3@1" },
+            { Dept_Type: "وزارة", Selected_Value: "وزارة الداخلية", Password: "VI4@1" },
+            //{ Dept_Type: "وزارة", Selected_Value: "وزارة الخارجية", Password: "KS1@1" },
+            { Dept_Type: "وزارة", Selected_Value: "وزارة المالية", Password: "HB1@1" },
+            { Dept_Type: "وزارة", Selected_Value: "وزارة النفط", Password: "LT1@1" },
+            { Dept_Type: "وزارة", Selected_Value: "وزارة الكهرباء", Password: "CN2@1" },
+            { Dept_Type: "وزارة", Selected_Value: "وزارة الاعمار والاسكان و البلديات والاشغال العامة", Password: "YI9@1" },
+            { Dept_Type: "وزارة", Selected_Value: "وزارة التربية", Password: "EY6@1" },
+            { Dept_Type: "وزارة", Selected_Value: "وزارة التعليم العالي والبحث العلمي", Password: "QO5@1" },
+            { Dept_Type: "وزارة", Selected_Value: "وزارة الاتصالات", Password: "PP7@1" },
+            //{ Dept_Type: "وزارة", Selected_Value: "وزارة الصحة", Password: "RN2@1" },
+            { Dept_Type: "وزارة", Selected_Value: "وزارة التخطيط", Password: "PM2@1" },
+            { Dept_Type: "وزارة", Selected_Value: "وزارة التجارة", Password: "LT3@1" },
+            { Dept_Type: "وزارة", Selected_Value: "وزارة الصناعة والمعادن", Password: "IN0@1" },
+            { Dept_Type: "وزارة", Selected_Value: "وزارة الزراعة", Password: "KS4@1" },
+            { Dept_Type: "وزارة", Selected_Value: "وزارة العدل", Password: "LV6@1" },
+            { Dept_Type: "وزارة", Selected_Value: "وزارة العمل والشؤون الاجتماعية", Password: "XL5@1" },
+            { Dept_Type: "وزارة", Selected_Value: "وزارة الموارد المائية", Password: "DE6@1" },
+            { Dept_Type: "وزارة", Selected_Value: "وزارة النقل", Password: "II1@1" },
+            { Dept_Type: "وزارة", Selected_Value: "وزارة الثقافة والسياحة والاثار", Password: "OH6@1" },
+            { Dept_Type: "وزارة", Selected_Value: "وزارة الهجرة والمهجرين", Password: "QR2@1" },
+            { Dept_Type: "وزارة", Selected_Value: "وزارة الشباب والرياضة", Password: "YD2@1" },
+            //{ Dept_Type: "وزارة", Selected_Value: "وزارة البيئة", Password: "YP3@1" },
+            { Dept_Type: "محافظة", Selected_Value: "محافظة بغداد", Password: "LX3@3" },
+            //{ Dept_Type: "محافظة", Selected_Value: "محافظة واسـط", Password: "MP1@3" },
+            { Dept_Type: "محافظة", Selected_Value: "محافظة نينوى", Password: "AX2@3" },
+            //{ Dept_Type: "محافظة", Selected_Value: "محافظة النجف الاشرف", Password: "UW0@3" },
+            { Dept_Type: "محافظة", Selected_Value: "محافظة كربلاء المقدسة", Password: "LP4@3" },
+            //{ Dept_Type: "محافظة", Selected_Value: "محافظة المثـنى", Password: "EA6@3" },
+            //{ Dept_Type: "محافظة", Selected_Value: "محافظة ميسـان", Password: "UZ6@3" },
+            //{ Dept_Type: "محافظة", Selected_Value: "محافظة ديالى", Password: "BD5@3" },
+            { Dept_Type: "محافظة", Selected_Value: "محافظة الديوانيـة", Password: "NR5@3" },
+            //{ Dept_Type: "محافظة", Selected_Value: "محافظة البصرة", Password: "KC2@3" },
+            //{ Dept_Type: "محافظة", Selected_Value: "محافظة ذي قـار", Password: "YH1@3" },
+            //{ Dept_Type: "محافظة", Selected_Value: "محافظة الانبار", Password: "IZ6@3" },
+            { Dept_Type: "محافظة", Selected_Value: "محافظة كركـوك", Password: "JC6@3" },
+            { Dept_Type: "محافظة", Selected_Value: "محافظة بابـل", Password: "DN2@3" },
+            { Dept_Type: "محافظة", Selected_Value: "محافظة صلاح الديـن", Password: "HQ7@3" },
+            //{ Dept_Type: "جهات غير مرتبطة بوزارة", Selected_Value: "الهيأة العليا للتنسيق بين المحافظات", Password: "VK4@2" },
+            { Dept_Type: "جهات غير مرتبطة بوزارة", Selected_Value: "الهيئة العليا للحج والعمرة", Password: "OG1@2" },
+            { Dept_Type: "جهات غير مرتبطة بوزارة", Selected_Value: "الهيئة الوطنية للرقابة النووية والاشعاعية والكيميائية والبايلوجية", Password: "XU0@2" },
+            { Dept_Type: "جهات غير مرتبطة بوزارة", Selected_Value: "هيئة الاوراق المالية", Password: "KM2@2" },
+            { Dept_Type: "جهات غير مرتبطة بوزارة", Selected_Value: "هيئة النزاهة", Password: "RU6@2" },
+            { Dept_Type: "جهات غير مرتبطة بوزارة", Selected_Value: "هيئة دعاوى الملكية", Password: "IM1@2" },
+            { Dept_Type: "جهات غير مرتبطة بوزارة", Selected_Value: "الهيئة الوطنية للمساءلة والعدالة", Password: "ZH8@2" },
+            //{ Dept_Type: "جهات غير مرتبطة بوزارة", Selected_Value: "هيئة الحشد الشعبي", Password: "QI6@2" },
+            { Dept_Type: "جهات غير مرتبطة بوزارة", Selected_Value: "الهيئة الوطنية للاستثمار", Password: "AW0@2" },
+            { Dept_Type: "جهات غير مرتبطة بوزارة", Selected_Value: "هيئة الاعلام والاتصالات", Password: "ZJ2@2" },
+            { Dept_Type: "جهات غير مرتبطة بوزارة", Selected_Value: "هيئة المنافذ الحدودية", Password: "ES3@2" },
+            { Dept_Type: "جهات غير مرتبطة بوزارة", Selected_Value: "هيئة التصنيع الحربي", Password: "UZ1@2" },
+            { Dept_Type: "جهات غير مرتبطة بوزارة", Selected_Value: "هيئة الطاقة الذرية", Password: "RB0@2" },
+            { Dept_Type: "جهات غير مرتبطة بوزارة", Selected_Value: "الهيئة العامة لمراقبة الواردات الاتحادية", Password: "TW3@2" },
+            { Dept_Type: "جهات غير مرتبطة بوزارة", Selected_Value: "هيئة استثمار بغداد", Password: "XM6@2" },
+            //{ Dept_Type: "جهات غير مرتبطة بوزارة", Selected_Value: "مجلس القضاء الأعلى", Password: "IJ6@2" },
+            { Dept_Type: "جهات غير مرتبطة بوزارة", Selected_Value: "مجلس الدولة", Password: "NO2@2" },
+            { Dept_Type: "جهات غير مرتبطة بوزارة", Selected_Value: "مجلس الخدمة الاتحادي", Password: "IZ8@2" },
+            { Dept_Type: "جهات غير مرتبطة بوزارة", Selected_Value: "مجلس شؤون المنافسة ومنع الاحتكار", Password: "YO6@2" },
+            { Dept_Type: "جهات غير مرتبطة بوزارة", Selected_Value: "ديوان الرقابة المالية الاتحادية", Password: "MR7@2" },
+            //{ Dept_Type: "جهات غير مرتبطة بوزارة", Selected_Value: "ديوان الوقف الشيعي", Password: "AE1@2" },
+            { Dept_Type: "جهات غير مرتبطة بوزارة", Selected_Value: "ديوان الوقف السني", Password: "QA1@2" },
+            { Dept_Type: "جهات غير مرتبطة بوزارة", Selected_Value: "ديوان اوقاف الديانات المسيحية والايزيدية والصابئة المندائية", Password: "YB2@2" },
+            { Dept_Type: "جهات غير مرتبطة بوزارة", Selected_Value: "مؤسسة الشهداء", Password: "NJ4@2" },
+            { Dept_Type: "جهات غير مرتبطة بوزارة", Selected_Value: "مؤسسة السجناء السياسيين", Password: "TA0@2" },
+            //{ Dept_Type: "جهات غير مرتبطة بوزارة", Selected_Value: "العتبة الحسينية المقدسة", Password: "ND7@2" },
+            //{ Dept_Type: "جهات غير مرتبطة بوزارة", Selected_Value: "العتبة العباسية المقدسة", Password: "MN3@2" },
+            //{ Dept_Type: "جهات غير مرتبطة بوزارة", Selected_Value: "مكتب رئيس الوزراء", Password: "PM1@2" },
+            //{ Dept_Type: "جهات غير مرتبطة بوزارة", Selected_Value: "رئاسة الجمهورية", Password: "JA3@2" },
+            //{ Dept_Type: "جهات غير مرتبطة بوزارة", Selected_Value: "مجلس النواب", Password: "NF1@2" },
+            { Dept_Type: "جهات غير مرتبطة بوزارة", Selected_Value: "الامانة العامة لمجلس الوزراء", Password: "GS4@2" },
+            { Dept_Type: "جهات غير مرتبطة بوزارة", Selected_Value: "المحكمة الإتحادية العليا", Password: "CV7@2" },
+            { Dept_Type: "جهات غير مرتبطة بوزارة", Selected_Value: "امانة بغداد", Password: "MA9@2" },
+            //{ Dept_Type: "جهات غير مرتبطة بوزارة", Selected_Value: "جهاز المخابرات الوطني", Password: "YZ3@2" },
+            { Dept_Type: "جهات غير مرتبطة بوزارة", Selected_Value: "المجمع العلمي العراقي", Password: "FE7@2" },
+            { Dept_Type: "جهات غير مرتبطة بوزارة", Selected_Value: "بيت الحكمة", Password: "FS8@2" },
+            //{ Dept_Type: "جهات غير مرتبطة بوزارة", Selected_Value: "البنك المركزي العراقي", Password: "JU8@2" },
+            //{ Dept_Type: "جهات غير مرتبطة بوزارة", Selected_Value: "المفوضية العليا المستقلة للانتخابات", Password: "LU8@2" },
+            //{ Dept_Type: "جهات غير مرتبطة بوزارة", Selected_Value: "جهاز الامن الوطني", Password: "SA4@2" },
+            //{ Dept_Type: "جهات غير مرتبطة بوزارة", Selected_Value: "سلطة الطيران المدني", Password: "GN7@2" },
+            //{ Dept_Type: "جهات غير مرتبطة بوزارة", Selected_Value: "المصرف العراقي التجاري", Password: "TL2@2" },
+            //{ Dept_Type: "جهات غير مرتبطة بوزارة", Selected_Value: "جهاز مكافحة الإرهاب", Password: "VC1@2" },
+            //{ Dept_Type: "جهات غير مرتبطة بوزارة", Selected_Value: "اللجنة الأولمبية الوطنية العراقية", Password: "NP1@2" },
+            //{ Dept_Type: "جهات غير مرتبطة بوزارة", Selected_Value: "مستشارية الأمن القومي", Password: "RE0@2" },
+            { Dept_Type: "جهات غير مرتبطة بوزارة", Selected_Value: "شبكة الإعلام العراقي", Password: "LI0@2" },
+            { Dept_Type: "جهات غير مرتبطة بوزارة", Selected_Value: "المفوضية العليا لحقوق الانسان في العراق", Password: "LC3@2" },
+            //{ Dept_Type: "جهات غير مرتبطة بوزارة", Selected_Value: "مركز العمليات الوطني", Password: "UY6@2" },
+        ],
+        //المجموعات
+        Groups_ID = [
+            "12698_group", // اولًا/ القيادة والادارة
+            "12699_group", // ثانياً/ التخطيط الستراتيجي 
+            "12700_group", // ثالثاً / التمكين و الولاء الوظيفي
+            "12703_group", // رابعاً / السلوك و الاستحقاق الوظيفي
+            "12706_group", // خامساً / السلامة والصحة المهنية والبيئة
+            "12704_group", // سادساً / الدعم و التواصل
+            "12708_group", // المقترحات والافكار 
+        ],
+        //الحقول
+        Fields_ID = [
+            "73132", //نوع جهة العمل
+            "48109", //اسم جهة العمل
+            "35646", //الفئة / مكان طبيعة العمل
+            "35660", //بيئة العمل ( يمكن التأشير على اكثر من اختيار )
+            "35667", //سنوات الخدمة الفعلية
+            "35668", //الجنس
+            "88227", //التحصيل الدراسي
         ];
 
-        this.inputFormField["circle"] = null;
-        let Result = Values.find((Finding) => Finding.Selected_Value === event);
-        if(Result){
-            document.getElementById("48109").style.display = "block";
-            this.group_of_form[0].fields[3].properties[0].values = Result.Showed_Value;
+        const Showing_Values = [0, 1, 2, 3, 4,];
+        const Fields_Info = [
+            { Group_Locatin: 1, Fields_Location: [1, 2, 3, 4] }, // اولًا/ القيادة والادارة 
+            { Group_Locatin: 2, Fields_Location: [0, 1, 2, 3, 4] }, // ثانياً/ التخطيط الستراتيجي 
+            { Group_Locatin: 3, Fields_Location: [0, 1, 2, 3, 4] }, // ثالثاً / التمكين و الولاء الوظيفي 
+            { Group_Locatin: 4, Fields_Location: [0, 1, 2, 3, 4] }, // رابعاً / السلوك و الاستحقاق الوظيفي 
+            { Group_Locatin: 5, Fields_Location: [0, 1, 2, 3, 4] }, // خامساً / السلامة والصحة المهنية والبيئة 
+            { Group_Locatin: 6, Fields_Location: [0, 1, 2, 3, 4] }, // سادساً / الدعم و التواصل 
+        ]
+
+        if (event) {
+            let loader = this.$loading.show({
+                container: this.$refs.formContainer,
+                loader: "dots",
+                transition: "fade",
+                color: "#c30734"
+            });
+
+            let Result = Values.find((Finding) => this.inputFormField["PassValue"] === Finding.Password);
+
+            this.inputFormField["WorkType"] = null; //نوع جهة العمل
+            this.inputFormField["circle"] = null; //اسم جهة العمل
+
+            if(Result || this.inputFormField["PassValue"] === "NDTC6"){
+                Groups_ID.forEach((Hiding) => document.getElementById(Hiding).style.display = "block");
+                Fields_ID.forEach((Hiding) => document.getElementById(Hiding).style.display = "block");
+                this.group_of_form[0].fields[4].properties[0].values = [Result.Dept_Type]; //نوع جهة العمل
+                this.group_of_form[0].fields[5].properties[0].values = [Result.Selected_Value]; //اسم جهة العمل
+                this.First_Filter(Result.Selected_Value);
+
+                Fields_Info.forEach((Looping) =>{
+                    Looping.Fields_Location.forEach((Fields) => {
+                        this.group_of_form[Looping.Group_Locatin].fields[Fields].properties[0].values = Showing_Values
+                    })
+                });
+
+                loader.hide();
+                this.ssingleNotification("تم الدخول بنجاح", "top-right");
+            }else{
+                Groups_ID.forEach((Hiding) => document.getElementById(Hiding).style.display = "none");
+                Fields_ID.forEach((Hiding) => document.getElementById(Hiding).style.display = "none");
+                this.group_of_form[0].fields[4].properties[0].values = []; //نوع جهة العمل
+                this.group_of_form[0].fields[5].properties[0].values = []; //اسم جهة العمل
+                loader.hide();
+                this.singleNotification("اسم او رمز الجهة غير مطابق", "top-right");
+            }
         }else{
-            document.getElementById("48109").style.display = "none";
-            this.group_of_form[0].fields[3].properties[0].values = [];
+            Groups_ID.forEach((Hiding) => document.getElementById(Hiding).style.display = "none");
+            Fields_ID.forEach((Hiding) => document.getElementById(Hiding).style.display = "none");
         }
     },
 
-    //فلترة حقل (نوع التشكيل) على اساس حقل (اسم جهة العمل)
-    Second_Filter(event){
+    First_Filter(event){
         this.inputFormField["DeptType"] = null;
 
         let Values = [
@@ -106,8 +255,7 @@
         }
     },
 
-    //فلترة حقل (اسم التشكيل) على اساس حقلي (اسم جهة العمل) و(نوع التشكيل)
-    Third_Filter(event){
+    Second_Filter(event){
         let Values = [
             {
                 FSelected_Value: "محافظة نينوى",
@@ -858,184 +1006,6 @@
         }
     },
 
-    //التاكد من دخول الموظف الى الاستمارة واختياره لجهته
-    singleNotification(notifyText, position) {
-        this.$toast.error(notifyText, {
-            position: position,
-            timeout: 6000,
-            closeOnClick: false,
-            pauseOnFocusLoss: true,
-            pauseOnHover: true,
-            draggable: true,
-            draggablePercent: 0.6,
-            showCloseButtonOnHover: false,
-            hideProgressBar: false,
-            closeButton: "button",
-            icon: true,
-            rtl: true
-        });
-    },
-
-    ssingleNotification(notifyText, position) {
-        this.$toast.success(notifyText, {
-            position: position,
-            timeout: 6000,
-            closeOnClick: false,
-            pauseOnFocusLoss: true,
-            pauseOnHover: true,
-            draggable: true,
-            draggablePercent: 0.6,
-            showCloseButtonOnHover: false,
-            hideProgressBar: false,
-            closeButton: "button",
-            icon: true,
-            rtl: true
-        });
-    },
-
-    checkEmployee(event){
-        //قيم الباسوورد
-        const Values = [
-            { Dept_Type: "وزارة", Selected_Value: "وزارة الدفاع", Password: "UE3@1" },
-            { Dept_Type: "وزارة", Selected_Value: "وزارة الداخلية", Password: "VI4@1" },
-            { Dept_Type: "وزارة", Selected_Value: "وزارة الخارجية", Password: "KS1@1" },
-            { Dept_Type: "وزارة", Selected_Value: "وزارة المالية", Password: "HB1@1" },
-            { Dept_Type: "وزارة", Selected_Value: "وزارة النفط", Password: "LT1@1" },
-            { Dept_Type: "وزارة", Selected_Value: "وزارة الكهرباء", Password: "CN2@1" },
-            { Dept_Type: "وزارة", Selected_Value: "وزارة الاعمار والاسكان و البلديات والاشغال العامة", Password: "YI9@1" },
-            { Dept_Type: "وزارة", Selected_Value: "وزارة التربية", Password: "EY6@1" },
-            { Dept_Type: "وزارة", Selected_Value: "وزارة التعليم العالي والبحث العلمي", Password: "QO5@1" },
-            { Dept_Type: "وزارة", Selected_Value: "وزارة الاتصالات", Password: "PP7@1" },
-            { Dept_Type: "وزارة", Selected_Value: "وزارة الصحة", Password: "RN2@1" },
-            { Dept_Type: "وزارة", Selected_Value: "وزارة التخطيط", Password: "PM2@1" },
-            { Dept_Type: "وزارة", Selected_Value: "وزارة التجارة", Password: "LT3@1" },
-            { Dept_Type: "وزارة", Selected_Value: "وزارة الصناعة والمعادن", Password: "IN0@1" },
-            { Dept_Type: "وزارة", Selected_Value: "وزارة الزراعة", Password: "KS4@1" },
-            { Dept_Type: "وزارة", Selected_Value: "وزارة العدل", Password: "LV6@1" },
-            { Dept_Type: "وزارة", Selected_Value: "وزارة العمل والشؤون الاجتماعية", Password: "XL5@1" },
-            { Dept_Type: "وزارة", Selected_Value: "وزارة الموارد المائية", Password: "DE6@1" },
-            { Dept_Type: "وزارة", Selected_Value: "وزارة النقل", Password: "II1@1" },
-            { Dept_Type: "وزارة", Selected_Value: "وزارة الثقافة والسياحة والاثار", Password: "OH6@1" },
-            { Dept_Type: "وزارة", Selected_Value: "وزارة الهجرة والمهجرين", Password: "QR2@1" },
-            { Dept_Type: "وزارة", Selected_Value: "وزارة الشباب والرياضة", Password: "YD2@1" },
-            { Dept_Type: "وزارة", Selected_Value: "وزارة البيئة", Password: "YP3@1" },
-            { Dept_Type: "محافظة", Selected_Value: "محافظة بغداد", Password: "LX3@3" },
-            { Dept_Type: "محافظة", Selected_Value: "محافظة واسـط", Password: "MP1@3" },
-            { Dept_Type: "محافظة", Selected_Value: "محافظة نينوى", Password: "AX2@3" },
-            { Dept_Type: "محافظة", Selected_Value: "محافظة النجف الاشرف", Password: "UW0@3" },
-            { Dept_Type: "محافظة", Selected_Value: "محافظة كربلاء المقدسة", Password: "LP4@3" },
-            { Dept_Type: "محافظة", Selected_Value: "محافظة المثـنى", Password: "EA6@3" },
-            { Dept_Type: "محافظة", Selected_Value: "محافظة ميسـان", Password: "UZ6@3" },
-            { Dept_Type: "محافظة", Selected_Value: "محافظة ديالى", Password: "BD5@3" },
-            { Dept_Type: "محافظة", Selected_Value: "محافظة الديوانيـة", Password: "NR5@3" },
-            { Dept_Type: "محافظة", Selected_Value: "محافظة البصرة", Password: "KC2@3" },
-            { Dept_Type: "محافظة", Selected_Value: "محافظة ذي قـار", Password: "YH1@3" },
-            { Dept_Type: "محافظة", Selected_Value: "محافظة الانبار", Password: "IZ6@3" },
-            { Dept_Type: "محافظة", Selected_Value: "محافظة كركـوك", Password: "JC6@3" },
-            { Dept_Type: "محافظة", Selected_Value: "محافظة بابـل", Password: "DN2@3" },
-            { Dept_Type: "محافظة", Selected_Value: "محافظة صلاح الديـن", Password: "HQ7@3" },
-            { Dept_Type: "جهات غير مرتبطة بوزارة", Selected_Value: "الهيأة العليا للتنسيق بين المحافظات", Password: "VK4@2" },
-            { Dept_Type: "جهات غير مرتبطة بوزارة", Selected_Value: "الهيئة العليا للحج والعمرة", Password: "OG1@2" },
-            { Dept_Type: "جهات غير مرتبطة بوزارة", Selected_Value: "الهيئة الوطنية للرقابة النووية والاشعاعية والكيميائية والبايلوجية", Password: "XU0@2" },
-            { Dept_Type: "جهات غير مرتبطة بوزارة", Selected_Value: "هيئة الاوراق المالية", Password: "KM2@2" },
-            { Dept_Type: "جهات غير مرتبطة بوزارة", Selected_Value: "هيئة النزاهة", Password: "RU6@2" },
-            { Dept_Type: "جهات غير مرتبطة بوزارة", Selected_Value: "هيئة دعاوى الملكية", Password: "IM1@2" },
-            { Dept_Type: "جهات غير مرتبطة بوزارة", Selected_Value: "الهيئة الوطنية للمساءلة والعدالة", Password: "ZH8@2" },
-            { Dept_Type: "جهات غير مرتبطة بوزارة", Selected_Value: "هيئة الحشد الشعبي", Password: "QI6@2" },
-            { Dept_Type: "جهات غير مرتبطة بوزارة", Selected_Value: "الهيئة الوطنية للاستثمار", Password: "AW0@2" },
-            { Dept_Type: "جهات غير مرتبطة بوزارة", Selected_Value: "هيئة الاعلام والاتصالات", Password: "ZJ2@2" },
-            { Dept_Type: "جهات غير مرتبطة بوزارة", Selected_Value: "هيئة المنافذ الحدودية", Password: "ES3@2" },
-            { Dept_Type: "جهات غير مرتبطة بوزارة", Selected_Value: "هيئة التصنيع الحربي", Password: "UZ1@2" },
-            { Dept_Type: "جهات غير مرتبطة بوزارة", Selected_Value: "هيئة الطاقة الذرية", Password: "RB0@2" },
-            { Dept_Type: "جهات غير مرتبطة بوزارة", Selected_Value: "الهيئة العامة لمراقبة الواردات الاتحادية", Password: "TW3@2" },
-            { Dept_Type: "جهات غير مرتبطة بوزارة", Selected_Value: "هيئة استثمار بغداد", Password: "XM6@2" },
-            { Dept_Type: "جهات غير مرتبطة بوزارة", Selected_Value: "مجلس القضاء الأعلى", Password: "IJ6@2" },
-            { Dept_Type: "جهات غير مرتبطة بوزارة", Selected_Value: "مجلس الدولة", Password: "NO2@2" },
-            { Dept_Type: "جهات غير مرتبطة بوزارة", Selected_Value: "مجلس الخدمة الاتحادي", Password: "IZ8@2" },
-            { Dept_Type: "جهات غير مرتبطة بوزارة", Selected_Value: "مجلس شؤون المنافسة ومنع الاحتكار", Password: "YO6@2" },
-            { Dept_Type: "جهات غير مرتبطة بوزارة", Selected_Value: "ديوان الرقابة المالية الاتحادية", Password: "MR7@2" },
-            { Dept_Type: "جهات غير مرتبطة بوزارة", Selected_Value: "ديوان الوقف الشيعي", Password: "AE1@2" },
-            { Dept_Type: "جهات غير مرتبطة بوزارة", Selected_Value: "ديوان الوقف السني", Password: "QA1@2" },
-            { Dept_Type: "جهات غير مرتبطة بوزارة", Selected_Value: "ديوان اوقاف الديانات المسيحية والايزيدية والصابئة المندائية", Password: "YB2@2" },
-            { Dept_Type: "جهات غير مرتبطة بوزارة", Selected_Value: "مؤسسة الشهداء", Password: "NJ4@2" },
-            { Dept_Type: "جهات غير مرتبطة بوزارة", Selected_Value: "مؤسسة السجناء السياسيين", Password: "TA0@2" },
-            { Dept_Type: "جهات غير مرتبطة بوزارة", Selected_Value: "العتبة الحسينية المقدسة", Password: "ND7@2" },
-            { Dept_Type: "جهات غير مرتبطة بوزارة", Selected_Value: "العتبة العباسية المقدسة", Password: "MN3@2" },
-            { Dept_Type: "جهات غير مرتبطة بوزارة", Selected_Value: "مكتب رئيس الوزراء", Password: "PM1@2" },
-            { Dept_Type: "جهات غير مرتبطة بوزارة", Selected_Value: "رئاسة الجمهورية", Password: "JA3@2" },
-            { Dept_Type: "جهات غير مرتبطة بوزارة", Selected_Value: "مجلس النواب", Password: "NF1@2" },
-            { Dept_Type: "جهات غير مرتبطة بوزارة", Selected_Value: "الامانة العامة لمجلس الوزراء", Password: "GS4@2" },
-            { Dept_Type: "جهات غير مرتبطة بوزارة", Selected_Value: "المحكمة الإتحادية العليا", Password: "CV7@2" },
-            { Dept_Type: "جهات غير مرتبطة بوزارة", Selected_Value: "امانة بغداد", Password: "MA9@2" },
-            { Dept_Type: "جهات غير مرتبطة بوزارة", Selected_Value: "جهاز المخابرات الوطني", Password: "YZ3@2" },
-            { Dept_Type: "جهات غير مرتبطة بوزارة", Selected_Value: "المجمع العلمي العراقي", Password: "FE7@2" },
-            { Dept_Type: "جهات غير مرتبطة بوزارة", Selected_Value: "بيت الحكمة", Password: "FS8@2" },
-            { Dept_Type: "جهات غير مرتبطة بوزارة", Selected_Value: "البنك المركزي العراقي", Password: "JU8@2" },
-            { Dept_Type: "جهات غير مرتبطة بوزارة", Selected_Value: "المفوضية العليا المستقلة للانتخابات", Password: "LU8@2" },
-            { Dept_Type: "جهات غير مرتبطة بوزارة", Selected_Value: "جهاز الامن الوطني", Password: "SA4@2" },
-            { Dept_Type: "جهات غير مرتبطة بوزارة", Selected_Value: "سلطة الطيران المدني", Password: "GN7@2" },
-            { Dept_Type: "جهات غير مرتبطة بوزارة", Selected_Value: "المصرف العراقي التجاري", Password: "TL2@2" },
-            { Dept_Type: "جهات غير مرتبطة بوزارة", Selected_Value: "جهاز مكافحة الإرهاب", Password: "VC1@2" },
-            { Dept_Type: "جهات غير مرتبطة بوزارة", Selected_Value: "اللجنة الأولمبية الوطنية العراقية", Password: "NP1@2" },
-            { Dept_Type: "جهات غير مرتبطة بوزارة", Selected_Value: "مستشارية الأمن القومي", Password: "RE0@2" },
-            { Dept_Type: "جهات غير مرتبطة بوزارة", Selected_Value: "شبكة الإعلام العراقي", Password: "LI0@2" },
-            { Dept_Type: "جهات غير مرتبطة بوزارة", Selected_Value: "المفوضية العليا لحقوق الانسان في العراق", Password: "LC3@2" },
-            { Dept_Type: "جهات غير مرتبطة بوزارة", Selected_Value: "مركز العمليات الوطني", Password: "UY6@2" },
-        ],
-        //المجموعات
-        Groups_ID = [
-            "12698_group", // اولًا/ القيادة والادارة
-            "12699_group", // ثانياً/ التخطيط الستراتيجي 
-            "12700_group", // ثالثاً / التمكين و الولاء الوظيفي
-            "12703_group", // رابعاً / السلوك و الاستحقاق الوظيفي
-            "12706_group", // خامساً / السلامة والصحة المهنية والبيئة
-            "12704_group", // سادساً / الدعم و التواصل
-            "12708_group", // المقترحات والافكار 
-        ],
-        //الحقول
-        Fields_ID = [
-            "73132", //نوع جهة العمل
-            "48109", //اسم جهة العمل
-            "35646", //الفئة / مكان طبيعة العمل
-            "35660", //بيئة العمل ( يمكن التأشير على اكثر من اختيار )
-            "35667", //سنوات الخدمة الفعلية
-            "35668", //الجنس
-            "88227", //التحصيل الدراسي
-        ];
-
-        if (event) {
-            let loader = this.$loading.show({
-                container: this.$refs.formContainer,
-                loader: "dots",
-                transition: "fade",
-                color: "#c30734"
-            });
-
-            let Result = Values.find((Finding) => this.inputFormField["PassValue"] === Finding.Password);
-
-            this.inputFormField["WorkType"] = null; //نوع جهة العمل
-            this.inputFormField["circle"] = null; //اسم جهة العمل
-
-            if(Result || this.inputFormField["PassValue"] === "NDTC6"){
-                Groups_ID.forEach((Hiding) => document.getElementById(Hiding).style.display = "block");
-                Fields_ID.forEach((Hiding) => document.getElementById(Hiding).style.display = "block");
-                this.group_of_form[0].fields[4].properties[0].values = [Result.Dept_Type]; //نوع جهة العمل
-                this.group_of_form[0].fields[5].properties[0].values = [Result.Selected_Value]; //اسم جهة العمل
-                this.Second_Filter(Result.Selected_Value);
-                loader.hide();
-                this.ssingleNotification("تم الدخول بنجاح", "top-right");
-            }else{
-                Groups_ID.forEach((Hiding) => document.getElementById(Hiding).style.display = "none");
-                Fields_ID.forEach((Hiding) => document.getElementById(Hiding).style.display = "none");
-                this.group_of_form[0].fields[4].properties[0].values = []; //نوع جهة العمل
-                this.group_of_form[0].fields[5].properties[0].values = []; //اسم جهة العمل
-                loader.hide();
-                this.singleNotification("اسم او رمز الجهة غير مطابق", "top-right");
-            }
-        }
-    },
-    
-    //اخفاء واظهار حقل (المحافظة) على اساس حقل (اسم التشكيل) واظهار واخفار حقل (التشكيل الفرعي) عند اختيار احدى تشكيلات وزارة الداخليه من حقل (اسم التشكيل)
     First_Hide(event){
         this.inputFormField["governorate"] = null; //المحافظة
         if(event == "فروع الهيئة في المحافظات" || event == "المكاتب الانتخابية في المحافظات"){
@@ -1087,8 +1057,7 @@
         }
     },
 
-    //فلترة حقل (نوع التشكيل الفرعي) على اساس حقل (التشكيل الفرعي)
-    Fourth_Filter(event){
+    Third_Filter(event){
         this.inputFormField["SubDeptType"] = null; //نوع التشكيل الفرعي
         const Values = [
             {
@@ -1119,8 +1088,7 @@
         }
     },
 
-    //فلترة حقل (التشكيل) على اساس حقلي (التشكيل الفرعي) و(نوع التشكيل الفرعي)
-    Fifth_Filter(event){
+    Fourth_Filter(event){
         const Values = [
             {
                 FSelected_Value: "مكتب الوزير",
@@ -1265,8 +1233,8 @@
                         Showed_Value: [
                             ["مديرية الجنائية والحركات", "مديرية الإحصاء الجنائي",], //مديرية
                             [
-                                "قسم الأشخاص", "قسم الخطط الأمنية", "قسم الإرهاب والجرائم الجنائية", "قسم الخطف والمفقودين", "قسم متابعة المحكومين والموقوفين",
-                                "قسم السيطرة وتنظيم السلاح", "قسم التحليل الاحصائي", "قسم الإحصاء الجنائي", "قسم استمارات مسح الجريمة والمرور",
+                                "قسم الأشخاص", "قسم الخطط الأمنية", "قسم الإرهاب والجرائم الجنائية", "قسم الخطف والمفقودين", "قسم متابعة المحكومين والموقوفين", "قسم الإحصاء الجنائي",
+                                "قسم السيطرة وتنظيم السلاح", "قسم التحليل الاحصائي", "قسم استمارات مسح الجريمة والمرور",
                             ], //تشكيل مستقل
                         ]
                     },
@@ -1291,8 +1259,8 @@
                         TSelected_Value: ["تشكيل مستقل"],
                         Showed_Value: [
                             [
-                                "قسم التخطيط والمتابعة", "قسم المتابعة", "قسم شؤون سيطرات الطاقة", "قسم الشؤون القانونية", "مركز الحركات النفط والطاقة",
-                                "قسم الرقابة والتدقيق الداخلي", "ضباط ركن الدفاع الجوي", "الوية شرطة الطاقة",
+                                "قسم التخطيط والمتابعة", "قسم المتابعة", "قسم شؤون سيطرات الطاقة", "قسم الشؤون القانونية", "مركز الحركات النفط والطاقة", "الوية شرطة الطاقة",
+                                "قسم الرقابة والتدقيق الداخلي", "ضباط ركن الدفاع الجوي",
                             ], //تشكيل مستقل
                         ]
                     },

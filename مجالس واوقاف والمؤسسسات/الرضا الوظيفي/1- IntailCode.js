@@ -35,6 +35,6 @@
 
   for (var i = 0; i < Labels_ID.length; i++) {
     document.getElementById(Labels_ID[i]).style.cssText =
-      "color: #041f5cff; font-size: 16px; font-weight: bold; padding-top: 12px; padding-bottom: 12px";
+      "color: #041f5cff; font-size: 18px; font-weight: bold; padding-top: 13px; padding-bottom: 13px";
   }
 }

@@ -1,39 +1,27 @@
 {
   if (this.tab_click == "form") {
-    let Fields_Prog = [
-        //الحالة الاجتماعية
-        "birthdayabsoiute", //تاريخ الطلاق
-        "birthdaydeath", //تاريخ وفاة الزوج ( الزوجة)
-        "birthdaymarried", //تاريخ الزواج
-        "namespouwife", //اسم الزوج ( الزوجة)
-        "cardspouwife", //رقم البطاقة الموحدة  للزوج ( الزوجة)
-        "salary", //هل الزوجة ربة بيت وليس لها دخل ؟
-        "associate", //هل الزوجة ( الزوج ) منتسبا :
-        "combinesalary", //هل تطلب انت وزوجتك ( زوجك ) دمج المدخولات ؟
-      ],
-      Fields_ID = [
-        "87254", //تاريخ الطلاق
-        "87256", //تاريخ وفاة الزوج ( الزوجة)
-        "87252", //تاريخ الزواج
-        "87253", //اسم الزوج ( الزوجة)
-        "87255", //رقم البطاقة الموحدة  للزوج ( الزوجة)
-        "87258", //هل الزوجة ربة بيت وليس لها دخل ؟
-        "87260", //هل الزوجة ( الزوج ) منتسبا :
-        "87322", //هل تطلب انت وزوجتك ( زوجك ) دمج المدخولات ؟
-      ];
+    let Values = [
+      //المعلومات الشخصية
+      //هل المنتسب مستمر بالعمل داخل المديرية ؟
+      { Field_Prog: "Typeeee", Field_ID: "93243" }, //يرجى تحديد سبب عدم الاستمرار داخل المديرية
+      { Field_Prog: "birthdaymarried", Field_ID: "87252" }, // تاريخ الزواج
+      { Field_Prog: "namespouwife", Field_ID: "87253" }, // اسم الزوج ( الزوجة)
+      { Field_Prog: "cardspouwife", Field_ID: "87255" }, // رقم البطاقة الوطنية للزوج ( الزوجة)
+      { Field_Prog: "birthdayabsoiute", Field_ID: "87254" }, // تاريخ الطلاق
+      { Field_Prog: "birthdaydeath", Field_ID: "87256" }, // تاريخ وفاة الزوج ( الزوجة)
+      { Field_Prog: "salary", Field_ID: "87258" }, //هل الزوجة ربة بيت وليس لها دخل ؟
+      { Field_Prog: "associate", Field_ID: "87260" }, //هل الزوجة ( الزوج ) منتسبا ( موظفة / موظف)؟
+      { Field_Prog: "combinesalary", Field_ID: "87322" }, //هل تطلب انت وزوجتك ( زوجك ) دمج المدخولات ( ضمن احتساب الضريبة ) ؟
+      { Field_Prog: "HusbandEarner", Field_ID: "94045" }, //هل ( الزوج / الزوجة) كاسب ؟
+      { Field_Prog: "ReturmintType", Field_ID: "94128" }, //هل (الزوج / الزوجة) متقاعد؟
+      { Field_Prog: "GildAge", Field_ID: "94309" }, // هل لدى المنتسب أبناء بعمر 18 سنة فأكثر؟
+    ];
 
-    for (var i = 0; i < Fields_ID.length; i++) {
-      if (this.form_data[Fields_Prog[i]] == null) {
-        document.getElementById(Fields_ID[i]).style.visibility = "collapse";
+    Values.forEach((Checking) => {
+      if (this.form_data[Checking.Field_Prog] == null) {
+        document.getElementById(Checking.Field_ID).style.visibility =
+          "collapse";
       }
-    }
-
-    if (this.form_data.maritstatus != "متزوج") {
-      document.getElementById("35057_group").style.display = "none";
-    }
-
-    if (this.form_data.Typeeee == null) {
-      document.getElementById("93243").style.visibility = "collapse";
-    }
+    });
   }
 }

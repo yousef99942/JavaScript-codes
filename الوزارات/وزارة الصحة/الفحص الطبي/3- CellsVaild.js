@@ -508,10 +508,19 @@
   }
 
   //التاكد من العمر
-  var Person_Age = new Date(this.inputFormField.agee);
-  var Vaild_Year = new Date();
+  if (this.inputFormField.chek == "اجازة سوق مركبة") {
+    var Person_Age = new Date(this.inputFormField.agee);
+    var Vaild_Year = new Date();
 
-  if (Person_Age.getFullYear() > Vaild_Year.getFullYear() - 17) {
-    this.evalErr.push("يجب ان يكون عمر المتقدم اكبر من 17 عاماً");
+    if (Person_Age.getFullYear() > Vaild_Year.getFullYear() - 17) {
+      this.evalErr.push("يجب ان يكون عمر المتقدم اكبر من 17 عاماً");
+    }
+  } else if (this.inputFormField.chek == "اجازة سوق دراجة") {
+    var Person_Age = new Date(this.inputFormField.agee);
+    var Vaild_Year = new Date();
+
+    if (Person_Age.getFullYear() > Vaild_Year.getFullYear() - 16) {
+      this.evalErr.push("يجب ان يكون عمر المتقدم اكبر من 16 عاماً");
+    }
   }
 }

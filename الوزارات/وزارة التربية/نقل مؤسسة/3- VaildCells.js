@@ -1,4 +1,13 @@
 {
+  if (this.inputFormField.jhy) {
+    if (
+      this.inputFormField["dfk"] === null ||
+      this.inputFormField["dfk"] === ""
+    ) {
+      this.evalErr.push(`الحقل ${this.group_of_form[0].fields[5].label} مطلوب`);
+    }
+  }
+
   //رقم الهاتف للمؤسس الاول
   if (this.inputFormField.tgjg) {
     const phoneNo = this.inputFormField.tgjg;

@@ -59,7 +59,6 @@
         ];
         
         CellsName.forEach((Clearing) => this.inputFormField[Clearing] = null);
-
         let Result = Values.find((Finding) => Finding.Selected_Value.includes(event));
         if(Result){
             Result.Showed_Fields.forEach((Hiding) => document.getElementById(Hiding).style.display = "block");
@@ -80,10 +79,10 @@
 
     First_Filter(event){
         this.inputFormField["majorr"] = null;
-        if(event == "Petro China"){
-            this.group_of_form[2].fields[2].properties[0].values = ["مساعد مراقب المستندات"];
-        }else if(event == "PPB"){
-            this.group_of_form[2].fields[2].properties[0].values = ["مساعد مشرف الجيولوجي"];
+        if(event == "CEET"){
+            this.group_of_form[2].fields[2].properties[0].values = ["مهندس كهرباء"];
+        }else if(event == "GW"){
+            this.group_of_form[2].fields[2].properties[0].values = ["حارس امني"];
         }else{
             this.group_of_form[2].fields[2].properties[0].values = [];
         }
