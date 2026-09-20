@@ -1,5 +1,5 @@
 {
-  if (this.inputFormField.jhy) {
+  if (this.inputFormField.jhy === "كلا") {
     if (
       this.inputFormField["dfk"] === null ||
       this.inputFormField["dfk"] === ""

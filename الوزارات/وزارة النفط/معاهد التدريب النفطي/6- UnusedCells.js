@@ -9,6 +9,7 @@
         "70334",
         "70291",
         "70319",
+        "95647",
       ],
       Progs = [
         "category",
@@ -19,6 +20,7 @@
         "Msh",
         "Special",
         "degree",
+        "ReligionName",
       ];
 
     for (var i = 0; i < IDs.length; i++) {

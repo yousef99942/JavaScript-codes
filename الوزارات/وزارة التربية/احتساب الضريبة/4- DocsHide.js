@@ -24,6 +24,12 @@
     //ذكر او انثى وارمل
     Fifth_Case = [
       "47982", //شهادة الوفاة الزوج للارملة
+    ],
+    //انثى ومتزوجة وزوجها عاجز عن العمل
+    Sixth_Case = [
+      "47903", //البطاقة الموحدة ( الوطنية ) للزوج / الزوجة
+      "48071", //تقرير طبي من لجنة دائمية مختصة
+      "47944", //كتاب تاييد من هيأة العامة للضرائب يؤيد فيه عدم وجود دخل للزوج
     ];
 
   //ذكر ومتزوج وزوجته ربة بيت
@@ -37,7 +43,16 @@
         (document.getElementsByClassName(Hiding)[0].style.display = "block"),
     );
 
-    ["47246", "47249", "47944", "47465", "47466", "47982"].forEach(
+    [
+      "47246",
+      "47249",
+      "47944",
+      "47465",
+      "47466",
+      "47982",
+      "48071",
+      "48072",
+    ].forEach(
       (Hiding) =>
         (document.getElementsByClassName(Hiding)[0].style.display = "none"),
     );
@@ -52,7 +67,16 @@
         (document.getElementsByClassName(Hiding)[0].style.display = "block"),
     );
 
-    ["47246", "47982", "47249", "47944", "47465", "47466"].forEach(
+    [
+      "47246",
+      "47982",
+      "47249",
+      "47944",
+      "47465",
+      "47466",
+      "48071",
+      "48072",
+    ].forEach(
       (Hiding) =>
         (document.getElementsByClassName(Hiding)[0].style.display = "none"),
     );
@@ -73,7 +97,7 @@
       document.getElementsByClassName("47944")[0].style.display = "none"; //كتاب تاييد من هيأة العامة للضرائب يؤيد فيه عدم وجود دخل للزوج
     }
 
-    ["47249", "47465", "47466", "47982"].forEach(
+    ["47249", "47465", "47466", "47982", "48071", "48072"].forEach(
       (Hiding) =>
         (document.getElementsByClassName(Hiding)[0].style.display = "none"),
     );
@@ -87,7 +111,13 @@
         (document.getElementsByClassName(Hiding)[0].style.display = "block"),
     );
 
-    ["47903", "47246", "47944", "47465", "47466", "47982"].forEach(
+    if (this.form_data.gender === "ذكر") {
+      document.getElementsByClassName("48072")[0].style.display = "block"; //قرار مديرية التنفيذ الخاص بالنفقة الشرعية
+    } else {
+      document.getElementsByClassName("48072")[0].style.display = "none"; //قرار مديرية التنفيذ الخاص بالنفقة الشرعية
+    }
+
+    ["47903", "47246", "47944", "47465", "47466", "47982", "48071"].forEach(
       (Hiding) =>
         (document.getElementsByClassName(Hiding)[0].style.display = "none"),
     );
@@ -101,7 +131,16 @@
         (document.getElementsByClassName(Hiding)[0].style.display = "block"),
     );
 
-    ["47903", "47246", "47249", "47944", "47465", "47466"].forEach(
+    [
+      "47903",
+      "47246",
+      "47249",
+      "47944",
+      "47465",
+      "47466",
+      "48071",
+      "48072",
+    ].forEach(
       (Hiding) =>
         (document.getElementsByClassName(Hiding)[0].style.display = "none"),
     );
@@ -122,12 +161,38 @@
       document.getElementsByClassName("47944")[0].style.display = "none"; //كتاب تاييد من هيأة العامة للضرائب يؤيد فيه عدم وجود دخل للزوج
     }
 
-    ["47246", "47249", "47465", "47466", "47982"].forEach(
+    ["47246", "47249", "47465", "47466", "47982", "48071", "48072"].forEach(
+      (Hiding) =>
+        (document.getElementsByClassName(Hiding)[0].style.display = "none"),
+    );
+  } else if (
+    //انثى ومتزوجة وزوجها عاجز عن العمل
+    this.form_data.gender === "انثى" && //جنس المتقدم
+    this.form_data.maritstatus === "متزوج" && //الحالة الاجتماعية
+    this.form_data.PartnerJobType === "زوج عاجز عن العمل" //اذا الزوج منتسب او متقاعد او كاسب
+  ) {
+    Sixth_Case.forEach(
+      (Hiding) =>
+        (document.getElementsByClassName(Hiding)[0].style.display = "block"),
+    );
+
+    ["47246", "47249", "47982", "47465", "47466", "48072", "47944"].forEach(
       (Hiding) =>
         (document.getElementsByClassName(Hiding)[0].style.display = "none"),
     );
   } else {
-    ["47903", "47246", "47249", "47982", "47944", "47465", "47466"].forEach(
+    [
+      "47903",
+      "47246",
+      "47249",
+      "47982",
+      "47944",
+      "47465",
+      "47466",
+      "48071",
+
+      "48072",
+    ].forEach(
       (Hiding) =>
         (document.getElementsByClassName(Hiding)[0].style.display = "none"),
     );
@@ -175,7 +240,7 @@
     this.form_data.maritstatus === "أرمل" &&
     this.form_data.gender === "انثى"
   ) {
-    document.getElementsByClassName("48042")[0].style.display = "block"; //كتاب تأييد (تعهد خطي) من المديرية العامة للشؤون القانونية يؤيد عدم تقاضي مخصصات زوجية
+    document.getElementsByClassName("48042")[0].style.display = "none"; //كتاب تأييد (تعهد خطي) من المديرية العامة للشؤون القانونية يؤيد عدم تقاضي مخصصات زوجية
     document.getElementsByClassName("47244")[0].style.display = "none"; //كتاب تاييد من دائرة الزوج او الزوجة بعدم تقاضي المخصصات
   } else {
     document.getElementsByClassName("48042")[0].style.display = "none"; //كتاب تأييد (تعهد خطي) من المديرية العامة للشؤون القانونية يؤيد عدم تقاضي مخصصات زوجية
@@ -186,5 +251,17 @@
     document.getElementsByClassName("47250")[0].style.display = "block"; //كتاب ابلاغ بالنسبة من لديه اولاد تم تعينهم
   } else {
     document.getElementsByClassName("47250")[0].style.display = "none";
+  }
+
+  if (this.form_data.KidStat === "نعم") {
+    document.getElementsByClassName("48073")[0].style.display = "block"; //التقرير الطبي للطفل ذي الإعاقة
+  } else {
+    document.getElementsByClassName("48073")[0].style.display = "none";
+  }
+
+  if (this.form_data.Insuranstat === "نعم") {
+    document.getElementsByClassName("48074")[0].style.display = "block"; //وثيقة التأمين على الحياة من شركة التأمين
+  } else {
+    document.getElementsByClassName("48074")[0].style.display = "none";
   }
 }

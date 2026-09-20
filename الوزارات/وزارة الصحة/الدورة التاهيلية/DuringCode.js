@@ -1,210 +1,120 @@
 {
-    HideCells(event) {
-        if (event == "نعم") {
-            document.getElementById("49891").style.display = "block";
-        } else {
-            document.getElementById("49891").style.display = "none";     
-            this.inputFormField["univer"] = null;
-            this.inputFormField["send"] = null;
-        }
-    },
-      /////////////////////////////////////////////////////////////////////////////////////////
-      singleNotification(notifyText, position) {
-        this.$toast.error(notifyText, {
-            position: position,
-            timeout: 6000,
-            closeOnClick: false,
-            pauseOnFocusLoss: true,
-            pauseOnHover: true,
-            draggable: true,
-            draggablePercent: 0.6,
-            showCloseButtonOnHover: false,
-            hideProgressBar: false,
-            closeButton: "button",
-            icon: true,
-            rtl: true
-        });
-    },
+  HideCells(event) {
+      if (event == "نعم") {
+        document.getElementById("49891").style.display = "block";
+      } else {
+        document.getElementById("49891").style.display = "none";
+        this.inputFormField["univer"] = null;
+        this.inputFormField["send"] = null;
+      }
+  },
 
-    ssingleNotification(notifyText, position) {
-        this.$toast.success(notifyText, {
-        position: position,
-        timeout: 6000,
-        closeOnClick: false,
-        pauseOnFocusLoss: true,
-        pauseOnHover: true,
-        draggable: true,
-        draggablePercent: 0.6,
-        showCloseButtonOnHover: false,
-        hideProgressBar: false,
-        closeButton: "button",
-        icon: true,
-        rtl: true
-      });
-    },
+  //------------------------------------------------------------
+  singleNotification(notifyText, position) {
+    this.$toast.error(notifyText, {
+      position: position,
+      timeout: 6000,
+      closeOnClick: false,
+      pauseOnFocusLoss: true,
+      pauseOnHover: true,
+      draggable: true,
+      draggablePercent: 0.6,
+      showCloseButtonOnHover: false,
+      hideProgressBar: false,
+      closeButton: "button",
+      icon: true,
+      rtl: true
+    });
+  },
 
-    checkEmployee(event){
-      if (event) {
-        let loader = this.$loading.show({
+  ssingleNotification(notifyText, position) {
+    this.$toast.success(notifyText, {
+      position: position,
+      timeout: 6000,
+      closeOnClick: false,
+      pauseOnFocusLoss: true,
+      pauseOnHover: true,
+      draggable: true,
+      draggablePercent: 0.6,
+      showCloseButtonOnHover: false,
+      hideProgressBar: false,
+      closeButton: "button",
+      icon: true,
+      rtl: true
+    });
+  },
+
+  checkEmployee(event) {
+    if (event) {
+      let loader = this.$loading.show({
         container: this.$refs.formContainer,
         loader: "dots",
         transition: "fade",
         color: "#c30734"
       });
 
-        var Phones_Number = [
-          //دائرة مدينة الطب
-          "9647711811094",//0
-          "9647724443154",//1
-          "9647719313798", //2
-          //دائرة صحة البصرة
-          "9647801392924",//3
-          "9647727872919",//4
-          "9647715954243", //5
-          //دائرة صحة النجف
-          "9647812401776",//6
-          "9647834163233",//7
-          "9647827790744", //8
-          //دائرة صحة واسط
-          "9647706906180",//9
-          "9647808332043",//10
-          "9647713512995", //11
-          //دائرة صحة بغداد الرصافة
-          "9647708863402",//12
-          "9647731990417",//13
-          "9647723788161", //14
-          //دائرة صحة بغداد الكرخ
-          "9647722243372",//15
-          "9647702799497",//16
-          "9647717713952", //17
-          //دائرة صحة الانبار
-          "9647818882555",//18
-          "9647814487544",//19
-          "9647821296875", //20
-          //دائرة صحة ذي قار
-          "9647811393205",//21
-          "9647801780767",//22
-          "9647830436988", //23
-          //دائرة صحة الديوانية
-          "9647812155222",//24
-          "9647744067067",//25
-          "9647822105511", //26
-          //دائرة صحة ديالى
-          "9647719871405",//27
-          "9647729723431",//28
-          "9647731791998", //29
-          //دائرة صحة ميسان
-          "9647740776116",//30
-          "9647738516538",//31
-          "9647744884566", //32
-          //دائرة صحة صلاح الدين
-          "9647731987437",//33
-          "9647705137700",//34
-          "9647701975822",//35
-          "9647731985174",//36
-          "9647810086662", //37
-          //دائرة صحة نينوى
-          "9647705231215",//38
-          "9647769302393",//39
-          "9647709033414", //40
-          //دائرة صحة كركوك
-          "9647701357974",//41
-          "9647708536286",//42
-          "9647722359160", //43
-          //دائرة صحة المثنى
-          "9647803685137",//44
-          "9647838893837",//45
-          "9647805235072", //46
-          //دائرة صحة كربلاء
-          "9647839594670",//47
-          "9647723610857",//48
-          "9647822556717",//49
-          "9647765981847", //50
-          //دائرة صحة بابل
-          "9647725268240",//51
-          "9647711189778",//52
-          "9647807287170", //53
-          //وزارة الدفاع
-          "9647714702421",//54
-          "9647705933702",//55
-          "9647700101049",//56
-          //مركز وزارة الدفاع 
-          "9647801867641",//57
-          "9647906317550",//58
-          "9647813308529",//59
-          "9647711984058",//60
-          "9647700644345",//61
-          "9647700104400",//62
-          "9647736332776",//63
-          "9647700799015", //64
-          "9647745678912",//65
-          //للتجارب
-          "9647730118105",//66 رنا
-          "9647719355928",//67 نور
-          "9647880011173",//68 محمد
-          "9647836947851",//69 حيدر
-          "9647700981575",//70 افاق
-          "9647817097729",//71 مصطفى خليل
-          "9647806969398",//72 فرقان
-          "9647718267149",//73 ماريا
-          "9647712621266",//74 عبدالله
-          "9647804561656",//75 للتجربة
-          "9647811911618",//76 يوسف
-        ];
-
-        const Names = [
-          "دائرة مدينة الطب",
-          "دائرة صحة البصرة",
-          "دائرة صحة النجف الاشرف",
-          "دائرة صحة واسط",
-          "دائرة صحة بغداد / الرصافة",
-          "دائرة صحة بغداد / الكرخ",
-          "دائرة صحة الانبار",
-          "دائرة صحة ذي قار",
-          "دائرة صحة الديوانية",
-          "دائرة صحة ديالى",
-          "دائرة صحة ميسان",
-          "دائرة صحة صلاح الدين",
-          "دائرة صحة نينوى",
-          "دائرة صحة كركوك",
-          "دائرة صحة المثنى",
-          "دائرة صحة كربلاء",
-          "دائرة صحة بابل",
-          "وزارة الدفاع",
-          "مركز وزارة الصحة",
-          "للتجربة"
-        ];
-
-      var start_Num = [
-            0, 3, 6, 9, 12, 15, 18, 21, 24, 27, 30, 33, 38, 41, 44, 47, 51, 54, 57, 66
-          ],
-          End_Num = [
-            3, 6, 9, 12, 15, 18, 21, 24, 27, 30, 33, 38, 41, 44, 47, 51, 54, 57, 66, 77
-          ];
+      let Values = [
+        {Selected_Value: "دائرة مدينة الطب", Phone_Number: ["9647750777600", "9647804737217", "9647713836203", "9647811911618"],}, // دائرة مدينة الطب
+        {Selected_Value: "دائرة صحة البصرة", Phone_Number: ["9647706888866", "9647727872919", "9647715954243",],}, // دائرة صحة البصرة
+        {Selected_Value: "دائرة صحة النجف الاشرف", Phone_Number: ["9647812401776", "9647834163233", "9647827790744",],}, // دائرة صحة النجف
+        {Selected_Value: "دائرة صحة واسط", Phone_Number: ["9647706906180", "9647808332043", "9647713512995",],}, // دائرة صحة واسط
+        {Selected_Value: "دائرة صحة بغداد / الرصافة", Phone_Number: ["9647708863402", "9647731990417", "9647723788161",],}, // دائرة صحة بغداد الرصافة
+        {Selected_Value: "دائرة صحة بغداد / الكرخ", Phone_Number: ["9647722243372", "9647702799497", "9647717713952",],}, // دائرة صحة بغداد الكرخ
+        {Selected_Value: "دائرة صحة الانبار", Phone_Number: ["9647818882555", "9647814487544", "9647821296875",],}, // دائرة صحة الانبار
+        {Selected_Value: "دائرة صحة ذي قار", Phone_Number: ["9647811393205", "9647801780767", "9647830436988",],}, // دائرة صحة ذي قار
+        {Selected_Value: "دائرة صحة الديوانية", Phone_Number: ["9647772832887", "9647744067067", "9647822105511",],}, // دائرة صحة الديوانية
+        {Selected_Value: "دائرة صحة ديالى", Phone_Number: ["9647719871405", "9647729723431", "9647731791998",],}, // دائرة صحة ديالى
+        {Selected_Value: "دائرة صحة ميسان", Phone_Number: ["9647740776116", "9647738516538", "9647744884566",],}, // دائرة صحة ميسان
+        {Selected_Value: "دائرة صحة صلاح الدين", Phone_Number: ["9647731987437", "9647705137700", "9647701975822", "9647731985174", "9647810086662",],}, // دائرة صحة صلاح الدين
+        {Selected_Value: "دائرة صحة نينوى", Phone_Number: ["9647705231215", "9647769302393", "9647709033414",],}, // دائرة صحة نينوى
+        {Selected_Value: "دائرة صحة كركوك", Phone_Number: ["9647701357974", "9647708536286", "9647722359160",],}, // دائرة صحة كركوك
+        {Selected_Value: "دائرة صحة المثنى", Phone_Number: ["9647831119757", "9647838893837", "9647805235072",],}, // دائرة صحة المثنى
+        {Selected_Value: "دائرة صحة كربلاء", Phone_Number: ["9647721535122", "9647723610857", "9647723794268", "9647765981847",],}, // دائرة صحة كربلاء
+        {Selected_Value: "دائرة صحة بابل", Phone_Number: ["9647725268240", "9647711189778", "9647807287170",],}, // دائرة صحة بابل
+        {Selected_Value: "وزارة الدفاع", Phone_Number: ["9647714702421", "9647705933702", "9647700101049", "9647739676735",],}, // وزارة الدفاع
+        {
+          Selected_Value: "مركز وزارة الصحة",
+          Phone_Number: [
+            "9647801867641", "9647906317550", "9647813308529", "9647711984058", "9647700644345", "9647700104400", "9647736332776", "9647700799015", "9647745678912",
+          ], // مركز وزارة الدفاع
+        },
+      ];
 
       let matchFound = false; // Flag to track if a match is found
+      let Result = Values.find((Finding) => 
+        this.inputFormField["DepartmentName"] === Finding.Selected_Value && Finding.Phone_Number.includes(this.inputFormField["PhoneNumber"])
+      );
 
-      for(var i = 0; i < Names.length; i++){ 
-        
-        if(this.inputFormField["DepartmentName"] == Names[i]){
-          for(var j = start_Num[i]; j <  End_Num[i]; j++){                 
-            if(this.inputFormField["PhoneNumber"] == Phones_Number[j]){
+      if(Result){
+        matchFound = true;
+        document.getElementById("23290_group").style.display = "none";
+        document.getElementById("23182_group").style.display = "block";
+
+        loader.hide();
+        this.ssingleNotification("تم الدخول بنجاح", "top-right");
+      }else{
+        loader.hide();
+        this.singleNotification("رقم الهاتف غير مطابق مع المخول ", "top-right");
+      }
+
+      /*
+      for (var i = 0; i < Phone.length; i++) {
+
+          if (this.inputFormField["itManagerNumber"] == Phone[i] && this.inputFormField["itManagers"] == Names[i]) {
               matchFound = true;
-              document.getElementById("23290_group").style.display = "none";
-              document.getElementById("23182_group").style.display = "block";
+              document.getElementById("23272_group").style.display = "none";
+              document.getElementById("22879_group").style.display = "block";
+              document.getElementById("22880_group").style.display = "block";
+              document.getElementById("23035_group").style.display = "block";
+              document.getElementById("22882_group").style.display = "block";
+              document.getElementById("22884_group").style.display = "block";
+              document.getElementById("22883_group").style.display = "block";
 
               loader.hide();
               this.ssingleNotification("تم الدخول بنجاح", "top-right");
               break; // Exit the loop once a match is found
-            }
           }
-        }
-      }
-
-      if (!matchFound) {
-        loader.hide();
-        this.singleNotification("رقم الهاتف غير مطابق مع المخول ", "top-right");
-      }
+      } */
     }
   },
 }

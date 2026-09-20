@@ -171,6 +171,8 @@
                 document.getElementById("94694").style.display = "none"; //هل الزوج (الزوجة) يتقاضى مخصصات الزوجية؟
                 document.getElementById("94419").style.display = "none"; //هل الزوج (الزوجة):
 
+                this.group_of_form[2].fields[7].properties[0].values = ["منتسب (موظف / موظفة)", "كاسب", "متقاعد"]; //هل الزوج (الزوجة):
+
                 // عند الاستعادة: أعد تقييم الحقول الفرعية بناءً على القيمة
                 // المحفوظة فعلياً لحقل "salary" بدلاً من تركها مخفية دائماً
                 if(isRestore){
@@ -181,6 +183,8 @@
                 document.getElementById("87322").style.display = "block"; //هل تطلب انت وزوجتك ( زوجك ) دمج المدخولات ( ضمن احتساب الضريبة ) ؟
                 document.getElementById("94694").style.display = "block"; //هل الزوج (الزوجة) يتقاضى مخصصات الزوجية؟
                 document.getElementById("94419").style.display = "block"; //هل الزوج (الزوجة):
+
+                this.group_of_form[2].fields[7].properties[0].values = ["منتسب (موظف / موظفة)", "كاسب", "متقاعد", "زوج عاجز عن العمل"]; //هل الزوج (الزوجة):
             }else{
                 document.getElementById("87258").style.display = "none"; // هل الزوجة ربة بيت وليس لها دخل ؟
                 document.getElementById("87322").style.display = "none"; //هل تطلب انت وزوجتك ( زوجك ) دمج المدخولات ( ضمن احتساب الضريبة ) ؟
@@ -249,14 +253,17 @@
         this.inputFormField["GildAge"] = null; //هل لدى المنتسب أبناء بعمر 18 سنة فأكثر؟
         this.inputFormField["FirstTable"] = null; //اسماء الابناء
         this.inputFormField["WorkingChildren"] = null; //هل لدى المنتسب ابناء قد تم تعيينهم؟
+        this.inputFormField["KidStat"] = null; //هل لديك طفل معاق  او عاهة عقلية او بدنية
         if(event === "نعم"){
             document.getElementById("94309").style.display = "block";
             document.getElementById("94484").style.display = "block";
             document.getElementById("94697").style.display = "block";
+            document.getElementById("95012").style.display = "block";
         }else{
             document.getElementById("94309").style.display = "none";
             document.getElementById("94484").style.display = "none";
             document.getElementById("94697").style.display = "none";
+            document.getElementById("95012").style.display = "none";
         }
     },
 

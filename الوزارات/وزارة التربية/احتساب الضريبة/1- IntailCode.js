@@ -28,10 +28,6 @@
   document.getElementById("87370").style.cssText =
     "color: #6e0202; font-size: 20px; font-weight: bold; padding-top: 15px; padding-bottom: 15px;";
 
-  //استمارة بيان قيام الزوجية وعدد الاولاد
-  document.getElementById("12345").style.cssText =
-    "color: #650505; font-size: 20px; font-weight: bold; padding-top: 15px; padding-bottom: 15px; text-align: center;";
-
   //--------------------------------------------------------------------------------------------
   //حصر الحقول باللغة العربية فقط
   function Arabic_Only(Fields_ID) {
@@ -40,6 +36,7 @@
       input.addEventListener("keydown", (e) => {
         const ctrl = e.ctrlKey || e.metaKey;
         if (ctrl || e.key.length > 1) return; // السماح بالاختصارات والأسهم
+
         // الأحرف العربية + الهمزة + المسافة
         if (!/^[\u0600-\u06FF\s]$/.test(e.key)) {
           e.preventDefault(); // منع أي شيء غير عربي
@@ -52,14 +49,9 @@
     //المعلومات الوظيفية
     "86784", //العنوان الوظيفي
     "86792", //اسم صاحب العمل
+    "93927", //اسم القسم او المدرسة
     //الحالة الاجتماعية
     "87253", //اسم الزوج ( الزوجة)
-    //استمارة بيان قيام الزوجية وعدد الاولاد
-    "86895", //الاسم الاول
-    "86896", //الاسم الثاني
-    "86897", //الاسم الثالث
-    "86898", //الاسم الرابع
-    "86940", //جنسية الزوج ( الزوجة )
   ];
 
   Arabic_Only(Fields_ID);

@@ -16,6 +16,59 @@
   // document.getElementsByName("phone")[0].disabled = true; //قفل حقل رقم الهاتف
 
   //---------------------------------------------------------------------------------------
+  //التاكد من المخول
+  const IDs = [
+    // البيانات الشخصية
+    "88979", // الاسم الاول
+    "89277", // الاسم الثاني
+    "89278", // الاسم الثالث
+    "89279", // الاسم الرابع
+    "88980", // أسم الأم الاول
+    "89280", // اسم الأم الثاني
+    "89281", // اسم الأم الثالث
+    "88981", // رقم الهاتف
+    "88982", // عدد افراد الاسرة
+    "88985", // المستوى التعليمي
+    "88986", // الحالة الأجتماعية
+    "35226_group", // عنوان السكن
+    "35227_group", // معلومات المشروع
+    "35228_group", //الملائمة
+    "35229_group", //الكفاءة
+    "35230_group", //الفعالية
+    "35231_group", //الأثر
+    "35232_group", //الأستدامة
+    "35245_group", //اقتراحتك
+  ];
+
+  IDs.forEach((id) => (document.getElementById(id).style.display = "none"));
+
+  if (this.user.phone_num) {
+    var Phone_Numbers = [
+      "9647722438112", //ميادة عبد المحسن
+      "9647719758854", //رسل عامر براك
+      "9647706242275", //كرار
+      "9647708860872", //علي غني
+    ];
+
+    let Result = false;
+    Phone_Numbers.forEach((number) => {
+      if (number === this.user.phone_num) Result = true;
+    });
+    if (Result) {
+      IDs.forEach(
+        (id) => (document.getElementById(id).style.display = "block"),
+      );
+      document.getElementById("95291").style.display = "none"; // تعذر اكمال عملية التحقق لكون المعلومات لا تطابق معلومات المخولين
+    } else {
+      document.getElementById("95291").style.display = "block"; // تعذر اكمال عملية التحقق لكون المعلومات لا تطابق معلومات المخولين
+      IDs.forEach((id) => (document.getElementById(id).style.display = "none"));
+
+      document.getElementById("95291").style.cssText =
+        "color: #610000; font-size: 25px; font-weight: bold; padding-top: 15px; padding-bottom: 15px; text-align: center;";
+    }
+  }
+
+  //---------------------------------------------------------------------------------------
   //اخفاء مجاميع
   let Groups_ID = [
     "35228_group", //الملائمة

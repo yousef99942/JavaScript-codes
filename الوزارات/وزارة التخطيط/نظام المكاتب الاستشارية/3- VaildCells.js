@@ -1,57 +1,63 @@
 {
   if (this.inputFormField.hasSecondOwner == "نعم") {
-    var First_Group_Progs = [
-        "firstNameArSec",
-        "secondNameSec",
-        "thirdNameSec",
-        "fourthNameSec",
-        "firstNameEnSec",
-        "secondNameEnSec",
-        "thirdNameEnSec",
-        "fourthNameEnSec",
-        "nationalIdSec",
-        "certificateSec",
-        "certificateYearSec",
-      ],
-      First_Group_Locations = [21, 22, 23, 24, 26, 27, 28, 29, 30, 31, 32],
-      Second_Group_Progs = [
-        "OwnerSecGov", //المحافظة (مؤسس ثاني)
-        "ThirdDistrict", //القضاء (المؤسس الثاني)
-        "ownerSecPhone", //رقم الهاتف (المؤسس الثاني)
-        "districtOwnerSec", //المحلة (المؤسس الثاني)
-        "alleyOwnerSec", //الزقاق (مؤسس ثاني)
-        "houseNumberOwnerSec", //الدار (مؤسس ثاني)
-      ],
-      Second_Group_Locations = [15, 16, 17, 18, 19, 20];
+    let Values = [
+      {
+        Fields_Prog: [
+          "firstNameArSec",
+          "secondNameSec",
+          "thirdNameSec",
+          "fourthNameSec",
+          "firstNameEnSec",
+          "secondNameEnSec",
+          "thirdNameEnSec",
+          "fourthNameEnSec",
+          "nationalIdSec",
+          "certificateSec",
+          "certificateYearSec",
+        ],
 
-    for (var i = 0; i < First_Group_Progs.length; i++) {
-      if (
-        this.inputFormField[First_Group_Progs[i]] == null ||
-        this.inputFormField[First_Group_Progs[i]] == ""
-      ) {
-        this.evalErr.push(
-          `الحقل ${
-            this.group_of_form[0].fields[First_Group_Locations[i]].label
-          } مطلوب`,
-        );
-      }
-    }
+        Fields_Location: [21, 22, 23, 24, 26, 27, 28, 29, 30, 31, 32],
 
-    for (var i = 0; i < Second_Group_Progs.length; i++) {
-      if (
-        this.inputFormField[Second_Group_Progs[i]] == null ||
-        this.inputFormField[Second_Group_Progs[i]] == ""
-      ) {
-        this.evalErr.push(
-          `الحقل ${
-            this.group_of_form[1].fields[Second_Group_Locations[i]].label
-          } مطلوب`,
-        );
-      }
-    }
+        Group_Number: 0,
+      },
+
+      {
+        Fields_Prog: [
+          "OwnerSecGov", //المحافظة (مؤسس ثاني)
+          "ThirdDistrict", //القضاء (المؤسس الثاني)
+          "ownerSecPhone", //رقم الهاتف (المؤسس الثاني)
+          "districtOwnerSec", //المحلة (المؤسس الثاني)
+          "alleyOwnerSec", //الزقاق (مؤسس ثاني)
+          "houseNumberOwnerSec", //الدار (مؤسس ثاني)
+        ],
+
+        Fields_Location: [15, 16, 17, 18, 19, 20],
+
+        Group_Number: 1,
+      },
+    ];
+
+    Values.forEach((Looping) => {
+      Looping.Fields_Prog.forEach((Checking, index) => {
+        if (
+          this.inputFormField[Checking] === "" ||
+          this.inputFormField[Checking] === null
+        ) {
+          let Group_Number = Looping.Group_Number;
+          let Field_Location = Looping.Fields_Location[index];
+          this.evalErr.push(
+            `الحقل ${
+              this.group_of_form[Group_Number].fields[Field_Location].label
+            } مطلوب`,
+          );
+        }
+      });
+    });
   }
 
-  if (this.inputFormField.number != null || this.inputFormField.number != "") {
+  //-------------------------------------------------------------------------------------------------------
+  // التحقق من الجهات التي يتم التعامل معها
+  if (this.inputFormField.number) {
     var Fields_Progs = [
         "entitynamefirst",
         "servicedurationfirst",
@@ -80,10 +86,9 @@
     }
   }
 
-  if (
-    this.inputFormField.numberOf != null ||
-    this.inputFormField.numberOf != ""
-  ) {
+  //-------------------------------------------------------------------------------------------------------
+  // التحقق من العاملين في المكتب
+  if (this.inputFormField.numberOf) {
     var Fields_Progs = [
         "firstnameA",
         "secondnameA",
@@ -141,6 +146,7 @@
         "educationH",
         "universityH",
         "yearH",
+
         "firstnameI",
         "secondnameI",
         "thirdnameI",
@@ -148,6 +154,7 @@
         "educationI",
         "universityI",
         "yearI",
+
         "firstnameJ",
         "secondnameJ",
         "thirdnameJ",
@@ -177,10 +184,9 @@
     }
   }
 
-  if (
-    this.inputFormField.officeWorkDone != null ||
-    this.inputFormField.officeWorkDone != ""
-  ) {
+  //-------------------------------------------------------------------------------------------------------
+  // التحقق من الأعمال المنجزة
+  if (this.inputFormField.officeWorkDone) {
     var Fields_Progs = [
         "ConsultationA",
         "BeneficiaryA",
@@ -202,10 +208,12 @@
         "BeneficiaryE",
         "CompletionDateE",
         "CompletionRateE",
+
         "ConsultationF",
         "BeneficiaryF",
         "CompletionDateF",
         "CompletionRateF",
+
         "ConsultationG",
         "BeneficiaryG",
         "CompletionDateG",
@@ -214,14 +222,17 @@
         "BeneficiaryH",
         "CompletionDateH",
         "CompletionRateH",
+
         "ConsultationI",
         "BeneficiaryI",
         "CompletionDateI",
         "CompletionRateI",
+
         "ConsultationJ",
         "BeneficiaryJ",
         "CompletionDateJ",
         "CompletionRateJ",
+
         "ConsultationK",
         "BeneficiaryK",
         "CompletionDateK",
@@ -263,203 +274,167 @@
     }
   }
 
-  //نوع الاجراء
-  var Selected_Values = ["تأسيس مكتب", "تجديد اجازة المكتب", "بدل تالف"];
-  if (Selected_Values.includes(this.inputFormField.Procedure)) {
-    var Progs = [
+  //-------------------------------------------------------------------------------------------------------
+  // نوع الاجراء
+  const Values = [
+    {
+      Selected_Value: ["تأسيس مكتب", "تجديد اجازة المكتب", "بدل تالف"],
+
+      Fields_Progs: [
         //المجموعة الاولى
-        "requset", //اختر نوع الطلب
-        "hasSecondOwner", //هل يوجد مؤسس ثاني ؟
+        [
+          "requset", //اختر نوع الطلب
+          "hasSecondOwner", //هل يوجد مؤسس ثاني ؟
+        ],
         //المجموعة الثانية
-        "governorate", //المحافظة
-        "FirstDistrict", //القضاء
-        "officePhone", //رقم الهاتف
-        "ownerGov", //المحافظة (المؤسس)
-        "SecondDistrict", //القضاء (المؤسس)
-        "ownerPhone", //رقم الهاتف (المؤسس)
+        [
+          "governorate", //المحافظة
+          "FirstDistrict", //القضاء
+          "officePhone", //رقم الهاتف
+          "ownerGov", //المحافظة (المؤسس)
+          "SecondDistrict", //القضاء (المؤسس)
+          "ownerPhone", //رقم الهاتف (المؤسس)
+        ],
+
         //المجموعة الثالثة
-        "number", //اذكر عدد الجهات التي يتم التعامل معها
+        [
+          "number", //اذكر عدد الجهات التي يتم التعامل معها
+        ],
+
         //المجموعة الرابعة
-        "numberOf", //اذكر عدد العاملين في المكتب
+        [
+          "numberOf", //اذكر عدد العاملين في المكتب
+        ],
+
         //المجموعة الخامسة
-        "officeWorkDone", //عدد الاعمال المنجزة من قبل المكتب
+        [
+          "officeWorkDone", //عدد الاعمال المنجزة من قبل المكتب
+        ],
         //المجموعة السادسة
-        "Pledge", //التعهد.
+        [
+          "Pledge", //التعهد
+        ],
       ],
-      Locations = [
+      Fields_Location: [
         //المجموعة الاولى
-        1, 19,
+        [1, 19],
         //المجموعة الثانية
-        1, 2, 3, 8, 9, 10,
+        [1, 2, 3, 8, 9, 10],
         //المجموعة الثالثة
-        1,
+        [1],
         //المجموعة الرابعة
-        0,
+        [0],
         //المجموعة الخامسة
-        0,
+        [0],
         //المجموعة السادسة
-        0,
-      ];
+        [0],
+      ],
+      Group_Location: [0, 1, 2, 3, 4, 5],
+    },
+    {
+      Selected_Value: ["تجميد مكتب"],
+      Fields_Progs: [
+        //المجموعة الاولى
+        [
+          "hasSecondOwner", //هل يوجد مؤسس ثاني؟
+        ],
+        //المجموعة الثانية
+        [
+          "governorate", //المحافظة
+          "FirstDistrict", //القضاء
+          "officePhone", //رقم الهاتف
+          "ownerGov", //المحافظة (المؤسس)
+          "SecondDistrict", //القضاء (المؤسس)
+          "ownerPhone", //رقم الهاتف (المؤسس)
+        ],
+        //المجموعة السادسة
+        [
+          "Pledge", //التعهد
+        ],
+      ],
+      Fields_Location: [
+        //المجموعة الاولى
+        [0],
+        //المجموعة الثانية
+        [1, 2, 3, 8, 9, 10],
+        //المجموعة السادسة
+        [0],
+      ],
+      Group_Location: [0, 1, 5],
+    },
+  ];
 
-    //المجموعة الاولى
-    for (var i = 0; i < 2; i++) {
-      if (
-        this.inputFormField[Progs[i]] == null ||
-        this.inputFormField[Progs[i]] == ""
-      ) {
-        this.evalErr.push(
-          `الحقل ${this.group_of_form[0].fields[Locations[i]].label} مطلوب`,
-        );
-      }
-    }
+  const Result = Values.find((Finding) =>
+    Finding.Selected_Value.includes(this.inputFormField.Procedure),
+  );
 
-    //المجموعة الثانية
-    for (var i = 2; i < 8; i++) {
-      if (
-        this.inputFormField[Progs[i]] == null ||
-        this.inputFormField[Progs[i]] == ""
-      ) {
-        this.evalErr.push(
-          `الحقل ${this.group_of_form[1].fields[Locations[i]].label} مطلوب`,
-        );
-      }
-    }
-
-    //المجموعة الثالثة
-    for (var i = 8; i < 9; i++) {
-      if (
-        this.inputFormField[Progs[i]] == null ||
-        this.inputFormField[Progs[i]] == ""
-      ) {
-        this.evalErr.push(
-          `الحقل ${this.group_of_form[2].fields[Locations[i]].label} مطلوب`,
-        );
-      }
-    }
-
-    //المجموعة الرابعة
-    for (var i = 9; i < 10; i++) {
-      if (
-        this.inputFormField[Progs[i]] == null ||
-        this.inputFormField[Progs[i]] == ""
-      ) {
-        this.evalErr.push(
-          `الحقل ${this.group_of_form[3].fields[Locations[i]].label} مطلوب`,
-        );
-      }
-    }
-
-    if (
-      this.inputFormField.Procedure == "تجديد اجازة المكتب" ||
-      this.inputFormField.Procedure == "بدل تالف"
-    ) {
-      //المجموعة الخامسة
-      for (var i = 10; i < 11; i++) {
+  if (Result) {
+    Result.Group_Location.forEach((Looping, index) => {
+      Result.Fields_Progs[index].forEach((Checking, Field_Index) => {
         if (
-          this.inputFormField[Progs[i]] == null ||
-          this.inputFormField[Progs[i]] == ""
+          this.inputFormField[Checking] === null ||
+          this.inputFormField[Checking] === ""
         ) {
           this.evalErr.push(
-            `الحقل ${this.group_of_form[4].fields[Locations[i]].label} مطلوب`,
+            `الحقل ${
+              this.group_of_form[Looping].fields[
+                Result.Fields_Location[index][Field_Index]
+              ].label
+            } مطلوب`,
           );
         }
-      }
-    }
-
-    //المجموعة السادسة
-    for (var i = 11; i < 12; i++) {
-      if (
-        this.inputFormField[Progs[i]] == null ||
-        this.inputFormField[Progs[i]] == ""
-      ) {
-        this.evalErr.push(
-          `الحقل ${this.group_of_form[5].fields[Locations[i]].label} مطلوب`,
-        );
-      }
-    }
+      });
+    });
   }
 
-  //-------------------------------------------------------------------------------------------------------
-  if (this.inputFormField.Procedure == "تجميد مكتب") {
-    //المجموعة الثانية
-    var Progs = [
-        "governorate", //المحافظة
-        "FirstDistrict", //القضاء
-        "officePhone", //رقم الهاتف
-        "ownerGov", //المحافظة (المؤسس)
-        "SecondDistrict", //القضاء (المؤسس)
-        "ownerPhone", //رقم الهاتف (المؤسس)
+  if (this.inputFormField.Procedure != "تأسيس مكتب") {
+    let Fields_Prog = [
+        "vacationno", //رقم الاجازة
+        "vacationdate", //تاريخ الاجازة
+        "sessionno", //رقم جلسة المنح
+        "sessiondate", //تاريخ جلسة المنح
       ],
-      Locations = [1, 2, 3, 8, 9, 10];
+      Field_Index = [33, 34, 35, 36];
 
-    //المجموعة الاولى
-    //هل يوجد مؤسس ثاني؟
-    if (
-      this.inputFormField["hasSecondOwner"] == null ||
-      this.inputFormField["hasSecondOwner"] == ""
-    ) {
-      this.evalErr.push(
-        `الحقل ${this.group_of_form[0].fields[19].label} مطلوب`,
-      );
-    }
-
-    //المجموعة السادسة
-    //التعهد
-    if (
-      this.inputFormField["Pledge"] == null ||
-      this.inputFormField["Pledge"] == ""
-    ) {
-      this.evalErr.push(`الحقل ${this.group_of_form[5].fields[0].label} مطلوب`);
-    }
-
-    //المجموعة الثانية
-    for (var i = 0; i < Progs.length; i++) {
+    Fields_Prog.forEach((Checking) => {
       if (
-        this.inputFormField[Progs[i]] == null ||
-        this.inputFormField[Progs[i]] == ""
+        this.inputFormField[Checking] === null ||
+        this.inputFormField[Checking] === ""
       ) {
+        let index = Fields_Prog.indexOf(Checking);
         this.evalErr.push(
-          `الحقل ${this.group_of_form[1].fields[Locations[i]].label} مطلوب`,
+          `الحقل ${this.group_of_form[0].fields[Field_Index[index]].label} مطلوب`,
         );
       }
-    }
+    });
   }
 
   //-------------------------------------------------------------------------------------------------------
   // التحقق من حقل رقم الهاتف يجب ان يبدء الرقم ب07
-  //رقم هاتف المكتب
-  if (
-    this.inputFormField.officePhone != null &&
-    this.inputFormField.officePhone != ""
-  ) {
-    const phoneNo1 = this.inputFormField.officePhone;
-    let startNo1 = phoneNo1.substring(0, 2);
-    if (startNo1 != "07") {
-      this.evalErr.push("يجب أن يبدأ رقم هاتف المكتب بالرقم 07.");
-    }
-  }
+  const Second_Values = [
+    {
+      Field_Prog: "officePhone",
+      Error_Message: "يجب أن يبدأ رقم هاتف المكتب بالرقم 07.",
+    }, //رقم هاتف المكتب
+    {
+      Field_Prog: "ownerPhone",
+      Error_Message: "يجب أن يبدأ رقم هاتف المؤسس بالرقم 07.",
+    }, //رقم هاتف المؤسس
+    {
+      Field_Prog: "ownerSecPhone",
+      Error_Message: "يجب أن يبدأ رقم هاتف المؤسس الثاني بالرقم 07.",
+    }, //رقم هاتف المؤسس الثاني
+  ];
 
-  //رقم هاتف المؤسس
-  if (
-    this.inputFormField.ownerPhone != null &&
-    this.inputFormField.ownerPhone != ""
-  ) {
-    const phoneNo2 = this.inputFormField.ownerPhone;
-    let startNo2 = phoneNo2.substring(0, 2);
-    if (startNo2 != "07") {
-      this.evalErr.push("يجب أن يبدأ رقم هاتف المؤسس بالرقم 07.");
-    }
-  }
+  Second_Values.forEach((Checking) => {
+    if (this.inputFormField[Checking.Field_Prog]) {
+      const phoneNo3 = this.inputFormField[Checking.Field_Prog];
 
-  //رقم هاتف المؤسس الثاني
-  if (
-    this.inputFormField.ownerSecPhone != null &&
-    this.inputFormField.ownerSecPhone != ""
-  ) {
-    const phoneNo3 = this.inputFormField.ownerSecPhone;
-    let startNo3 = phoneNo3.substring(0, 2);
-    if (startNo3 != "07") {
-      this.evalErr.push("يجب أن يبدأ رقم هاتف المؤسس الثاني بالرقم 07.");
+      let startNo3 = phoneNo3.substring(0, 2);
+
+      if (startNo3 != "07") {
+        this.evalErr.push(Checking.Error_Message);
+      }
     }
-  }
+  });
 }

@@ -196,6 +196,13 @@
             { Company_Name: "روعة المناسك للحج والعمرة", Password: "RW@27"},
             { Company_Name: "الرزعامة لنقل المسافرين والحج والعمرة محدودة المسؤولية", Password: "ZC@28"},
             { Company_Name: "احباب مكة للحج والعمرة ونقل المسافرين محدودة المسؤولية", Password: "BY@29"},
+            { Company_Name: "سما الروضة للحج والعمرة محدودة المسؤولية", Password: "SR@30" },
+            { Company_Name: "القصواء العالمية للسفر والسياحة المحدودة", Password: "QW@31" },
+            { Company_Name: "القصواء للحج والعمرة محدودة المسؤولية", Password: "KH@32" },
+            { Company_Name: "ثائر الرحاب للحج والعمرة ونقل المسافرين المحدودة", Password: "TR@33" },
+            { Company_Name: "ارض الرحمة للحج والعمرة المحدودة", Password: "AR@34" },
+            { Company_Name: "شركة الدلتا للسفر والسياحة المحدودة", Password: "SD@35" },
+            { Company_Name: "ديار النجف للسفر والسياحة محدودة المسؤولية", Password: "DN@36"}
         ];
 
         let Result = Companies.find((Finding) => this.inputFormField.companyn === Finding.Company_Name && event === Finding.Password);
@@ -213,51 +220,35 @@
             },
             { 
                 Office_Name: "البصرة", 
-                Phone_Number: [
-                    "9647708303349", //عبدالخضر عبدالرضا عبدعلي
-                ] 
+                Phone_Number: [ "9647708303349", ] //عبدالخضر عبدالرضا عبدعلي
             },
             { 
                 Office_Name: "الجزيرة", 
-                Phone_Number: [
-                    "9647725982014", //داود سليمان حسن
-                ] 
+                Phone_Number: [ "9647725982014", ] //داود سليمان حسن
             },
             { 
                 Office_Name: "الديوانية", 
-                Phone_Number: [
-                    "9647830759967", //محمد عبدالامير كاظم
-                ] 
+                Phone_Number: [ "9647830759967", ] //محمد عبدالامير كاظم
             },
             { 
                 Office_Name: "الصمود", 
-                Phone_Number: [
-                    "9647804187007", //منتظر سهيل نجم
-                ] 
+                Phone_Number: [ "9647804187007", ] //منتظر سهيل نجم
             },
             { 
                 Office_Name: "الفلوجة", 
-                Phone_Number: [
-                    "9647719630675", //عبدالعزيز محمود عبدالعزيز
-                ] 
+                Phone_Number: [ "9647719630675", ] //عبدالعزيز محمود عبدالعزيز
             },
             { 
                 Office_Name: "المثنى", 
-                Phone_Number: [
-                    "9647881112408", //مصطفى
-                ] 
+                Phone_Number: [ "9647881112408", ] //مصطفى
             },
             { 
                 Office_Name: "النجف الاشرف", 
-                Phone_Number: [
-                    "9647707935022", //مكتب النجف الأشرف
-                ] 
+                Phone_Number: [ "9647707935022", ] //مكتب النجف الأشرف
             },
             { 
                 Office_Name: "بابل", 
-                Phone_Number: [
-                    "9647735042688", //قيس كامل حسن
-                ] 
+                Phone_Number: [ "9647735042688", ] //قيس كامل حسن
             },
             { 
                 Office_Name: "بغداد الاول",
@@ -282,39 +273,27 @@
             },
             { 
                 Office_Name: "ديالى", 
-                Phone_Number: [
-                    "9647705686066", //علي كاظم حبيب
-                ] 
+                Phone_Number: [ "9647705686066", ] //علي كاظم حبيب
             },
             { 
                 Office_Name: "ذي قار", 
-                Phone_Number: [
-                    "9647803167173", //حسنين علي عبدالحسين
-                ] 
+                Phone_Number: [ "9647803167173", ] //حسنين علي عبدالحسين
             },
             {
                 Office_Name: "صلاح الدين",
-                Phone_Number: [
-                    "9647705889474", //محجوب عبد الله لطيف
-                ] 
+                Phone_Number: [ "9647705889474", ] //محجوب عبد الله لطيف
             },
             { 
                 Office_Name: "طوز", 
-                Phone_Number: [
-                    "9647702363817", //نوزاد جاسم محمد
-                ] 
+                Phone_Number: [ "9647702363817", ] //نوزاد جاسم محمد
             },
             { 
                 Office_Name: "عنه", 
-                Phone_Number: [
-                    "9647813186334", //احمد مهيدي داود
-                ] 
+                Phone_Number: [ "9647813186334", ] //احمد مهيدي داود
             },
             { 
                 Office_Name: "كربلاء المقدسة", 
-                Phone_Number: [
-                    "9647808183532", //حيدر طالب محمدعلي
-                ] 
+                Phone_Number: [ "9647808183532", ] //حيدر طالب محمدعلي
             },
             {
                 Office_Name: "كركوك", 
@@ -325,15 +304,11 @@
             },
             { 
                 Office_Name: "نينوى", 
-                Phone_Number: [
-                    "9647705242424", //عبدالقادر عبدالسلام 
-                ] 
+                Phone_Number: [ "9647705242424", ] //عبدالقادر عبدالسلام 
             },
             { 
                 Office_Name: "واسط", 
-                Phone_Number: [
-                    "9647702528799", //سيف رعد عبدالصاحب
-                ] 
+                Phone_Number: [ "9647702528799", ] //سيف رعد عبدالصاحب
             },
             { 
                 Office_Name: "ميسان", 
@@ -350,7 +325,6 @@
             document.getElementById("93575").style.display = "none";
         }else{
             document.getElementById("93575").style.display = "block";
-
             document.getElementById("93575").style.cssText =
                 "color: #ff0000; font-size: 22px; font-weight: bold; padding-top: 10px; padding-bottom: 10px; text-align: center;";
         }

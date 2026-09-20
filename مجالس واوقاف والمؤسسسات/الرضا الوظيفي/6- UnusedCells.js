@@ -30,5 +30,7 @@
     if (this.form_data.FinalDeptName == null) {
       document.getElementById("93674").style.visibility = "collapse"; //التشكيل
     }
+
+    document.getElementById("35689_group").style.visibility = "collapse"; //معدل الرضا العام
   }
 }

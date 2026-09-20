@@ -6,26 +6,28 @@
     <title>Learning Vue 3</title>
 </head>
 <body>
+    <!-- this is the First_App -->
     <div id="app">
         <h2>{{ message }}</h2>
         <h2> My name is {{ Name }} and I am {{ Age }} years old.</h2>
-        <h2>Current Time: {{ Print("11:00 AM") }}</h2>
+        <h2>Current Time: {{ Print("11:00 PM") }}</h2>
         <!-- v-bind:href="Link" is used to bind the href attribute to the Link data property -->
         <!-- We can also delete v-bind and just use :href -->
         <!-- The same thing with img tag -->
-        <a v-bind:href="Link" target="_blank">Testing Link</a>
-        <img v-bind:src="Image" alt="Vue Logo" width="200">
+        <a v-bind:href="Link" target="_blank">Testing Link</a> <br><br>
+        <img v-bind:src="Image" alt="Vue Logo" width="200"> <br><br>
 
-        <button @click="greet">Greet</button>
-        <button @click="changeName">Change Name</button>
+        <button @click="greet">Greet</button> <br> <br>
+        <button @click="changeName">Change Name</button> <br> <br>
         <!-- v-on:click is used to bind the click event to the SecondPrint method -->
         <!-- We can also delete v-on and just use @click -->
         <!-- there is other types of click events -->
         <!-- @dblclick, @mouseenter, @mouseleave, etc. -->
-        <button v-on:click="SecondPrint">Second Print</button>
-        <button @click="SecondPrint">Third Print</button>
+        <button v-on:click="SecondPrint">Second Print</button> <br> <br>
+        <button @click="SecondPrint">Third Print</button> <br> <br>
     </div>
 
+    <!-- this is the Second_App -->
     <div id="SecondApp">
         <h2>The number is: {{ MyNumber }}</h2>
 
@@ -38,6 +40,7 @@
         <input type="text" v-model="name" name="TheName" placeholder="ادخل الاسم هنا" id="InputName"> <br><br>
     </div>
 
+    <!-- This is the Third_App -->
     <div id="ThirdApp">
         <form @submit.prevent="CreateAccount">
             <!-- AccountData اذا اني دستعمل الطريقة الاولى لترتيب البيانات ف بس امسح -->
@@ -55,14 +58,31 @@
         </form>
     </div>
 
+    <!-- This is the Fourth_App -->
     <div id="FourthApp">
         <h2>First value * 2 is: {{ChangingFirst}}</h2>
         <button @click = "NumberOne++">Changing First Value</button>
         <h2>Second value * 10 is: {{ChangingSecond}}</h2>
         <button @click = "NumberTwo++">Changing Second Value</button>
 
-        <!-- Using computed instead of methods to opreate just the function that I am using right now instead of opreate all the function when I opreate one of them-->
+        <!--
+            Using computed instead of methods to opreate just the function that I am using right now instead of opreate all the function
+            when I opreate one of them
+        -->
+
+        <h3>My name is {{My_Name}} and my age is {{My_Age}}</h3>
+        <h4 v-if="My_Age < 30">His age is younger than 30</h4>
+        <h4 v-else-if="My_Age == 30">His age is 30</h4>
+        <h4 v-else="My_Age > 30">His age is older than 30</h4>
+        <button @click = "My_Age++">To incrase my age</button>
     </div>
+
+    <!-- This is the Fifth_App -->
+     <div id="FifthApp">
+        <h3 v-for="(Printing, i) in Animals" :key="i"> {{Printing}} </h3>
+
+        <h3 v-for="Printing in Values" :key="Printing.ID"> {{Printing.Name}} <hr> </h3>
+     </div>
 
     <!-- Modifier Examples -->
     <!-- @click.prevent is used to prevent the default action of the click event -->

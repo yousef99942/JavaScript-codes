@@ -25,22 +25,22 @@
             this.group_of_form[0].fields[19].properties[0].values = Showed_Values[0];
 
             document.getElementById("75459").style.display = "block"; //تفاصيل المبنى السكني
-            document.getElementById("75504").style.display = "none"; //تفاصيل المبنى التجاري
+            document.getElementById("95344").style.display = "none"; //تفاصيل المبنى التجاري
         }else if(event == "تجاري"){
             this.group_of_form[0].fields[19].properties[0].values = Showed_Values[1];
 
             document.getElementById("75459").style.display = "none"; //تفاصيل المبنى السكني
-            document.getElementById("75504").style.display = "block"; //تفاصيل المبنى التجاري
+            document.getElementById("95344").style.display = "block"; //تفاصيل المبنى التجاري
         }else if(event == "صناعي"){
             this.group_of_form[0].fields[19].properties[0].values = Showed_Values[2];
             
             document.getElementById("75459").style.display = "none"; //تفاصيل المبنى السكني
-            document.getElementById("75504").style.display = "none"; //تفاصيل المبنى التجاري
+            document.getElementById("95344").style.display = "none"; //تفاصيل المبنى التجاري
         }else{
             this.group_of_form[0].fields[19].properties[0].values = [];
 
             document.getElementById("75459").style.display = "none"; //تفاصيل المبنى السكني
-            document.getElementById("75504").style.display = "none"; //تفاصيل المبنى التجاري
+            document.getElementById("95344").style.display = "none"; //تفاصيل المبنى التجاري
         }
     },
 

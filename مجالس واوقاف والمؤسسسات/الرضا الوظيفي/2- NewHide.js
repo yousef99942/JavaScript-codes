@@ -144,14 +144,14 @@
             "88227", //التحصيل الدراسي
         ];
 
-        const Showing_Values = [0, 1, 2, 3, 4,];
+        const Showing_Values = [0, 1, 2, 3, 4];
         const Fields_Info = [
-            { Group_Locatin: 1, Fields_Location: [1, 2, 3, 4] }, // اولًا/ القيادة والادارة 
-            { Group_Locatin: 2, Fields_Location: [0, 1, 2, 3, 4] }, // ثانياً/ التخطيط الستراتيجي 
-            { Group_Locatin: 3, Fields_Location: [0, 1, 2, 3, 4] }, // ثالثاً / التمكين و الولاء الوظيفي 
-            { Group_Locatin: 4, Fields_Location: [0, 1, 2, 3, 4] }, // رابعاً / السلوك و الاستحقاق الوظيفي 
-            { Group_Locatin: 5, Fields_Location: [0, 1, 2, 3, 4] }, // خامساً / السلامة والصحة المهنية والبيئة 
-            { Group_Locatin: 6, Fields_Location: [0, 1, 2, 3, 4] }, // سادساً / الدعم و التواصل 
+            { Group_Locatin: 1, Fields_Location: [2, 3, 4, 5] }, // اولًا/ القيادة والادارة 
+            { Group_Locatin: 2, Fields_Location: Showing_Values }, // ثانياً/ التخطيط الستراتيجي 
+            { Group_Locatin: 3, Fields_Location: Showing_Values }, // ثالثاً / التمكين و الولاء الوظيفي 
+            { Group_Locatin: 4, Fields_Location: Showing_Values }, // رابعاً / السلوك و الاستحقاق الوظيفي 
+            { Group_Locatin: 5, Fields_Location: Showing_Values }, // خامساً / السلامة والصحة المهنية والبيئة 
+            { Group_Locatin: 6, Fields_Location: Showing_Values }, // سادساً / الدعم و التواصل 
         ]
 
         if (event) {
@@ -171,7 +171,9 @@
                 Groups_ID.forEach((Hiding) => document.getElementById(Hiding).style.display = "block");
                 Fields_ID.forEach((Hiding) => document.getElementById(Hiding).style.display = "block");
                 this.group_of_form[0].fields[4].properties[0].values = [Result.Dept_Type]; //نوع جهة العمل
+                this.inputFormField["WorkType"] = Result.Dept_Type;
                 this.group_of_form[0].fields[5].properties[0].values = [Result.Selected_Value]; //اسم جهة العمل
+                this.inputFormField["circle"] = Result.Selected_Value;
                 this.First_Filter(Result.Selected_Value);
 
                 Fields_Info.forEach((Looping) =>{
@@ -185,8 +187,8 @@
             }else{
                 Groups_ID.forEach((Hiding) => document.getElementById(Hiding).style.display = "none");
                 Fields_ID.forEach((Hiding) => document.getElementById(Hiding).style.display = "none");
-                this.group_of_form[0].fields[4].properties[0].values = []; //نوع جهة العمل
-                this.group_of_form[0].fields[5].properties[0].values = []; //اسم جهة العمل
+                // this.group_of_form[0].fields[4].properties[0].values = []; //نوع جهة العمل
+                // this.group_of_form[0].fields[5].properties[0].values = []; //اسم جهة العمل
                 loader.hide();
                 this.singleNotification("اسم او رمز الجهة غير مطابق", "top-right");
             }
@@ -196,6 +198,7 @@
         }
     },
 
+    //فلترة نوع التشكيل على اساس اسم جهة العمل
     First_Filter(event){
         this.inputFormField["DeptType"] = null;
 
@@ -251,10 +254,11 @@
             this.group_of_form[0].fields[6].properties[0].values = Result.Showed_Value;
         }else{
             document.getElementById("73157").style.display = "none";
-            this.group_of_form[0].fields[6].properties[0].values = [];
+            //this.group_of_form[0].fields[6].properties[0].values = [];
         }
     },
 
+    //فلترة اسم التشكيل على اساس نوع التشكيل
     Second_Filter(event){
         let Values = [
             {
@@ -998,14 +1002,15 @@
                 this.group_of_form[0].fields[7].properties[0].values = Result.Showed_Value[Value_Index];
             } else {
                 document.getElementById("48098").style.display = "none";
-                this.group_of_form[0].fields[7].properties[0].values = [];
+               // this.group_of_form[0].fields[7].properties[0].values = [];
             }
         } else {
             document.getElementById("48098").style.display = "none";
-            this.group_of_form[0].fields[7].properties[0].values = [];
+            //this.group_of_form[0].fields[7].properties[0].values = [];
         }
     },
 
+    //فلترة التشكيل الفرعي على اساس اسم التشكيل
     First_Hide(event){
         this.inputFormField["governorate"] = null; //المحافظة
         if(event == "فروع الهيئة في المحافظات" || event == "المكاتب الانتخابية في المحافظات"){
@@ -1050,13 +1055,14 @@
         this.inputFormField["SubDeptName"] = null;
         if(Result && MainDept){
             document.getElementById("93642").style.display = "block";
-            this.group_of_form[0].fields[6].properties[0].values = Result.Showed_Value;
+            this.group_of_form[0].fields[8].properties[0].values = Result.Showed_Value;
         }else{
             document.getElementById("93642").style.display = "none";
-            this.group_of_form[0].fields[6].properties[0].values = [];
+            //this.group_of_form[0].fields[8].properties[0].values = [];
         }
     },
 
+    //فلترة نوع التشكيل الفرعي على اساس التشكيل الفرعي
     Third_Filter(event){
         this.inputFormField["SubDeptType"] = null; //نوع التشكيل الفرعي
         const Values = [
@@ -1081,14 +1087,16 @@
         const Result = Values.find((Finding) => Finding.Selected_Value.includes(event));
         if(Result){
             document.getElementById("93673").style.display = "block";
-            this.group_of_form[0].fields[7].properties[0].values = Result.Showed_Value;
+            this.group_of_form[0].fields[9].properties[0].values = Result.Showed_Value;
         }else{
             document.getElementById("93673").style.display = "none";
-            this.group_of_form[0].fields[7].properties[0].values = "";
+            // this.group_of_form[0].fields[9].properties[0].values = [];
         }
     },
 
+    //فلترة التشكيل على اساس نوع التشكيل الفرعي
     Fourth_Filter(event){
+        this.inputFormField["FinalDeptName"] = null; //التشكيل
         const Values = [
             {
                 FSelected_Value: "مكتب الوزير",
@@ -1397,14 +1405,14 @@
             let Value_Index = Second_Result.TSelected_Value.indexOf(event);
             if (Value_Index !== -1) {
                 document.getElementById("93674").style.display = "block";
-                this.group_of_form[0].fields[8].properties[0].values = Second_Result.Showed_Value[Value_Index];
+                this.group_of_form[0].fields[10].properties[0].values = Second_Result.Showed_Value[Value_Index];
             } else {
                 document.getElementById("93674").style.display = "none";
-                this.group_of_form[0].fields[8].properties[0].values = [];
+                // this.group_of_form[0].fields[10].properties[0].values = [];
             }
         }else{
             document.getElementById("93674").style.display = "none";
-            this.group_of_form[0].fields[8].properties[0].values = [];
+            // this.group_of_form[0].fields[10].properties[0].values = [];
         }
     },
 }

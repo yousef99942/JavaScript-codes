@@ -15,6 +15,7 @@
       { Field_Prog: "HusbandEarner", Field_ID: "94045" }, //هل ( الزوج / الزوجة) كاسب ؟
       { Field_Prog: "ReturmintType", Field_ID: "94128" }, //هل (الزوج / الزوجة) متقاعد؟
       { Field_Prog: "GildAge", Field_ID: "94309" }, // هل لدى المنتسب أبناء بعمر 18 سنة فأكثر؟
+      { Field_Prog: "KidStat", Field_ID: "95012" }, //هل لديك طفل معاق  او عاهة عقلية او بدنية
     ];
 
     Values.forEach((Checking) => {

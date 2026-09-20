@@ -2,15 +2,12 @@
   var Docs = [
     //الاشراف على نصب منظومات الغاز السائل
     ["AttachFile"], //كتاب طلب كشف
-    ["Plan"], //الاشراف على مرحلة العمل
-
     //اعداد تصاميم شبكات الغاز السائل
     ["LeaveReq"], //كتاب رسمي بالطلب +طلب اجازة استثمارية للمجمعات
     ["AutoCAD"], //مخططات معمارية AutoCAD
     ["Planes"], //مخططات مدنية مصادقة من وزارة الاسكان+بيان موقع المحطة
 
     //اعداد متطلبات الكشف الاولي لمواقع المستهلكين
-    ["TechnicalSpecifications"], //المواصفات الفنية للمعدات الغازية + عدد نقاط الاستهلاك
     ["Details"], //كتاب رسمي بالطلب
   ];
   var numbers = [0, 1, 2];
@@ -51,13 +48,11 @@
 
   if (this.form_data.Service == "الاشراف على تنصيب منظومات الغاز السائل") {
     validateDocuments.call(this, Docs[0], numbers[0]);
-    validateDocuments.call(this, Docs[1], numbers[0]);
   }
 
   if (
     this.form_data.Service == "اعداد متطلبات الكشف الاولي لمواقع المستهلكين"
   ) {
-    validateDocuments.call(this, Docs[5], numbers[1]);
     validateDocuments.call(this, Docs[6], numbers[1]);
   }
 

@@ -39,7 +39,7 @@
   this.inputFormField.numberid = this.user.profile.national_id.nationalID;
   document.getElementsByName("numberid")[0]; //رقم الموحدة
 
-  document.getElementsByClassName("21683")[0].style.display = "none";
+  //document.getElementsByName("21683")[0].style.display = "none";
 
   //-------------------------------------------------------------------------------------
   //حصر حقول التواريخ
@@ -54,7 +54,7 @@
     .setAttribute("min", `${new Date().getFullYear() - 90}-12-31`);
   document
     .getElementsByName("agee")[0]
-    .setAttribute("max", `${new Date().getFullYear() - 18}-12-31`);
+    .setAttribute("max", `${new Date().getFullYear() - 16}-12-31`);
 
   //---------------------------------------------------------------------------------------------------------
   //تحديد الحقول باللغة العربية فقط

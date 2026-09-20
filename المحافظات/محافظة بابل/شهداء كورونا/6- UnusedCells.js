@@ -6,10 +6,6 @@
         Field_ID: "89881",
       },
       {
-        Field_Prog: "Wife", //اسم الزوجة
-        Field_ID: "94930",
-      },
-      {
         Field_Prog: "numberch", // عدد الأطفال
         Field_ID: "89882",
       },

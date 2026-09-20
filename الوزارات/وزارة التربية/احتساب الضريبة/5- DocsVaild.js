@@ -65,6 +65,10 @@
     this.form_data.maritstatus === "مطلق" //الحالة الاجتماعية
   ) {
     validateDocuments.call(this, ["dieme"], numbers[0]); //صورة قيد للزوجه او الزوج المطلق / المطلقه ( قرار طلاق مصدق )
+
+    if (this.form_data.gender === "ذكر") {
+      validateDocuments.call(this, ["DevOrde"], numbers[0]); //قرار مديرية التنفيذ الخاص بالنفقة الشرعية
+    }
   }
 
   if (
@@ -82,6 +86,17 @@
     this.form_data.PartnerJobType === "متقاعد" //اذا الزوج منتسب او متقاعد او كاسب
   ) {
     validateDocuments.call(this, ["idnumber"], numbers[0]); //البطاقة الموحدة ( الوطنية ) للزوج / الزوجة
+  }
+
+  //انثى ومتزوجة وزوجها عاجز عن العمل
+  if (
+    this.form_data.gender === "انثى" && //جنس المتقدم
+    this.form_data.maritstatus === "متزوج" && //الحالة الاجتماعية
+    this.form_data.PartnerJobType === "زوج عاجز عن العمل" //اذا الزوج منتسب او متقاعد او كاسب
+  ) {
+    validateDocuments.call(this, ["idnumber"], numbers[0]); //البطاقة الموحدة ( الوطنية ) للزوج / الزوجة
+    validateDocuments.call(this, ["MedReport"], numbers[0]); //تقرير طبي من لجنة دائمية مختصة
+    //validateDocuments.call(this, ["TaxStat"], numbers[0]); //كتاب تاييد من هيأة العامة للضرائب يؤيد فيه عدم وجود دخل للزوج
   }
 
   if (this.form_data.ChildStat === "نعم") {
@@ -116,5 +131,13 @@
     this.form_data.combinesalary === "كلا"
   ) {
     validateDocuments.call(this, ["TaxStat"], numbers[0]); //كتاب تاييد من هيأة العامة للضرائب يؤيد فيه عدم وجود دخل للزوج
+  }
+
+  if (this.form_data.KidStat === "نعم") {
+    validateDocuments.call(this, ["KidReport"], numbers[0]); //التقرير الطبي للطفل ذي الإعاقة
+  }
+
+  if (this.form_data.Insuranstat === "نعم") {
+    validateDocuments.call(this, ["LifeInsurance"], numbers[0]); //وثيقة التأمين على الحياة من شركة التأمين
   }
 }

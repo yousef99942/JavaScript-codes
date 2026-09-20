@@ -79,10 +79,18 @@
 
     First_Filter(event){
         this.inputFormField["majorr"] = null;
-        if(event == "CEET"){
-            this.group_of_form[2].fields[2].properties[0].values = ["مهندس كهرباء"];
-        }else if(event == "GW"){
-            this.group_of_form[2].fields[2].properties[0].values = ["حارس امني"];
+        if(event == "Poer Petrol Eum"){
+            this.group_of_form[2].fields[2].properties[0].values = [
+                "مشرف سلامة",
+                "مهندس كهرباء",
+                "عامل يدوي",
+            ];
+        }else if(event == "COSL"){
+            this.group_of_form[2].fields[2].properties[0].values = [
+                "مهندس نفط",
+                "مهندس ميكانيك",
+                "مهندس كهرباء",
+            ];
         }else{
             this.group_of_form[2].fields[2].properties[0].values = [];
         }

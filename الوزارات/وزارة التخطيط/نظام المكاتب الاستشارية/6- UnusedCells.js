@@ -367,4 +367,20 @@
       document.getElementById(Group_ID[i]).style.visibility = "collapse";
     }
   }
+
+  if (this.tab_click == "form") {
+    let Values = [
+      { Field_Prog: "vacationno", Field_ID: "86944" }, //رقم الاجازة
+      { Field_Prog: "vacationdate", Field_ID: "86946" }, //تاريخ الاجازة
+      { Field_Prog: "sessionno", Field_ID: "86947" }, //رقم جلسة المنح
+      { Field_Prog: "sessiondate", Field_ID: "86949" }, //تاريخ جلسة المنح
+    ];
+
+    Values.forEach((Checking) => {
+      if (this.form_data[Checking.Field_Prog] == null) {
+        document.getElementById(Checking.Field_ID).style.visibility =
+          "collapse";
+      }
+    });
+  }
 }

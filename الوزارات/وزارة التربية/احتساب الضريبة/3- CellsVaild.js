@@ -128,11 +128,20 @@
     }
 
     if (
+      this.inputFormField["KidStat"] === null ||
+      this.inputFormField["KidStat"] === ""
+    ) {
+      this.evalErr.push(
+        `الحقل ${this.group_of_form[2].fields[13].label} مطلوب`,
+      ); //هل لديك طفل معاق  او عاهة عقلية او بدنية
+    }
+
+    if (
       this.inputFormField["FirstTable"] === null ||
       this.inputFormField["FirstTable"] === ""
     ) {
       this.evalErr.push(
-        `الحقل ${this.group_of_form[2].fields[13].label} مطلوب`,
+        `الحقل ${this.group_of_form[2].fields[14].label} مطلوب`,
       ); //اسماء الابناء
     }
   }

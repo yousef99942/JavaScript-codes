@@ -1,4 +1,6 @@
 {
+  document.getElementById("35689_group").style.display = "none"; //معدل الرضا العام
+
   //checkbox ترتيب حقول
   //بيئة العمل ( يمكن التأشير على اكثر من اختيار )
   this.group_of_form[0].fields[11].properties[0].values = [
@@ -37,4 +39,8 @@
     document.getElementById(Labels_ID[i]).style.cssText =
       "color: #041f5cff; font-size: 18px; font-weight: bold; padding-top: 13px; padding-bottom: 13px";
   }
+
+  //علما ان: 0 - غير راضي، 1- غير راضي الى حد ما، 2- محايد، 3- راضي الى حد ما، 4- راضي جداً
+  document.getElementById("94991").style.cssText =
+    "color: rgb(168, 11, 0); font-size: 20px; font-weight: bold; padding-top: 35px; padding-bottom: 35px; text-align: center;";
 }

@@ -2,10 +2,6 @@
   let First_Values = [
     {
       Field_Prog: "numberw", //عدد الزوجات
-      Field_Location: 13,
-    },
-    {
-      Field_Prog: "Wife", //اسم الزوجة
       Field_Location: 14,
     },
     {
@@ -14,7 +10,10 @@
     },
   ];
 
-  if (this.inputFormField.marital == "متزوج/متزوجة") {
+  if (
+    this.inputFormField.marital == "متزوج/متزوجة" &&
+    this.inputFormField.Type === "ذكر"
+  ) {
     First_Values.forEach((Checking) => {
       if (
         this.inputFormField[Checking.Field_Prog] == null ||
@@ -25,5 +24,21 @@
         );
       }
     });
+  }
+
+  if (
+    (this.inputFormField.marital == "متزوج/متزوجة" &&
+      this.inputFormField.Type === "انثى") ||
+    this.inputFormField.marital == "ارمل/ارملة" ||
+    this.inputFormField.marital == "مطلق/مطلقة"
+  ) {
+    if (
+      this.inputFormField["numberch"] == null ||
+      this.inputFormField["numberch"] == ""
+    ) {
+      this.evalErr.push(
+        `الحقل ${this.group_of_form[0].fields[15].label} مطلوب`,
+      );
+    }
   }
 }

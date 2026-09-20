@@ -89,30 +89,8 @@
     "67968", //ماهي المدة الزمنية التي تم خلالها تطبيق النظام الاداري للمختبر
     "91997", //اذا كان اختيار مجال الاعتماد (اخرى) يرجى ملء الحقل التالي:
     "92220", //المجال المراد التقدم فيه لاعتماد  عنوان المختبر:
-  ];
-
-  Arabic_English_Only(Fields_ID);
-
-  //-----------------------------------------------------------------------------
-  //حصر الحقول باللغة العربية والرموز فقط
-  function Arabic_Symbols_Only(Fields_ID) {
-    for (var i = 0; i < Fields_ID.length; i++) {
-      const input = document.getElementById(Fields_ID[i]);
-      input.addEventListener("keydown", (e) => {
-        const ctrl = e.ctrlKey || e.metaKey;
-        if (ctrl || e.key.length > 1) return;
-        // العربية + المسافة + الرموز
-        const regex = /^[\u0600-\u06FF\s!"#$%&'()*+,\-./:;<=>?@[\\\]^_`{|}~]$/;
-        if (!regex.test(e.key)) {
-          e.preventDefault();
-        }
-      });
-    }
-  }
-
-  var Fields_ID = [
     "67940", //العنوان الرئيسي
   ];
 
-  Arabic_Symbols_Only(Fields_ID);
+  Arabic_English_Only(Fields_ID);
 }

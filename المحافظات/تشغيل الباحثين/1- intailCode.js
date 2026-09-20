@@ -20,22 +20,22 @@
     "قلعة صالح",
   ];
 
-  //يخفي ارقام الاعلان عدا رقم 3
-  this.group_of_form[2].fields[0].properties[0].values = ["9"];
-  //اخفي اسماء الشركات عدا شركة محددة
-  this.group_of_form[2].fields[1].properties[0].values = ["CEET", "GW"];
-  //اخفاء الاختصاصات عدا اختصاصات محددة
-  // this.group_of_form[2].fields[2].properties[0].values = [
-  //   "مهندس سوائل الحفر",
-  //   "مشرف الصحة والسلامة والبيئة",
-  //   "مشرف المواد والخدمات اللوجستية",
-  //   "مشرف الحفر",
-  //   "مشرف الحفر الليلي",
-  //   "مهندس ضمان الجودة والسيطرة النوعية",
-  //   "مشرف اقدم لاكمال واختبارات الانتاج",
-  //   "مهندس الحفر في موقع البئر",
-  //   "مهندس انشاءات مدنية",
-  // ];
+  //هنا يتم تعديل الحقول الخاصة بالاعلانات
+  //حقل رقم الاعلان
+  this.group_of_form[2].fields[0].properties[0].values = ["10"];
+  //اسم الشركة
+  this.group_of_form[2].fields[1].properties[0].values = [
+    "Poer Petrol Eum",
+    "COSL",
+  ];
+  //الاختصاص
+  this.group_of_form[2].fields[2].properties[0].values = [
+    "مشرف سلامة",
+    "مهندس كهرباء",
+    "عامل يدوي",
+    "مهندس نفط",
+    "مهندس ميكانيك",
+  ];
 
   //----------------------------------------------------------------------------------
   //التعهد
@@ -66,7 +66,6 @@
       input.addEventListener("keydown", (e) => {
         const ctrl = e.ctrlKey || e.metaKey;
         if (ctrl || e.key.length > 1) return; // السماح بالاختصارات والأسهم
-
         // الأحرف العربية + الهمزة + المسافة
         if (!/^[\u0600-\u06FF\s]$/.test(e.key)) {
           e.preventDefault(); // منع أي شيء غير عربي
@@ -109,11 +108,9 @@
   function Arabic_English_Only(Fields_ID) {
     for (let i = 0; i < Fields_ID.length; i++) {
       const input = document.getElementById(Fields_ID[i]);
-
       input.addEventListener("keydown", (e) => {
         const ctrl = e.ctrlKey || e.metaKey;
         if (ctrl || e.key.length > 1) return; // السماح بالاختصارات والأسهم
-
         // عربي + إنجليزي + مسافة
         if (!/^[\u0600-\u06FFa-zA-Z ]$/.test(e.key)) {
           e.preventDefault();
@@ -134,53 +131,51 @@
   Arabic_English_Only(Fields_ID);
 
   //-----------------------------------------------------------------------------------
-  //تاريخ التخرج
-  document
-    .getElementById("64634")
-    .addEventListener("keydown", function (event) {
-      event.preventDefault();
-    });
-  document.getElementsByName("birthdate")[0].setAttribute("min", "1990-01-01");
-  document
-    .getElementsByName("birthdate")[0]
-    .setAttribute("max", `${new Date().getFullYear()}-12-31`);
 
-  //تاريخ التخرج
-  document
-    .getElementById("64679")
-    .addEventListener("keydown", function (event) {
-      event.preventDefault();
+  function Date_Limit(Fields_Value) {
+    Fields_Value.forEach((Values) => {
+      document
+        .getElementById(Values.Field_ID)
+        .addEventListener("keydown", function (event) {
+          event.preventDefault();
+        });
+      document
+        .getElementsByName(Values.Field_Prog)[0]
+        .setAttribute("min", Values.Min_Date);
+      document
+        .getElementsByName(Values.Field_Prog)[0]
+        .setAttribute("max", Values.Max_Date);
     });
-  document
-    .getElementsByName("graduationdate")[0]
-    .setAttribute("min", "2015-01-01");
-  document
-    .getElementsByName("graduationdate")[0]
-    .setAttribute("max", `${new Date().getFullYear()}-12-31`);
+  }
 
-  //تاريخ تسجيل الاستشارية
-  document
-    .getElementById("64680")
-    .addEventListener("keydown", function (event) {
-      event.preventDefault();
-    });
-  document.getElementsByName("date")[0].setAttribute("min", "2015-01-01");
-  document
-    .getElementsByName("date")[0]
-    .setAttribute("max", `${new Date().getFullYear()}-12-31`);
+  let Fields_Value = [
+    {
+      Field_ID: "64634",
+      Field_Prog: "birthdate",
+      Min_Date: "1990-01-01",
+      Max_Date: `${new Date().getFullYear()}-12-31`,
+    }, //تاريخ التخرج
+    {
+      Field_ID: "64679",
+      Field_Prog: "graduationdate",
+      Min_Date: "2015-01-01",
+      Max_Date: `${new Date().getFullYear()}-12-31`,
+    }, //
+    {
+      Field_ID: "64680",
+      Field_Prog: "date",
+      Min_Date: "2015-01-01",
+      Max_Date: `${new Date().getFullYear()}-12-31`,
+    }, //تاريخ تسجيل الاستشارية
+    {
+      Field_ID: "64684",
+      Field_Prog: "year",
+      Min_Date: `${new Date().getFullYear()}-01-01`,
+      Max_Date: `${new Date().getFullYear()}-12-31`,
+    }, //تاريخ الاعلان
+  ];
 
-  //تاريخ الاعلان
-  document
-    .getElementById("64684")
-    .addEventListener("keydown", function (event) {
-      event.preventDefault();
-    });
-  document
-    .getElementsByName("year")[0]
-    .setAttribute("min", `${new Date().getFullYear()}-01-01`);
-  document
-    .getElementsByName("year")[0]
-    .setAttribute("max", `${new Date().getFullYear()}-12-31`);
+  Date_Limit(Fields_Value);
 
   //--------------------------------------------------------------------------------------
   function Numbers_Dot_Only(Fields_ID) {

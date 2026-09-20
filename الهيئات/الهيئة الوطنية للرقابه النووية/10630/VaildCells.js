@@ -59,17 +59,6 @@
   }
 
   //رقم هاتف المؤسسة
-  //المجموعة 1
-  // التحقق من حقل رقم الهاتف يجب ان يبدء الرقم ب07
-  const phoneNo1 = this.inputFormField.phoncompany;
-  let startNo1 = phoneNo1.substring(0, 2);
-  if (startNo1 != "07") {
-    this.evalErr.push("يجب أن يبدأ رقم هاتف المؤسسة بالرقم 07.");
-  }
-
-  //رقم هاتف مسؤول الوقاية
-  //المجموعة 2
-  // التحقق من حقل رقم الهاتف يجب ان يبدء الرقم ب07
   const phoneNo2 = this.inputFormField.mob;
   let startNo2 = phoneNo2.substring(0, 2);
   if (startNo2 != "07") {

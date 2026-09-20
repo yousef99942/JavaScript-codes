@@ -91,6 +91,8 @@ createApp({
     return {
       NumberOne: 0,
       NumberTwo: 0,
+      My_Age: 27,
+      My_Name: "Yousif",
     };
   },
 
@@ -107,3 +109,24 @@ createApp({
     },
   },
 }).mount("#FourthApp");
+
+//Fifth Div
+createApp({
+  data() {
+    return {
+      Animals: ["Dog", "Cat", "Monkey", "Lion"],
+      Values: [
+        {
+          ID: 1,
+          Name: "Yousif",
+          Age: 27,
+        },
+        {
+          ID: 2,
+          Name: "Mohammed",
+          Age: 25,
+        },
+      ],
+    };
+  },
+}).mount("#FifthApp");

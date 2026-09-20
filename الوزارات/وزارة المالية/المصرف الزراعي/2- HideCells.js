@@ -33,7 +33,6 @@
                 this.group_of_form[0].fields[24].properties[0].values = []
             }
         }
-
     },
 
     loantypeFun(event){
@@ -42,8 +41,11 @@
         if (loanType == "قرض تجاري (للمشاريع الصغيرة)") {
             document.getElementById("34364_group").style.display = "block"// استمارة قرض تجاري
             document.getElementById("34365_group").style.display = "none"// استمارة قرض زراعي
- 		   document.getElementById("34560_group").style.display = "none"// استمارة قرض منظومة الطاقة
+ 		    document.getElementById("34560_group").style.display = "none"// استمارة قرض منظومة الطاقة
             document.getElementById("34367_group").style.display = "none"// استمارة قرض السيارات
+
+            document.getElementById("93920").style.display = "block"; //معلومات مسجل الشركات
+
             //تفريغ حقول استمارة القرض التجاري
             for (let i = 1; i <= 4; i++) {
                 if (i != 1) {
@@ -55,7 +57,7 @@
         } else if (loanType == "قرض زراعي (للأفراد)") {
             document.getElementById("34365_group").style.display = "block"// استمارة قرض زراعي
             document.getElementById("34364_group").style.display = "none"// استمارة قرض تجاري
- 		   document.getElementById("34560_group").style.display = "none"// استمارة قرض منظومة الطاقة
+            document.getElementById("34560_group").style.display = "none"// استمارة قرض منظومة الطاقة
             document.getElementById("34367_group").style.display = "none"// استمارة قرض السيارات
             //تفريغ حقول استمارة القرض الزراعي
             for (let i = 1; i <= 4; i++) {
