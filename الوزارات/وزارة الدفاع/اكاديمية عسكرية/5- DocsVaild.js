@@ -1,7 +1,10 @@
 {
-  var Docs1 = ["File"];
+  var Docs1 = ["docpeople"]; //الهوية العسكريه (اذا كنت من ابناء العسكريين) لكلا والوجهين
+  var Docs2 = ["doccrtif"]; //الشهادة الجامعية ان وجدت
+
   var numbers = [0];
 
+  //! لا يحتاج القيام باي تعديل على الدالة الخاصة بالتاكد من الملفات
   // Function to handle document validation
   function validateDocuments(docsArray, PlaceNum) {
     // Loop through the docs array and validate each document field
@@ -30,8 +33,22 @@
     });
   }
 
-  // Validate based on customer type or form type
-  if (this.form_data.FirstSeletcor == "متزوج") {
+  if (
+    this.form_data.people === "نعم" ||
+    this.form_data.Tittel === "منتسب/ عسكري / مرتب"
+  ) {
     validateDocuments.call(this, Docs1, numbers[0]);
+  }
+
+  let Selected_Value = [
+    "الدبلوم العالي",
+    "البكالوريوس",
+    "الماجستير",
+    "الدكتوراه",
+    "الدبلوم",
+  ];
+
+  if (Selected_Value.includes(this.form_data.Certi)) {
+    validateDocuments.call(this, Docs2, numbers[0]);
   }
 }

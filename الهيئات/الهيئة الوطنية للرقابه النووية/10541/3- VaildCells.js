@@ -56,10 +56,6 @@
       "السليمانية",
       "دهوك",
       "حلبجة",
-    ],
-    Fields_Location = [
-      4, //سلكتر الاقضية
-      5, //اسم القضاء
     ];
 
   //مجموعة معلومات الشركة المستوردة او المُعيدة
@@ -85,7 +81,7 @@
 
   //مجموعة معلومات الشركة الناقلة
   //سلكتر الاقضية
-  if (Values.includes(this.inputFormField.governorate)) {
+  if (Values.includes(this.inputFormField.FirstGovernorate)) {
     if (
       this.inputFormField["district"] == null ||
       this.inputFormField["district"] == ""
@@ -95,7 +91,7 @@
   }
 
   //اسم القضاء
-  if (Second_Values.includes(this.inputFormField.governorate)) {
+  if (Second_Values.includes(this.inputFormField.FirstGovernorate)) {
     if (
       this.inputFormField["SecDiscName"] == null ||
       this.inputFormField["SecDiscName"] == ""
@@ -106,7 +102,7 @@
 
   //مجموعة المؤسسة المستخدمة
   //سلكتر الاقضية
-  if (Values.includes(this.inputFormField.governorate)) {
+  if (Values.includes(this.inputFormField.placsee)) {
     if (
       this.inputFormField["SecondDistrict"] == null ||
       this.inputFormField["SecondDistrict"] == ""
@@ -116,7 +112,7 @@
   }
 
   //اسم القضاء
-  if (Second_Values.includes(this.inputFormField.governorate)) {
+  if (Second_Values.includes(this.inputFormField.placsee)) {  
     if (
       this.inputFormField["ThiDiscName"] == null ||
       this.inputFormField["ThiDiscName"] == ""

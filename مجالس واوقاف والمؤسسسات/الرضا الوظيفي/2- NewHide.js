@@ -122,6 +122,7 @@
             { Dept_Type: "جهات غير مرتبطة بوزارة", Selected_Value: "شبكة الإعلام العراقي", Password: "LI0@2" },
             { Dept_Type: "جهات غير مرتبطة بوزارة", Selected_Value: "المفوضية العليا لحقوق الانسان في العراق", Password: "LC3@2" },
             //{ Dept_Type: "جهات غير مرتبطة بوزارة", Selected_Value: "مركز العمليات الوطني", Password: "UY6@2" },
+            { Dept_Type: "جهات غير مرتبطة بوزارة", Selected_Value: "المركز الوطني للتجارب", Password: "NDTC6" },
         ],
         //المجموعات
         Groups_ID = [
@@ -174,6 +175,7 @@
                 this.inputFormField["WorkType"] = Result.Dept_Type;
                 this.group_of_form[0].fields[5].properties[0].values = [Result.Selected_Value]; //اسم جهة العمل
                 this.inputFormField["circle"] = Result.Selected_Value;
+
                 this.First_Filter(Result.Selected_Value);
 
                 Fields_Info.forEach((Looping) =>{
@@ -235,7 +237,7 @@
                 Showed_Value: ["مديرية", "تشكيل مستقل"],
             }, //"مديرية", "تشكيل مستقل"
             {
-                Selected_Value: ["هيئة الاوراق المالية", "بيت الحكمة", "مجلس الخدمة الاتحادي", "ديوان الوقف السني", "وزارة النقل", "وزارة المالية"],
+                Selected_Value: ["هيئة الاوراق المالية", "بيت الحكمة", "مجلس الخدمة الاتحادي", "ديوان الوقف السني", "وزارة النقل", "وزارة المالية", "المركز الوطني للتجارب"],
                 Showed_Value: ["دائرة",],
             }, //"دائرة",
             {
@@ -988,6 +990,11 @@
                     ], //تشكيل مستقل
                 ]
             }, //"وزارة الداخلية",
+            {
+                FSelected_Value: "المركز الوطني للتجارب",
+                SSelected_Value: ["دائرة"],
+                Showed_Value: [ ["تيست"], ]//تشكيل مستقل
+            }, //"المركز الوطني للتجارب"
         ];
 
         this.inputFormField["amannadep"] = null;    

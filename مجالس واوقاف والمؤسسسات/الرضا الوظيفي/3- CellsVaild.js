@@ -69,13 +69,14 @@
   let Values = [
     { Selected_Value: "0", Result_Value: 25 },
     { Selected_Value: "1", Result_Value: 50 },
+    { Selected_Value: "2", Result_Value: 0 },
     { Selected_Value: "3", Result_Value: 75 },
     { Selected_Value: "4", Result_Value: 100 },
   ];
 
   let Fields_Progs = [
     {
-      Result_Field: this.inputFormField.FirstResult, //معدل القيادة والادارة
+      Result_Field: "FirstResult", //معدل القيادة والادارة
       Fields_Prog: [
         this.inputFormField.optionone, //السؤال الاول
         this.inputFormField.optionthree, //السؤال الثاني
@@ -85,7 +86,7 @@
       Result: 0,
     }, //معدل القيادة والادارة
     {
-      Result_Field: this.inputFormField.SecondResult, //معدل التخطيط الستراتيجي
+      Result_Field: "SecondResult", //معدل التخطيط الستراتيجي
       Fields_Prog: [
         this.inputFormField.optionsix, //السؤال الاول
         this.inputFormField.optrionsiven, //السؤال الثاني
@@ -96,7 +97,7 @@
       Result: 0,
     }, //معدل التخطيط الستراتيجي
     {
-      Result_Field: this.inputFormField.ThirdResult, //التمكين و الولاء الوظيفي
+      Result_Field: "ThirdResult", //التمكين و الولاء الوظيفي
       Fields_Prog: [
         this.inputFormField.optioneleven, //السؤال الاول
         this.inputFormField.optiontwelve, //السؤال الثاني
@@ -107,7 +108,7 @@
       Result: 0,
     }, //التمكين و الولاء الوظيفي
     {
-      Result_Field: this.inputFormField.FourthResult, //السلوك و الاستحقاق الوظيفي
+      Result_Field: "FourthResult", //السلوك و الاستحقاق الوظيفي
       Fields_Prog: [
         this.inputFormField.astbanathana, //السؤال الاول
         this.inputFormField.optionsevin, //السؤال الثاني
@@ -118,7 +119,7 @@
       Result: 0,
     }, //السلوك و الاستحقاق الوظيفي
     {
-      Result_Field: this.inputFormField.FifthResult, //السلامة والصحة المهنية والبيئة
+      Result_Field: "FifthResult", //السلامة والصحة المهنية والبيئة
       Fields_Prog: [
         this.inputFormField.selectonetwo, //السؤال الاول
         this.inputFormField.selectthre, //السؤال الثاني
@@ -129,7 +130,7 @@
       Result: 0,
     }, //السلامة والصحة المهنية والبيئة
     {
-      Result_Field: this.inputFormField.SixthResult, //الدعم و التواصل
+      Result_Field: "SixthResult", //الدعم و التواصل
       Fields_Prog: [
         this.inputFormField.instrasbana, //السؤال الاول
         this.inputFormField.theerfaiv, //السؤال الثاني
@@ -140,4 +141,19 @@
       Result: 0,
     }, //الدعم و التواصل
   ];
+
+  // حساب المتوسط لكل مجموعة
+  Fields_Progs.forEach((group) => {
+    let total = 0;
+
+    group.Fields_Prog.forEach((selected) => {
+      const match = Values.find((v) => v.Selected_Value === String(selected));
+      total += match ? match.Result_Value : 0;
+    });
+
+    // القسمة على العدد الكلي للأسئلة دائمًا
+    group.Result = total / group.Fields_Prog.length;
+
+    this.inputFormField[group.Result_Field] = group.Result.toFixed(2);
+  });
 }

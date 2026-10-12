@@ -202,7 +202,11 @@
             { Company_Name: "ثائر الرحاب للحج والعمرة ونقل المسافرين المحدودة", Password: "TR@33" },
             { Company_Name: "ارض الرحمة للحج والعمرة المحدودة", Password: "AR@34" },
             { Company_Name: "شركة الدلتا للسفر والسياحة المحدودة", Password: "SD@35" },
-            { Company_Name: "ديار النجف للسفر والسياحة محدودة المسؤولية", Password: "DN@36"}
+            { Company_Name: "ديار النجف للسفر والسياحة محدودة المسؤولية", Password: "DN@36"},
+            { Company_Name: "نسمات وادي العتيق للحج والعمرة محدودة المسؤولية", Password: "QP@37"},
+            { Company_Name: "نسيم السحر للسفر والسياحة محدودة المسؤولية", Password: "QZ@38  "},
+            { Company_Name: "افواج النور للحج والعمرة ونقل المسافرين محدودة المسؤولية", Password: "QM@39"},
+            { Company_Name: "انوار المدينة للحج والعمرة محدودة المسؤولية", Password: "QL@40"},
         ];
 
         let Result = Companies.find((Finding) => this.inputFormField.companyn === Finding.Company_Name && event === Finding.Password);

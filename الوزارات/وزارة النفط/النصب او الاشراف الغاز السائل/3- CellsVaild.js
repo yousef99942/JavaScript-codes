@@ -9,19 +9,10 @@
     }
 
     if (
-      this.inputFormField["MGB"] == "" ||
-      this.inputFormField["MGB"] == null
-    ) {
-      this.evalErr.push(`الحقل ${this.group_of_form[1].fields[1].label} مطلوب`);
-    }
-  }
-
-  if (this.inputFormField.MGB == "نعم") {
-    if (
       this.inputFormField["Microsoft"] == "" ||
       this.inputFormField["Microsoft"] == null
     ) {
-      this.evalErr.push(`الحقل ${this.group_of_form[1].fields[2].label} مطلوب`);
+      this.evalErr.push(`الحقل ${this.group_of_form[1].fields[1].label} مطلوب`);
     }
   }
 

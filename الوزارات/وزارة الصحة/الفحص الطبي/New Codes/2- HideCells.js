@@ -29,21 +29,18 @@
         document.getElementById("72901").style.display = "block"; //القضاء
         this.group_of_form[0].fields[1].properties[0].values = Result.Showed_Value; //القضاء
         document.getElementById("49912").style.display = "none"; //صباحي لو مسائي
-        //this.group_of_form[0].fields[2].properties[0].values = []; //صباحي لو مسائي
       }else{
         document.getElementById("49912").style.display = "block"; //صباحي لو مسائي
         this.group_of_form[0].fields[2].properties[0].values = Result.Showed_Value; //صباحي لو مسائي
         document.getElementById("72901").style.display = "none"; //القضاء
-        //this.group_of_form[0].fields[1].properties[0].values = []; //القضاء
       }
     }else{
       document.getElementById("72901").style.display = "none"; //القضاء
-      //this.group_of_form[0].fields[1].properties[0].values = []; //القضاء
       document.getElementById("49912").style.display = "none"; //صباحي لو مسائي
-      //this.group_of_form[0].fields[2].properties[0].values = []; //صباحي لو مسائي
     }
   },
 
+  //مبدئيا هاي ما احتاجها لان هاي راح تظهر حقل القضاء عند اختيار بغداد
   First_Hide(event){
     this.inputFormField["GOVValues"] = null;
     if(event == "بغداد"){
@@ -61,7 +58,6 @@
       this.group_of_form[0].fields[2].properties[0].values = ["صباحي",  "مسائي"]; //صباحي لو مسائي
     }else{
       document.getElementById("49912").style.display = "none"; //صباحي لو مسائي
-      //this.group_of_form[0].fields[2].properties[0].values = []; //صباحي لو مسائي
     }
   },
   
@@ -85,6 +81,12 @@
       ],
     ];
 
+    /*
+      FSelected_Value: القضاء او المحافظة
+      SSelected_Value: صباحي او مسائي
+      FShowed_Value: اسماء اللجان
+      SShowed_Value: اوقات
+    */
     let Values = [
       {
         FSelected_Value: "الكرخ",
@@ -99,8 +101,7 @@
         FSelected_Value: "الكرخ",
         SSelected_Value: "مسائي",
         FShowed_Value:[
-          "لجنة العيادة الطبية الشعبية البياع المسائي", "لجنة العيادة الشعبية اسماعيل ناجي مسائي",
-          //"لجنة العيادة الطبية الشعبية الاسكان المسائي",
+          "لجنة العيادة الطبية الشعبية البياع المسائي", "لجنة العيادة الشعبية اسماعيل ناجي مسائي", //"لجنة العيادة الطبية الشعبية الاسكان المسائي",
         ],
         SShowed_Value: Work_Hours[1]
       },
@@ -114,8 +115,7 @@
         FSelected_Value: "الرصافة",
         SSelected_Value: "مسائي",
         FShowed_Value:[
-          "لجنة العيادة الشعبية صدر ثانية مسائي", "لجنة العيادة الشعبية صليخ مسائي",
-          //"لجنة العيادة الشعبية  فخر الدين ال جميل المسائي",
+          "لجنة العيادة الشعبية صدر ثانية مسائي", "لجنة العيادة الشعبية صليخ مسائي", //"لجنة العيادة الشعبية  فخر الدين ال جميل المسائي",
         ],
         SShowed_Value: Work_Hours[1]
       },
@@ -123,8 +123,7 @@
         FSelected_Value: "البصرة",
         SSelected_Value: "مسائي",
         FShowed_Value: [
-          "اللجنة الطبية المسائية الثانية في البصرة", "اللجنة الطبية المسائية الاولى في البصرة"
-          //"اللجنة الطبية المسائية الثالثة في البصرة",
+          "اللجنة الطبية المسائية الثانية في البصرة", "اللجنة الطبية المسائية الاولى في البصرة", //"اللجنة الطبية المسائية الثالثة في البصرة",
         ],
         SShowed_Value: Work_Hours[1]
       },
@@ -136,8 +135,7 @@
         FSelected_Value: "بابل",
         SSelected_Value: "مسائي",
         FShowed_Value: [
-          "اللجنة الطبية المسائية في بابل"
-          //"لجنة العيادات الشعبية المركزية",
+          "اللجنة الطبية المسائية في بابل", //"لجنة العيادات الشعبية المركزية",
         ],
         SShowed_Value: Work_Hours[1]
       },
@@ -152,7 +150,7 @@
       {FSelected_Value: "ديالى", SSelected_Value: "مسائي", FShowed_Value: ["اللجنة الطبية المسائية في المفرق"], SShowed_Value: Work_Hours[1]},
       {FSelected_Value: "الديوانية", SSelected_Value: "مسائي", FShowed_Value: ["اللجنة الطبية المسائية في الديوانية"], SShowed_Value: Work_Hours[1]},
       {FSelected_Value: "صلاح الدين", SSelected_Value: "صباحي", FShowed_Value: ["اللجنة الطبية الصباحية في تكريت"], SShowed_Value: Work_Hours[0]},
-      {FSelected_Value: "صلاح الدين", SSelected_Value: "مسائي", FShowed_Value: ["لجنة العيادات الشعبية المسائية في الشرقاط",], SShowed_Value: Work_Hours[1]},
+      //{FSelected_Value: "صلاح الدين", SSelected_Value: "مسائي", FShowed_Value: ["لجنة العيادات الشعبية المسائية في الشرقاط",], SShowed_Value: Work_Hours[1]},
       {
         FSelected_Value: "نينوى",
         SSelected_Value: "صباحي",
@@ -166,7 +164,7 @@
         FSelected_Value: "نينوى",
         SSelected_Value: "مسائي",
         FShowed_Value: [
-          "اللجنة الطبية المسائية لفحص السياقة في مرور الجانب الايسر", "اللجنة الطبية المسائية لفحص السياقة في مرور الجانب الايمن",
+          "اللجنة الطبية المسائية لفحص السياقة في مرور الجانب الايسر", //"اللجنة الطبية المسائية لفحص السياقة في مرور الجانب الايمن",
         ],
         SShowed_Value: Work_Hours[1]
       },
@@ -179,19 +177,19 @@
 
     var Result;
     if(this.inputFormField.governorate == "بغداد"){
-      Result = Values.find((Finding) => (event === Finding.FSelected_Value && this.inputFormField.typeReserve === Finding.SSelected_Value));
+      Result = Values.find((Finding) => (event === Finding.SSelected_Value && this.inputFormField.GOVValues === Finding.FSelected_Value)); //اجيك ويا حقل القضاء وموعد الفحص
     }
     
     if(Gover_Values.includes(this.inputFormField.governorate)){
-      Result = Values.find((Finding) => (event === Finding.SSelected_Value && this.inputFormField.governorate === Finding.FSelected_Value));
+      Result = Values.find((Finding) => (event === Finding.SSelected_Value && this.inputFormField.governorate === Finding.FSelected_Value)); //اجيك ويا حقل المحافظة وموعد الفحص
     }
 
     if(Result){
       this.group_of_form[0].fields[3].properties[0].values = Result.FShowed_Value; //اسم اللجنة
       this.group_of_form[0].fields[5].properties[0].values = Result.SShowed_Value; //موعد المراجعة (ساعة المراجعة)
     }else{
-      this.group_of_form[0].fields[3].properties[0].values = []; //اسم اللجنة
-      this.group_of_form[0].fields[5].properties[0].values = []; //موعد المراجعة (ساعة المراجعة)
+      this.group_of_form[0].fields[3].properties[0].values = ["لا يوجد"]; //اسم اللجنة
+      this.group_of_form[0].fields[5].properties[0].values = ["لا يوجد"]; //موعد المراجعة (ساعة المراجعة)
     }
   },
 

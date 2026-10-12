@@ -14,7 +14,7 @@
         * النوع الاول هو نستطيع تسميته بحقل الاساس وهو الذي سيكون عليه الاعتماد باخفاء واظهار الحقول او المجاميع
         * او الفلتره والى اخره وحسب القيمة التي سوف يختارها المواطن من هذا الحقل
         
-        * النوع الثاني هو الحقول المخفيه والتي تظهر وتختفي حسب القيمة المختاره في حقل الاساس في النوع الاول
+        * النوع الثاني هو الحقول المتغيره او المخفيه والتي تظهر وتختفي حسب القيمة المختاره في حقل الاساس في النوع الاول
         
         ! من داخل اعدادات الحقل required والغاء خيار hidden الحقول التي نود اظهارها واخفائها يجب جعلها
         ! سوف توقف الخدمة اذا كان الحقل مخفي وتجعل المواطن لا يستطيع العبور للملفات required و hidden لكون الحقول التي تكون 
@@ -44,16 +44,14 @@
     //-----------------------------------------------------------------------------------------------------------------------------
     //! لاخفاء واظهار حقل واحد
     First_Case(event){
-        this.inputFormField["ProgName"] = null; //* inputFormField نضع الاسم البرمجي للحقل داخل "" في ايعاز
+        this.inputFormField["ProgName"] = null; //* لتفريغ الحقل من محتواه inputFormField نضع الاسم البرمجي للحقل المتغير المراد اخفائه داخل "" في ايعاز
 
-        //* هنا نضع الشرط او الشروط الذي على اساسه يظهر الحقل وبخلافه يختفي
+        //* هنا نضع القيمة او القيم الموجودة التي على اساسها يظهر الحقل المتغير وبخلافه يختفي
         //* getElementById الخاص بالحقل داخل "" في ايعاز IDنضع الـ
         if(event == "قيمة الشرط"){
-            //* لاظهار الحقل عند تحقق الشرط
-            document.getElementById("64413").style.display = "block";
+            document.getElementById("64413").style.display = "block"; //* لاظهار الحقل عند تحقق الشرط
         }else{
-            //* لاخفاء الحقل عند عدم تحقق الشرط
-            document.getElementById("64413").style.display = "none";
+            document.getElementById("64413").style.display = "none"; //* لاخفاء الحقل عند عدم تحقق الشرط
         }
     },
 
@@ -74,36 +72,28 @@
             "SecondProg", //* الاسم البرمجي للحقل الثاني
             "ThirdProg", //* الاسم البرمجي للحقل الثالث
         ];
-        
-        //* تفريغ الحقول من النص الذي بداخلها
-        Field_Progs.forEach((Clearing) => this.inputFormField[Clearing]);
+        Field_Progs.forEach((Clearing) => this.inputFormField[Clearing] = null); //* تفريغ الحقول من النص الذي بداخلها
         
         //* هنا نضع الشرط او الشروط الذي على اساسه الحقول تظهر وخلافه يختفي
         if(event == "قيمة الشرط"){
-            //* لاظهار الحقول عند تحقق الشرط
-            Fields_IDs.forEach((Hiding) => document.getElementById(Hiding).style.display = "block");
+            Fields_IDs.forEach((Hiding) => document.getElementById(Hiding).style.display = "block"); //* لاظهار الحقول عند تحقق الشرط
         }else{
-            //* لاخفاء الحقول عند تحقق الشرط
-            Fields_IDs.forEach((Hiding) => document.getElementById(Hiding).style.display = "none");
+            Fields_IDs.forEach((Hiding) => document.getElementById(Hiding).style.display = "none"); //* لاخفاء الحقول عند تحقق الشرط
         }
     },
 
     //-----------------------------------------------------------------------------------------------------------------------------
     //! checklist اخفاء واظهار حقل على اساس
     Third_Case(event){
-        //* inputFormField نضع الاسم البرمجي للحقل داخل ايعاز
-        this.inputFormField["namethan"] = null;
+        this.inputFormField["namethan"] = null; //* inputFormField نضع الاسم البرمجي للحقل داخل ايعاز
 
-        //* في هذا المتغير نضع قيمة الشرط التي ستجعل الحقل يظهر وعند عدم اختيارها يختفي الحقل condition_Value
-        let Condition_Value = "قيمة الشرط";
+        let Condition_Value = "قيمة الشرط"; //* في هذا المتغير نضع قيمة الشرط التي ستجعل الحقل المطلوب اخفائه يظهر وعند عدم اختيارها يختفي الحقل
 
         //* getElementById الخاص بالحقل داخل "" في ايعاز IDنضع الـ
         if(event.includes(Condition_Value)){
-            //* لاظهار الحقل عند تحقق الشرط
-            document.getElementById("89571").style.display = "block";
+            document.getElementById("89571").style.display = "block"; //* لاظهار الحقل عند تحقق الشرط
         }else{
-            //* لاظهار الحقل عند عدم تحقق الشرط
-            document.getElementById("89571").style.display = "none";
+            document.getElementById("89571").style.display = "none"; //* لاظهار الحقل عند عدم تحقق الشرط
         }
     },
 
@@ -114,30 +104,27 @@
         //* يمكن اضافة او حذف حقول من المصفوفتين حسب عدد الحقول المطلوب اخفائهم
         //* الخاصة بكل حقل ID
         var Fields_IDs = [
-            "12345", //* الحقل الاول ID
-            "56789", //* الحقل الثاني ID
-            "14789", //* الحقل الثالث ID
+            "12345", //* الحقل المتغير الاول ID
+            "56789", //* الحقل المتغير الثاني ID
+            "14789", //* الحقل المتغير الثالث ID
         ],
         //* الاسماء البرمجية الخاصة بكل حقل
         Field_Progs = [
-            "FirstProg", //* الاسم البرمجي للحقل الاول
-            "SecondProg", //* الاسم البرمجي للحقل الثاني
-            "ThirdProg", //* الاسم البرمجي للحقل الثالث
+            "FirstProg", //* الاسم البرمجي للحقل المتغير الاول
+            "SecondProg", //* الاسم البرمجي للحقل المتغير الثاني
+            "ThirdProg", //* الاسم البرمجي للحقل المتغير الثالث
         ];
 
-        //! تفريغ الحقول من النص الذي بداخلها
-        Field_Progs.forEach((Clearing) => this.inputFormField[Clearing]);
+        Field_Progs.forEach((Clearing) => this.inputFormField[Clearing] = null); //! تفريغ الحقول من النص الذي بداخلها
 
         //! في هذا المتغير نضع قيمة الشرط التي ستجعل الحقل يظهر وعند عدم اختيارها يختفي الحقل condition_Value
         let Condition_Value = "قيمة الشرط";
 
         //* getElementById الخاص بالحقل داخل "" في ايعاز IDنضع الـ
         if(event.includes(Condition_Value)){
-            //* لاظهار الحقل عند تحقق الشرط
-            Fields_IDs.forEach((Hiding) => document.getElementById(Hiding).style.display = "block");
+            Fields_IDs.forEach((Hiding) => document.getElementById(Hiding).style.display = "block"); //* لاظهار الحقل عند تحقق الشرط
         }else{
-            //* لاظهار الحقل عند عدم تحقق الشرط
-            Fields_IDs.forEach((Hiding) => document.getElementById(Hiding).style.display = "none");
+            Fields_IDs.forEach((Hiding) => document.getElementById(Hiding).style.display = "none"); //* لاظهار الحقل عند عدم تحقق الشرط
         }
     },
 
