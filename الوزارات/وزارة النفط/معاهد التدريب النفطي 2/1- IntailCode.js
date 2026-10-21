@@ -19,6 +19,15 @@
   //document.getElementsByName("birthDate")[0].disabled = true; //قفل حقل تاريخ الميلاد
 
   //--------------------------------------------------------------------------------------
+  //منع التقديم على طلبات جديدة
+  console.log("حالة الطلب");
+  console.log(this.correct_status_id);
+
+  if(this.correct_status_id === 6){
+    
+  }
+
+  //--------------------------------------------------------------------------------------
   //حصر الحقول باللغة العربية والارقام فقط
   function Arabic_Numbers_Only(Fields_ID) {
     for (var i = 0; i < Fields_ID.length; i++) {
