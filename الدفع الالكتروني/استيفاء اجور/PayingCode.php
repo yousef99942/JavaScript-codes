@@ -4,12 +4,14 @@ $total_price = $payment_item->cost;
 
 $subTotal = $this->serviceRequest->reason;
 
-if(count($subTotal) === 1 && in_array('النشر في مجلة الفكر القيادي للمعهد العالي لاعداد وتاهيل القادة', $subTotal, true)){
-    $total_price = 100000;
-}elseif(count($subTotal) === 1 && in_array('التقديم (للامتحان التنافسي أو الدورة التدريبية) للمعهد العالي لاعداد وتاهيل القادة', $subTotal, true)){
-    $total_price = 100000;
+if(count($subTotal) === 1 && in_array('النشر في مجلة الفكر القيادي للمعهد العالي لاعداد وتاهيل القادة', $subTotal,
+true)){
+$total_price = 100000;
+}elseif(count($subTotal) === 1 && in_array('التقديم (للامتحان التنافسي أو الدورة التدريبية) للمعهد العالي لاعداد وتاهيل
+القادة', $subTotal, true)){
+$total_price = 100000;
 }else{
-    $total_price = 200000;
+$total_price = 200000;
 }
 
 $ratios = [];

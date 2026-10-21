@@ -1,4 +1,14 @@
 {
+  //اخفاء مجاميع
+  let Groups_ID = [
+    "35833_group", //نوع الملك
+    "35834_group", //معلومات الملك الحكومي
+  ];
+
+  Groups_ID.forEach((groupId) => {
+    document.getElementById(groupId).style.display = "none";
+  });
+
   //---------------------------------------------------------------------------------------------
   //تغيير خصائص ليبلات
   var Labels_ID = [

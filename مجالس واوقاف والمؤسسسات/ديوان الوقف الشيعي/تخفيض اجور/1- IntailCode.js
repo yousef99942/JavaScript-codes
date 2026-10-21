@@ -28,7 +28,7 @@
   //تغيير خصائص ليبل التعهد
   const Labels_ID = [
     //معلومات الطلب
-    "93390", //التعهد
+    "97087", //التعهد
     //معلومات المطلوبة للقريب في قناة الاقارب
     "93409", //التعهد
     //معلومات المطلوبة لقناة ممن لدى ذويهم عجز
@@ -97,4 +97,35 @@
   ];
 
   Arabic_Only(Fields_ID);
+
+  //--------------------------------------------------------------------------------------------------
+  //حصر الحقول بالارقام فقط
+  function Numbers_Only(Fields_ID) {
+    for (var i = 0; i < Fields_ID.length; i++) {
+      const input = document.getElementById(Fields_ID[i]);
+
+      input.addEventListener("keydown", (e) => {
+        const ctrl = e.ctrlKey || e.metaKey;
+        if (ctrl || e.key.length > 1) return;
+
+        // الأرقام فقط
+        const regex = /^[0-9\u0660-\u0669]$/;
+        if (!regex.test(e.key)) {
+          e.preventDefault();
+        }
+      });
+
+      // حماية من اللصق
+      input.addEventListener("input", () => {
+        input.value = input.value.replace(/[^0-9\u0660-\u0669]/g, "");
+      });
+    }
+  }
+
+  var Fields_ID = [
+    //المعلومات الاساسية
+    "93320", //العمر
+  ];
+
+  Numbers_Only(Fields_ID);
 }

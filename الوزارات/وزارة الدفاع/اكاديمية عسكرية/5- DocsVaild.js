@@ -35,7 +35,8 @@
 
   if (
     this.form_data.people === "نعم" ||
-    this.form_data.Tittel === "منتسب/ عسكري / مرتب"
+    this.form_data.Tittel === "منتسب/ عسكري / مرتب" ||
+    this.form_data.Tittel === "ضابط"
   ) {
     validateDocuments.call(this, Docs1, numbers[0]);
   }

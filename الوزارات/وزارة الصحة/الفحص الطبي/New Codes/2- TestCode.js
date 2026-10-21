@@ -127,7 +127,7 @@
         ],
         SShowed_Value: Work_Hours[1]
       },
-      {FSelected_Value: "البصرة", SSelected_Value: "صباحي", FShowed_Value: ["اللجنة الطبية الصباحية في البصرة",], SShowed_Value: Work_Hours[1]},
+      {FSelected_Value: "البصرة", SSelected_Value: "صباحي", FShowed_Value: ["اللجنة الطبية الصباحية في البصرة",], SShowed_Value: Work_Hours[0]},
       {FSelected_Value: "الانبار", SSelected_Value: "صباحي", FShowed_Value: ["اللجنة الطبية الصباحية في محافظة الانبار"], SShowed_Value: Work_Hours[0]},
       {FSelected_Value: "الانبار", SSelected_Value: "مسائي", FShowed_Value: ["اللجنة الطبية المسائية في محافظة الانبار"], SShowed_Value: Work_Hours[1]},
       {FSelected_Value: "بابل", SSelected_Value: "صباحي", FShowed_Value: ["اللجنة الطبية الصباحية في بابل",], SShowed_Value: Work_Hours[0]},
@@ -253,7 +253,7 @@
     
     if(Result){
       document.getElementById("61862").style.display = "block";
-      this.inputFormField.LijnaPlace = Finding.Showed_Value;
+      this.inputFormField.LijnaPlace = Result.Showed_Value;
       document.getElementsByName("LijnaPlace")[0].disabled = true; //عنوان اللجنة
     }else{
       document.getElementById("61862").style.display = "none";

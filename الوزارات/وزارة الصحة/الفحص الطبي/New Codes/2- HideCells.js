@@ -5,19 +5,19 @@
     this.inputFormField["typeReserve"] = null; //موعد الفحص
     let Work_Times = [["صباحي", "مسائي"], ["مسائي"], ["صباحي"]];
     let Values = [
-      {Selected_Value: "بغداد", Showed_Value: ["الكرخ", "الرصافة"]}, //راح يظهر حقل القضاء بدل حقل الصباحي مسائي
-      {Selected_Value: "البصرة", Showed_Value: Work_Times[1]},
+      {Selected_Value: "بغداد", Showed_Value: Work_Times[0]},
+      {Selected_Value: "البصرة", Showed_Value: Work_Times[0]},
       {Selected_Value: "الانبار", Showed_Value: Work_Times[0]},
       {Selected_Value: "بابل", Showed_Value: Work_Times[0]},
       {Selected_Value: "النجف الاشرف", Showed_Value: Work_Times[1]},
-      {Selected_Value: "ميسان", Showed_Value: Work_Times[2]},
+      {Selected_Value: "ميسان", Showed_Value: Work_Times[1]},
       {Selected_Value: "واسط", Showed_Value: Work_Times[2]},
       {Selected_Value: "المثنى", Showed_Value: Work_Times[2]},
       {Selected_Value: "كركوك", Showed_Value: Work_Times[0]},
       {Selected_Value: "كربلاء المقدسة", Showed_Value: Work_Times[1]},
       {Selected_Value: "ديالى", Showed_Value: Work_Times[0]},
       {Selected_Value: "الديوانية", Showed_Value: Work_Times[1]},
-      {Selected_Value: "صلاح الدين", Showed_Value: Work_Times[0]},
+      {Selected_Value: "صلاح الدين", Showed_Value: Work_Times[2]},
       {Selected_Value: "نينوى", Showed_Value: Work_Times[0]},
       {Selected_Value: "ذي قار", Showed_Value: Work_Times[1]},
     ];
@@ -25,40 +25,41 @@
     let Result = Values.find((Finding) => event === Finding.Selected_Value);
 
     if(Result){
+      //document.getElementById("49912").style.display = "block"; //صباحي لو مسائي
+      this.group_of_form[0].fields[2].properties[0].values = Result.Showed_Value; //صباحي لو مسائي
       if(Result.Selected_Value == "بغداد"){
         document.getElementById("72901").style.display = "block"; //القضاء
-        this.group_of_form[0].fields[1].properties[0].values = Result.Showed_Value; //القضاء
-        document.getElementById("49912").style.display = "none"; //صباحي لو مسائي
       }else{
-        document.getElementById("49912").style.display = "block"; //صباحي لو مسائي
-        this.group_of_form[0].fields[2].properties[0].values = Result.Showed_Value; //صباحي لو مسائي
         document.getElementById("72901").style.display = "none"; //القضاء
       }
     }else{
+      this.group_of_form[0].fields[2].properties[0].values = ["لا يوجد"]; //صباحي لو مسائي
       document.getElementById("72901").style.display = "none"; //القضاء
-      document.getElementById("49912").style.display = "none"; //صباحي لو مسائي
+      //document.getElementById("49912").style.display = "none"; //صباحي لو مسائي
     }
   },
 
   //مبدئيا هاي ما احتاجها لان هاي راح تظهر حقل القضاء عند اختيار بغداد
-  First_Hide(event){
-    this.inputFormField["GOVValues"] = null;
-    if(event == "بغداد"){
-      document.getElementById("72901").style.display = "block";
-    }else{
-      document.getElementById("72901").style.display = "none";
-    }
-  },
+  // First_Hide(event){
+  //   this.inputFormField["GOVValues"] = null;
+  //   if(event == "بغداد"){
+  //     document.getElementById("72901").style.display = "block";
+  //   }else{
+  //     document.getElementById("72901").style.display = "none";
+  //   }
+  // },
 
   //اظهار حقل موعد الفحص عند اختيار القضاء
   Second_Hide(event){
     this.inputFormField["typeReserve"] = null; //موعد الفحص
-    if(event){
-      document.getElementById("49912").style.display = "block"; //صباحي لو مسائي
-      this.group_of_form[0].fields[2].properties[0].values = ["صباحي",  "مسائي"]; //صباحي لو مسائي
-    }else{
-      document.getElementById("49912").style.display = "none"; //صباحي لو مسائي
-    }
+    // if(event){
+    //   //document.getElementById("49912").style.display = "block"; //صباحي لو مسائي
+    //   this.group_of_form[0].fields[2].properties[0].values = ["صباحي",  "مسائي"]; //صباحي لو مسائي
+    // }else{
+    //   this.First_Filter(this.inputFormField.governorate);
+    //   this.group_of_form[0].fields[2].properties[0].values = ["لا يوجد"]; //صباحي لو مسائي
+    //   ///document.getElementById("49912").style.display = "none"; //صباحي لو مسائي
+    // }
   },
   
   //فلترة اسماء اللجان واوقات المراجعة
@@ -127,7 +128,7 @@
         ],
         SShowed_Value: Work_Hours[1]
       },
-      {FSelected_Value: "البصرة", SSelected_Value: "صباحي", FShowed_Value: ["اللجنة الطبية الصباحية في البصرة",], SShowed_Value: Work_Hours[1]},
+      {FSelected_Value: "البصرة", SSelected_Value: "صباحي", FShowed_Value: ["اللجنة الطبية الصباحية في البصرة",], SShowed_Value: Work_Hours[0]},
       {FSelected_Value: "الانبار", SSelected_Value: "صباحي", FShowed_Value: ["اللجنة الطبية الصباحية في محافظة الانبار"], SShowed_Value: Work_Hours[0]},
       {FSelected_Value: "الانبار", SSelected_Value: "مسائي", FShowed_Value: ["اللجنة الطبية المسائية في محافظة الانبار"], SShowed_Value: Work_Hours[1]},
       {FSelected_Value: "بابل", SSelected_Value: "صباحي", FShowed_Value: ["اللجنة الطبية الصباحية في بابل",], SShowed_Value: Work_Hours[0]},
@@ -172,7 +173,7 @@
     ];
 
     var Gover_Values =  [
-      "الانبار", "بابل", "البصرة", "ديالى", "ذي قار", "صلاح الدين", "القادسية", "كركوك", "كربلاء المقدسة", "المثنى", "ميسان", "النجف الاشرف", "نينوى",  "واسط",
+      "الانبار", "بابل", "البصرة", "ديالى", "ذي قار", "صلاح الدين", "القادسية", "كركوك", "كربلاء المقدسة", "المثنى", "ميسان", "النجف الاشرف", "نينوى",  "واسط", "الديوانية"
     ];
 
     var Result;
@@ -253,7 +254,7 @@
     
     if(Result){
       document.getElementById("73927").style.display = "block";
-      this.inputFormField.LijnaPlace = Finding.Showed_Value;
+      this.inputFormField.LijnaPlace = Result.Showed_Value;
       document.getElementsByName("LijnaPlace")[0].disabled = true; //عنوان اللجنة
     }else{
       document.getElementById("73927").style.display = "none";

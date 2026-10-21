@@ -9,6 +9,7 @@
     "35508_group", //ملفات قناة مؤسسة العين
     "35509_group", //ملفات قناة ابناء الاساتذة
     "35510_group", //ملفات قناة منتسبي الحشد الشعبي ورجال الدين
+    "35832_group", //مرفقات اخرى
   ];
 
   //اخفاء جميع المجاميع
@@ -61,5 +62,13 @@
 
   if (Result) {
     document.getElementById(Result.Show_Group).style.display = "block";
+  }
+
+  //------------------------------------------------------------------------------------//
+  if (
+    this.form_data.requesttype !== "ذوي الاعاقة (العجز) بنسبة 70%" &&
+    this.form_data.requesttype !== "المكفوفين"
+  ) {
+    document.getElementById("35832_group").style.display = "block";
   }
 }

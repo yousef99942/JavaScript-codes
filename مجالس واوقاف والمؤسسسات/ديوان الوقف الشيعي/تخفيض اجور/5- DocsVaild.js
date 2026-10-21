@@ -7,6 +7,7 @@
         ["nationidd"], //البطاقة الوطنية لصاحب تأييد الرعاية (ظهر)
         ["sponsorship"], //تأييد الرعاية بتأريخ جديد
         ["sponsorshipfat"], //استمارة الرعاية التي تحتوي اسم الطالب ضمن افراد الاسرة
+        ["QRcode"], //صورة QR code لتأييد الرعاية
       ],
       Group_Location: 1,
     },
@@ -96,5 +97,12 @@
     Result.Fields_Progs.forEach((Checking) =>
       validateDocuments.call(this, Checking, Result.Group_Location),
     );
+  }
+
+  if (
+    this.form_data.requesttype !== "ذوي الاعاقة (العجز) بنسبة 70%" &&
+    this.form_data.requesttype !== "المكفوفين"
+  ) {
+    validateDocuments.call(this, "cash", 10);
   }
 }
