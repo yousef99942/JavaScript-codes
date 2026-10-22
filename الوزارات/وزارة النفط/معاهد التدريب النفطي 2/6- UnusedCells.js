@@ -32,5 +32,7 @@
         document.getElementById(IDs[i]).style.visibility = "collapse";
       }
     }
+
+    document.getElementById("97260").style.visibility = "collapse"; //التقديم على الخدمة مغلق، ومتاح فقط لتصحيح الطلبات السابقة.
   }
 }

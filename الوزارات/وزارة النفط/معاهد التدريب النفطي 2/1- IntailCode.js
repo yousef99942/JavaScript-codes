@@ -23,9 +23,28 @@
   console.log("حالة الطلب");
   console.log(this.correct_status_id);
 
+  let IDs_Values = [
+    "96249", //أسم المعهد المطلوب
+    "35752_group", //معلومات مقدم الطلب
+    "35753_group", //معلومات البطاقة الوطنية الموحدة
+    "35754_group", //معلومات السكن
+    "35755_group", //المعلومات الدراسية
+    "35756_group", //معلومات الشهيد
+    "35757_group", //التعهد القانوني
+  ];
+
   if(this.correct_status_id === 6){
-    
+    document.getElementById("97260").style.display = "none"; //التقديم على الخدمة مغلق، ومتاح فقط لتصحيح الطلبات السابقة.
+    IDs_Values.forEach((Hiding) => document.getElementById(Hiding).style.display = "block");
+  }else{
+    document.getElementById("97260").style.display = "block";
+    IDs_Values.forEach((Hiding) => document.getElementById(Hiding).style.display = "none");
   }
+
+  //التقديم على الخدمة مغلق، ومتاح فقط لتصحيح الطلبات السابقة.
+  document.getElementById("97260").style.cssText =
+    "color: #660000; font-size: 25px; font-weight: bold; padding-top: 15px; padding-bottom: 15px; text-align: center;";
+
 
   //--------------------------------------------------------------------------------------
   //حصر الحقول باللغة العربية والارقام فقط
