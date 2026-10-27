@@ -1,38 +1,84 @@
 {
-  let First_Values = [
-    {
-      Field_Prog: "namewqt", //الاسم البرمجي للحقل الاول
-      Field_Location: 1,  //تسلسل الحقل الاول
-    },
-    {
-      Field_Prog: "xcvb", //الاسم البرمجي للحقل الثاني
-      Field_Location: 2, //تسلسل الحقل الثاني
-    },
-    {
-      Field_Prog: "xcvbn", //الاسم البرمجي للحقل الثالث
-      Field_Location: 3, //تسلسل الحقل الثالث
-    },
-    {
-      Field_Prog: "xcfgg", //الاسم البرمجي للحقل الرابع
-      Field_Location: 4, //تسلسل الحقل الرابع
-    },
-  ];
+  neighborhoods(event) {
+    var district = event;
 
-  //* في الشرط الخارجي نحتاج الاسم البرمجي للحقل الذي يحتوي على القيمة التي تجعل الحقل يظهر
-  //* inputFormField ونضع الاسم البرمجي بعد النقطة التي بعد ايعاز
-  if (this.inputFormField.nameswa == "نعم") {
-    First_Values.forEach((Checking) => {
-      //* وهنا نتاكد اذا الحقول التي تختفي وتظهر فارغة ام لا
-      if (
-        this.inputFormField[Checking.Field_Prog] == null ||
-        this.inputFormField[Checking.Field_Prog] == ""
-      ) {
-        //! المقصود به هو تسلسل المجموعة التي تحتوي على الحقل بعد طرح 1 منه group_of_form
-        //! المقصود به تسلسل الحقل داخل مجموعته fields
-        this.evalErr.push(
-          الحقل ${this.group_of_form[7].fields[Checking.Field_Location].label} مطلوب,
-        );
-      }
+    if (district && typeof district === "object") {
+        district =
+          district.label ||
+          district.value ||
+          district.name ||
+          "";
+    }
+
+    district = String(district || "").trim();
+
+    var neighborhoodsByDistrict = {
+        "قضاء المركز": [
+            "حي الرسالة",
+            "حي الرافدين",
+            "حي الوفاء",
+            "حي المعلمين",
+            "حي الخضراء",
+            "حي الفرات",
+            "حي الفارس",
+            "حي ملحق التعاون",
+            "حي النصر",
+            "حي العامل",
+            "حي الحسين",
+            "حي الأطباء",
+            "حي الزهراء",
+            "حي رمضان",
+            "حي الصناعي",
+            "حي السلام"
+        ],
+
+        "قضاء الحر": [
+            "حي الاختبار"
+        ],
+
+        "قضاء الهندية": [
+            "الحي الأول",
+            "الحي الثاني"
+        ]
+    };
+
+    // البحث عن القضاء حتى لو وصل مع مسافات إضافية
+    var matchedDistrict = Object.keys(
+        neighborhoodsByDistrict
+    ).find(function (name) {
+        return name.trim() === district;
     });
+
+    var neighborhoods = matchedDistrict
+        ? neighborhoodsByDistrict[matchedDistrict]
+        : [];
+
+    var groups = this.group_of_form || [];
+    var field = null;
+
+    for (var i = 0; i < groups.length; i++) {
+        var fields = groups[i].fields || [];
+
+        field = fields.find(function (f) {
+            return f.name === "TheNeighborhoo";
+        });
+
+        if (field) {
+            break;
+        }
+    }
+
+    if (!field) {
+        return;
+    }
+
+    field.options = neighborhoods.map(function (name) {
+        return {
+            label: name,
+            value: name
+        };
+    });
+
+    
   }
 }
