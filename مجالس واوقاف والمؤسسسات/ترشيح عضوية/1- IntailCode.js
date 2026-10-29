@@ -27,8 +27,17 @@
     this.inputFormField.phoone = this.user.phone_num; //جلب رقم الهاتف
     document.getElementsByName("phoone")[0].disabled = true; //قفل حقل رقم الهاتف
 
-    // this.inputFormField.idcardnum = this.user.profile.national_id.nationalID; //جلب رقم الموحدة
-    // document.getElementsByName("idcardnum")[0].disabled = true; //قفل حقل رقم الموحدة
+    this.inputFormField.idcardnum = this.user.profile.national_id.nationalID; //جلب رقم الموحدة
+    document.getElementsByName("idcardnum")[0].disabled = true; //قفل حقل رقم الموحدة
+
+    this.inputFormField.familyNum = this.user.profile.national_id.family_no; //جلب الرقم العائلي
+    document.getElementsByName("familyNum")[0].disabled = true; //قفل حقل رقم العائلي
+
+    this.inputFormField.provNum = this.user.profile.national_id.office_issue; //جلب جهة الاصدار
+    document.getElementsByName("provNum")[0].disabled = true; //قفل حقل جهة الاصدار
+
+    this.inputFormField.provDate = this.user.profile.national_id.issue_date; //جلب تاريخ الاصدار
+    document.getElementsByName("provDate")[0].disabled = true; //قفل حقل تاريخ الاصدار
 
     //--------------------------------------------------------------------------------------------------------
     //اخفاء قيم
