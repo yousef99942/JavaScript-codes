@@ -27,8 +27,8 @@
     this.inputFormField.phoone = this.user.phone_num; //جلب رقم الهاتف
     document.getElementsByName("phoone")[0].disabled = true; //قفل حقل رقم الهاتف
 
-    this.inputFormField.idcardnum = this.user.profile.national_id.nationalID; //جلب رقم الموحدة
-    document.getElementsByName("idcardnum")[0].disabled = true; //قفل حقل رقم الموحدة
+    // this.inputFormField.idcardnum = this.user.profile.national_id.nationalID; //جلب رقم الموحدة
+    // document.getElementsByName("idcardnum")[0].disabled = true; //قفل حقل رقم الموحدة
 
     //--------------------------------------------------------------------------------------------------------
     //اخفاء قيم
@@ -94,6 +94,8 @@
     //المعلومات الشخصية
     "27652", //اللقب
     "27602", //جهة الاصدار
+    "97499", //التخصص الاخر
+    "97500", //الشهادة الاخرى
   ];
 
   Arabic_Only(Fields_ID);
@@ -150,12 +152,12 @@
       Min_Date: "2003-01-01",
       Max_Date: `${new Date().getFullYear()}-12-31`,
     }, //تاريخ الاصدار
-    {
-      Field_ID: "27613",
-      Field_Prog: "birth",
-      Min_Date: `${new Date().getFullYear() - 65}-01-01`,
-      Max_Date: `${new Date().getFullYear() - 37}-12-31`,
-    }, //تاريخ الميلاد
+    // {
+    //   Field_ID: "27613",
+    //   Field_Prog: "birth",
+    //   Min_Date: `${new Date().getFullYear() - 65}-01-01`,
+    //   Max_Date: `${new Date().getFullYear() - 37}-12-31`,
+    // }, //تاريخ الميلاد
   ];
 
   Date_Limit(Fields_Value);

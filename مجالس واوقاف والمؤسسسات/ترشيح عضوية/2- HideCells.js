@@ -1,4 +1,5 @@
 {
+    //الاقضية
     First_Filter(event){
         this.inputFormField["district"] = null;
         let Values = [
@@ -12,7 +13,8 @@
             {
                 Selected_Value: "بابل",
                 Showed_Value: [
-                    "أبي غرق", "الهاشمية", "الحلة", "الامام", "الاسكندرية", "الكفل", "المدحتية", "المحاويل", "المشروع", "المسيب", "القاسم", "النيل", "الشوملي", "الطليعة", "جرف النصر (جرف الصخر)", "سدة الهندية",
+                    "أبي غرق", "الهاشمية", "الحلة", "الامام", "الاسكندرية", "الكفل", "المدحتية", "المحاويل", "المشروع", "المسيب", "القاسم", "النيل", "الشوملي", "الطليعة", "جرف النصر (جرف الصخر)",
+                    "سدة الهندية",
                 ]
             },
             {
@@ -92,9 +94,62 @@
 
         let Result = Values.find((Finding) => event == Finding.Selected_Value);
         if(Result){
-            this.group_of_form[0].fields[10].properties[0].values = Result.Showed_Value;
+            this.group_of_form[0].fields[12].properties[0].values = Result.Showed_Value;
         }else{
-            this.group_of_form[0].fields[10].properties[0].values = [];
+            this.group_of_form[0].fields[12].properties[0].values = [];
+        }
+    },
+
+    First_Function(Field_Value){
+        document
+        .getElementById(Field_Value.Field_ID)
+        .addEventListener("keydown", function (event) {
+          event.preventDefault();
+        });
+        document.getElementsByName(Field_Value.Field_Prog)[0].setAttribute("min", Field_Value.Min_Date); //يبدا من
+        document.getElementsByName(Field_Value.Field_Prog)[0].setAttribute("max", Field_Value.Max_Date); //ينتهي بـ
+    },
+    
+    //مشمول بقوانين العدالة الاجتماعية
+    Second_Filter(event){
+        if(event === "نعم"){
+            let Field_Value = {
+                Field_ID: "27613",
+                Field_Prog: "birth",
+                Min_Date: `${new Date().getFullYear() - 65}-07-01`,
+                Max_Date: `${new Date().getFullYear() - 37}-12-31`,
+            };
+
+            this.First_Function(Field_Value);
+        }
+        
+        if(event === "كلا"){
+            let Field_Value = {
+                Field_ID: "27613",
+                Field_Prog: "birth",
+                Min_Date: `${new Date().getFullYear() - 60}-07-01`,
+                Max_Date: `${new Date().getFullYear() - 37}-12-31`,
+            };
+
+            this.First_Function(Field_Value);
+        }
+    },
+
+    First_Hide(event){
+        this.inputFormField["OtherField"] = null; //التخصص الاخر
+        if(event === "اخرى"){
+            document.getElementById("97499").style.display = "block";
+        }else{
+            document.getElementById("97499").style.display = "none";
+        }
+    },
+
+    Second_Hide(event){
+        this.inputFormField["OtherDegree"] = null; //الشهادة الاخرى
+        if(event === "اخرى"){
+            document.getElementById("97500").style.display = "block";
+        }else{
+            document.getElementById("97500").style.display = "none";
         }
     }
 }
