@@ -2,7 +2,7 @@
   let First_Values = [
     {
       Field_Prog: "namewqt", //الاسم البرمجي للحقل الاول
-      Field_Location: 1,  //تسلسل الحقل الاول
+      Field_Location: 1, //تسلسل الحقل الاول
     },
     {
       Field_Prog: "xcvb", //الاسم البرمجي للحقل الثاني
