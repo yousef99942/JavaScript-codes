@@ -4,9 +4,11 @@
     if (event === "تجديد الاجازة" || event === "تعديل اجازة") {
       document.getElementById("34588").style.display = "block";
       document.getElementById("34591").style.display = "block";
+      document.getElementById("34595").style.display = "block";
     } else {
       document.getElementById("34588").style.display = "none";
       document.getElementById("34591").style.display = "none";
+      document.getElementById("34595").style.display = "none";
     }
   },
 
