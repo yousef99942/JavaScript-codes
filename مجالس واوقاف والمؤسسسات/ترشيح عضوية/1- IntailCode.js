@@ -1,91 +1,103 @@
 {
-    //جلب الاسم من بوابة اور
-    this.inputFormField.name = this.user.first_name; //جلب الاسم الاول
-    document.getElementsByName("name")[0].disabled = true; //قفل حقل الاسم الاول
+  var Fields_ID = [
+    "27633", //جدول التحصيل الدراسي القديم
+    "27635", //ليبل الخبرات
+    "27624", //جدول الخبرات
+    "11545_group", //مجموعة المؤلفات
+    "27710", //اختبار اللغة
+    "27641", //اختبار الحاسبة
+    "27644", //تيكست اريا مال المشكلات
+  ];
 
-    this.inputFormField.secondName = this.user.middle_name; //جلب الاسم الثاني
-    document.getElementsByName("secondName")[0].disabled = true; //قفل حقل الاسم الثاني
+  Fields_ID.forEach(
+    (Hiding) => (document.getElementById(Hiding).style.display = "none"),
+  );
 
-    this.inputFormField.thirdname = this.user.last_name; //جلب الاسم الثالث
-    document.getElementsByName("thirdname")[0].disabled = true; //قفل حقل الاسم الثالث
+  //جلب الاسم من بوابة اور
+  this.inputFormField.name = this.user.first_name; //جلب الاسم الاول
+  document.getElementsByName("name")[0].disabled = true; //قفل حقل الاسم الاول
 
-    this.inputFormField.fouthName = this.user.forth_name; //جلب الاسم الرابع
-    document.getElementsByName("fouthName")[0].disabled = true; //قفل حقل الاسم الرابع
+  this.inputFormField.secondName = this.user.middle_name; //جلب الاسم الثاني
+  document.getElementsByName("secondName")[0].disabled = true; //قفل حقل الاسم الثاني
 
-    this.inputFormField.surName = this.user.family_name; //جلب اللقب
-    //document.getElementsByName("surName")[0].disabled = true; //قفل حقل اللقب
+  this.inputFormField.thirdname = this.user.last_name; //جلب الاسم الثالث
+  document.getElementsByName("thirdname")[0].disabled = true; //قفل حقل الاسم الثالث
 
-    this.inputFormField["mother"] = this.user.profile.mother; //جلب اسم الام
-    document.getElementsByName("mother")[0].disabled = true; //قفل حقل اسم الام
+  this.inputFormField.fouthName = this.user.forth_name; //جلب الاسم الرابع
+  document.getElementsByName("fouthName")[0].disabled = true; //قفل حقل الاسم الرابع
 
-    this.inputFormField["gender"] = this.user.gender; //جلب الجنس
-    document.getElementsByName("gender")[0].disabled = true; //قفل حقل الجنس
+  this.inputFormField.surName = this.user.family_name; //جلب اللقب
+  //document.getElementsByName("surName")[0].disabled = true; //قفل حقل اللقب
 
-    this.inputFormField.birth = this.user.birth_date; //جلب تاريخ الميلاد
-    //document.getElementsByName("birth")[0].disabled = true; //قفل حقل تاريخ الميلاد
+  this.inputFormField["mother"] = this.user.profile.mother; //جلب اسم الام
+  document.getElementsByName("mother")[0].disabled = true; //قفل حقل اسم الام
 
-    this.inputFormField.phoone = this.user.phone_num; //جلب رقم الهاتف
-    document.getElementsByName("phoone")[0].disabled = true; //قفل حقل رقم الهاتف
+  this.inputFormField["gender"] = this.user.gender; //جلب الجنس
+  document.getElementsByName("gender")[0].disabled = true; //قفل حقل الجنس
 
-    this.inputFormField.idcardnum = this.user.profile.national_id.nationalID; //جلب رقم الموحدة
-    document.getElementsByName("idcardnum")[0].disabled = true; //قفل حقل رقم الموحدة
+  this.inputFormField.birth = this.user.birth_date; //جلب تاريخ الميلاد
+  //document.getElementsByName("birth")[0].disabled = true; //قفل حقل تاريخ الميلاد
 
-    this.inputFormField.familyNum = this.user.profile.national_id.family_no; //جلب الرقم العائلي
-    document.getElementsByName("familyNum")[0].disabled = true; //قفل حقل رقم العائلي
+  this.inputFormField.phoone = this.user.phone_num; //جلب رقم الهاتف
+  document.getElementsByName("phoone")[0].disabled = true; //قفل حقل رقم الهاتف
 
-    this.inputFormField.provNum = this.user.profile.national_id.office_issue; //جلب جهة الاصدار
-    document.getElementsByName("provNum")[0].disabled = true; //قفل حقل جهة الاصدار
+  this.inputFormField.idcardnum = this.user.profile.national_id.nationalID; //جلب رقم الموحدة
+  document.getElementsByName("idcardnum")[0].disabled = true; //قفل حقل رقم الموحدة
 
-    this.inputFormField.provDate = this.user.profile.national_id.issue_date; //جلب تاريخ الاصدار
-    document.getElementsByName("provDate")[0].disabled = true; //قفل حقل تاريخ الاصدار
+  this.inputFormField.familyNum = this.user.profile.national_id.family_no; //جلب الرقم العائلي
+  document.getElementsByName("familyNum")[0].disabled = true; //قفل حقل رقم العائلي
 
-    //--------------------------------------------------------------------------------------------------------
-    //اخفاء قيم
-    this.group_of_form[0].fields[6].properties[0].values = [ "رئيس مجلس", "نائب" ]; //المنصب المتقدم له
-    //اجادة استخدام الحاسوب
-    document.getElementById("27711").style.display = "none"; //المتقدم سيخضع لاختبار عملي.
+  this.inputFormField.provNum = this.user.profile.national_id.office_issue; //جلب جهة الاصدار
+  document.getElementsByName("provNum")[0].disabled = true; //قفل حقل جهة الاصدار
 
-    //--------------------------------------------------------------------------------------------------------
-    //تغيير خصائص الليبل
-    var Labels_ID = [
-        //المعلومات الشخصية
-        "27707", //المجموعة الاولى
-        //الخدمة والمناصب
-        "27605", //1- عدد سنوات الخدمة الفعلية
-        "27632", //2- المناصب التي شغلها المتقدم ((وزير او رئيس جهة غير مرتبطة بوزارة / وكيل وزير / مستشار (درجة خاصة) / مدير عام / مدير تشكيل / اخرى))
-        "27635", //3- الخبرات
-        //الانجازات والمبادرات
-        "27637", //ارفاق ما يؤيد المذكور انفاً
-        //المؤلفات والدراسات والبحوث واوراق العمل
-        "27708", //يرفق ما يؤيد ما تم ذكره.
-        //الدورات وورش العمل التطويرية
-        "27709", //يرفق ما يؤيد المذكور اعلاه
-        //اللغات الحية التي يجيدها المتقدم
-        "27710", //المتقدم سيخضع لاختبار اللغة
-        //اجادة استخدام الحاسوب
-        "27641", //المتقدم سيخضع لاختبار عملي  
-    ];
+  this.inputFormField.provDate = this.user.profile.national_id.issue_date; //جلب تاريخ الاصدار
+  document.getElementsByName("provDate")[0].disabled = true; //قفل حقل تاريخ الاصدار
 
-    for (var i = 0; i < Labels_ID.length; i++) {
-        document.getElementById(Labels_ID[i]).style.cssText =
-        "color: #770000; font-size: 20px; font-weight: bold; padding-top: 15px; padding-bottom: 15px; text-align: center;";
-    }
+  //--------------------------------------------------------------------------------------------------------
+  //اخفاء قيم
+  this.group_of_form[0].fields[6].properties[0].values = ["رئيس مجلس", "نائب"]; //المنصب المتقدم له
+  //اجادة استخدام الحاسوب
+  document.getElementById("27711").style.display = "none"; //المتقدم سيخضع لاختبار عملي.
 
-    var Second_Labels_ID = [
-        //المعرفون والشهود
-        "27804", //التعهد الاول
-        "27803", //التعهد الثاني
-        "27805", //التعهد الثالث
-    ];
+  //--------------------------------------------------------------------------------------------------------
+  //تغيير خصائص الليبل
+  var Labels_ID = [
+    //المعلومات الشخصية
+    "27707", //المجموعة الاولى
+    //الخدمة والمناصب
+    "27605", //1- عدد سنوات الخدمة الفعلية
+    "27632", //2- المناصب التي شغلها المتقدم ((وزير او رئيس جهة غير مرتبطة بوزارة / وكيل وزير / مستشار (درجة خاصة) / مدير عام / مدير تشكيل / اخرى))
+    //الانجازات والمبادرات
+    "97522", //اذا كان لا توجد انجازات ومبادرات
+    "27637", //ارفاق ما يؤيد المذكور انفاً
+    //المؤلفات والدراسات والبحوث واوراق العمل
+    "27708", //يرفق ما يؤيد ما تم ذكره.
+    //الدورات وورش العمل التطويرية
+    "97521", //ابرز 10 دورات
+    "27709", //يرفق ما يؤيد المذكور اعلاه
+  ];
 
-    for (var i = 0; i < Second_Labels_ID.length; i++) {
-        document.getElementById(Second_Labels_ID[i]).style.cssText =
-        "color: #770000; font-size: 20px; font-weight: bold; padding-top: 15px; padding-bottom: 15px;";
-    }
+  for (var i = 0; i < Labels_ID.length; i++) {
+    document.getElementById(Labels_ID[i]).style.cssText =
+      "color: #770000; font-size: 20px; font-weight: bold; padding-top: 15px; padding-bottom: 15px; text-align: center;";
+  }
 
-    //--------------------------------------------------------------------------------------------------------
-    //حصر الحقول باللغة العربية
-    function Arabic_Only(Fields_ID) {
+  document.getElementById("97519").style.cssText =
+    "color: #770000; font-size: 20px; font-weight: bold; padding-top: 15px; padding-bottom: 15px;";
+
+  var Second_Labels_ID = [
+    //المعرفون والشهود
+    "27804", //التعهد الاول
+  ];
+
+  for (var i = 0; i < Second_Labels_ID.length; i++) {
+    document.getElementById(Second_Labels_ID[i]).style.cssText =
+      "color: #770000; font-size: 20px; font-weight: bold; padding-top: 15px; padding-bottom: 15px;";
+  }
+
+  //--------------------------------------------------------------------------------------------------------
+  //حصر الحقول باللغة العربية
+  function Arabic_Only(Fields_ID) {
     for (var i = 0; i < Fields_ID.length; i++) {
       const input = document.getElementById(Fields_ID[i]);
       input.addEventListener("keydown", (e) => {
@@ -130,11 +142,35 @@
   var Fields_ID = [
     //الرؤيا والاهداف وتطوير العمل حول المنصب المتقدم اليه
     "27642", //الرؤيا والاهداف
-    "27643", //التطوير 
+    "27643", //التطوير
     "27644", //المشكلات والتحديات
   ];
 
-  Arabic_Symbols_Numbers_Only(Fields_ID);  
+  Arabic_Symbols_Numbers_Only(Fields_ID);
+
+  //--------------------------------------------------------------------------------------------------------
+  //حصر الحقول بالارقام والرموز
+  function Numbers_Symbols_Only(Fields_ID) {
+    for (var i = 0; i < Fields_ID.length; i++) {
+      const input = document.getElementById(Fields_ID[i]);
+      input.addEventListener("keydown", (e) => {
+        const ctrl = e.ctrlKey || e.metaKey;
+        if (ctrl || e.key.length > 1) return;
+        // الأرقام + الرموز + المسافة
+        const regex =
+          /^[0-9\u0660-\u0669\s!"#$%&'()*+,\-./:;<=>?@[\\\]^_`{|}~]$/;
+        if (!regex.test(e.key)) {
+          e.preventDefault();
+        }
+      });
+    }
+  }
+
+  var Fields_ID = [
+    "27623", //* الدار
+  ];
+
+  Numbers_Symbols_Only(Fields_ID);
 
   //--------------------------------------------------------------------------------------------------------
   //حصر حقول التاريخ
