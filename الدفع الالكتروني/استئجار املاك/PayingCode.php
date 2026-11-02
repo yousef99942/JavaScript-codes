@@ -14,7 +14,7 @@ if ($payment_item->name === 'NewFees') {
 $base_cost =$data->data->RentValue;
 }
 
-$total_price = intval($base_cost / 10);
+$total_price = (int) ($base_cost * 0.1);
 
 $ratios = [];
 foreach ($this->nodeRatios as $ratio) {
