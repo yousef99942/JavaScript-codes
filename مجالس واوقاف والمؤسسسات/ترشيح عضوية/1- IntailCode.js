@@ -30,7 +30,7 @@
   //document.getElementsByName("surName")[0].disabled = true; //قفل حقل اللقب
 
   this.inputFormField["mother"] = this.user.profile.mother; //جلب اسم الام
-  document.getElementsByName("mother")[0].disabled = true; //قفل حقل اسم الام
+  //document.getElementsByName("mother")[0].disabled = true; //قفل حقل اسم الام
 
   this.inputFormField["gender"] = this.user.gender; //جلب الجنس
   document.getElementsByName("gender")[0].disabled = true; //قفل حقل الجنس
@@ -45,13 +45,13 @@
   document.getElementsByName("idcardnum")[0].disabled = true; //قفل حقل رقم الموحدة
 
   this.inputFormField.familyNum = this.user.profile.national_id.family_no; //جلب الرقم العائلي
-  document.getElementsByName("familyNum")[0].disabled = true; //قفل حقل رقم العائلي
+  //document.getElementsByName("familyNum")[0].disabled = true; //قفل حقل رقم العائلي
 
   this.inputFormField.provNum = this.user.profile.national_id.office_issue; //جلب جهة الاصدار
-  document.getElementsByName("provNum")[0].disabled = true; //قفل حقل جهة الاصدار
+  //document.getElementsByName("provNum")[0].disabled = true; //قفل حقل جهة الاصدار
 
   this.inputFormField.provDate = this.user.profile.national_id.issue_date; //جلب تاريخ الاصدار
-  document.getElementsByName("provDate")[0].disabled = true; //قفل حقل تاريخ الاصدار
+  //document.getElementsByName("provDate")[0].disabled = true; //قفل حقل تاريخ الاصدار
 
   //--------------------------------------------------------------------------------------------------------
   //اخفاء قيم
