@@ -72,8 +72,9 @@
             "SecondProg", //* الاسم البرمجي للحقل الثاني
             "ThirdProg", //* الاسم البرمجي للحقل الثالث
         ];
+
         Field_Progs.forEach((Clearing) => this.inputFormField[Clearing] = null); //* تفريغ الحقول من النص الذي بداخلها
-        
+
         //* هنا نضع الشرط او الشروط الذي على اساسه الحقول تظهر وخلافه يختفي
         if(event == "قيمة الشرط"){
             Fields_IDs.forEach((Hiding) => document.getElementById(Hiding).style.display = "block"); //* لاظهار الحقول عند تحقق الشرط
